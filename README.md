@@ -3,7 +3,7 @@ Simulácia mraveniska
 
 Informácie o spustení simulácie:
 
-Ako "Start Up Project" je nastavená windows form app. v zložke SimulaciaMraveniskaGUI, pomocou tohto GUI je možné nastaviť atribúty simulácie. Konzolové načítanie v časti SimulaciaMraveniskaSpustenieKonzolove v terajsej verzii kódu nie je možné.
+Ako "Start Up Project" je nastavená windows form app. v zložke SimulaciaMraveniskaGUI, pomocou tohto GUI je možné nastaviť atribúty simulácie. Konzolové načítanie v časti SimulaciaMraveniskaSpustenieKonzolove v terajšej verzii kódu nie je možné, i keď je predpripravené.
 
 Výpis behu simulácie je ale stále konzolový, takisto i samotné ukončenie simulácie je zatiaľ konzolové, teda pre výpis behu 
 je nutné nastaviť "output type" na konzolový výstup.
