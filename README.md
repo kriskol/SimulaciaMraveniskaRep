@@ -3,11 +3,11 @@ Simulácia mraveniska
 
 Informácie o spustení simulácie:
 
-Simulácia sa spúšta pomocou kódu v časti SimulaciaMraveniskaGUI, kde sa nastavujú atribúty simulácie, stratégie mravcov, ...
+Ako "Start Up Project" je nastavená windows form app. v zložke SimulaciaMraveniskaGUI, pomocou tohto GUI je možné nastaviť atribúty simulácie. Konzolové načítanie v časti SimulaciaMraveniskaSpustenieKonzolove v terajsej verzii kódu nie je možné.
 
 Výpis behu simulácie je ale stále konzolový, takisto i samotné ukončenie simulácie je zatiaľ konzolové, teda pre výpis behu 
 je nutné nastaviť "output type" na konzolový výstup.
-V nastaveniach simulácie je taktiež možné nastaviť súbor, kam sa bude konzolový výstup simultánne zapisovať.
+V nastaveniach simulácie je taktiež možné nastaviť súbor, kam sa bude konzolový výstup simulácie zapisovať.
 
 To či má byť simulácia ukončená je dotazované po 1. kroku (po jednej časovej jednotke) a následne po každých 10 krokoch simulácie.
 
