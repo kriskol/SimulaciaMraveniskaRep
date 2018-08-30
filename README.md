@@ -73,7 +73,7 @@ Stratégie mravcov ostatných typov nastavené niesu.
 Pokiaľ ich chcete používať, tak musíte nastaviť ich stratégie v časti Nastavenia Mravcov.
 
 V časti nastavenie mravcov nastavujeme stratégiu mravca pomocou tabuľky 4x7.
-4 riadky reprezentuju pol´íčka na ktorom uvažovaný mravec stoji, a to: prázdna zem, potrava,
+4 riadky reprezentuju políčka na ktorom uvažovaný mravec stoji, a to: prázdna zem, potrava,
 priatelPrazdna a priatelPotrava.
 7 stlpcov reprezentuje políčka, ktoré sú pred uvažovaným mravcom a to sú:
 prázdna zem, skala, potrava, priatelPrazdna, priatelPotrava, nepriatelPrazdna, nepriatelPotrava.
