@@ -1,0 +1,14 @@
+C:\Users\krisk\source\repos\SimulaciaMraveniska\SimulaciaMraveniskaSpustenieKonzolove\bin\Debug\SimulaciaMraveniskaSpustenieKonzolove.exe.config
+C:\Users\krisk\source\repos\SimulaciaMraveniska\SimulaciaMraveniskaSpustenieKonzolove\bin\Debug\SimulaciaMraveniskaSpustenieKonzolove.exe
+C:\Users\krisk\source\repos\SimulaciaMraveniska\SimulaciaMraveniskaSpustenieKonzolove\bin\Debug\SimulaciaMraveniskaSpustenieKonzolove.pdb
+C:\Users\krisk\source\repos\SimulaciaMraveniska\SimulaciaMraveniskaSpustenieKonzolove\bin\Debug\SimulaciaMraveniskaObjektyNaMravenisku.dll
+C:\Users\krisk\source\repos\SimulaciaMraveniska\SimulaciaMraveniskaSpustenieKonzolove\bin\Debug\Nacitanie.dll
+C:\Users\krisk\source\repos\SimulaciaMraveniska\SimulaciaMraveniskaSpustenieKonzolove\bin\Debug\DatoveStruktury.dll
+C:\Users\krisk\source\repos\SimulaciaMraveniska\SimulaciaMraveniskaSpustenieKonzolove\bin\Debug\SimulaciaMraveniskaObjektyNaMravenisku.pdb
+C:\Users\krisk\source\repos\SimulaciaMraveniska\SimulaciaMraveniskaSpustenieKonzolove\bin\Debug\Nacitanie.pdb
+C:\Users\krisk\source\repos\SimulaciaMraveniska\SimulaciaMraveniskaSpustenieKonzolove\bin\Debug\DatoveStruktury.pdb
+C:\Users\krisk\source\repos\SimulaciaMraveniska\SimulaciaMraveniskaSpustenieKonzolove\obj\Debug\SimulaciaMraveniskaSpustenieKonzolove.csprojAssemblyReference.cache
+C:\Users\krisk\source\repos\SimulaciaMraveniska\SimulaciaMraveniskaSpustenieKonzolove\obj\Debug\SimulaciaMraveniskaSpustenieKonzolove.csproj.CoreCompileInputs.cache
+C:\Users\krisk\source\repos\SimulaciaMraveniska\SimulaciaMraveniskaSpustenieKonzolove\obj\Debug\SimulaciaMraveniskaSpustenieKonzolove.csproj.CopyComplete
+C:\Users\krisk\source\repos\SimulaciaMraveniska\SimulaciaMraveniskaSpustenieKonzolove\obj\Debug\SimulaciaMraveniskaSpustenieKonzolove.exe
+C:\Users\krisk\source\repos\SimulaciaMraveniska\SimulaciaMraveniskaSpustenieKonzolove\obj\Debug\SimulaciaMraveniskaSpustenieKonzolove.pdb

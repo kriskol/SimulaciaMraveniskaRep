@@ -1,0 +1,6 @@
+C:\Users\krisk\source\repos\SimulaciaMraveniska\DatoveStruktury\bin\Debug\DatoveStruktury.dll
+C:\Users\krisk\source\repos\SimulaciaMraveniska\DatoveStruktury\bin\Debug\DatoveStruktury.pdb
+C:\Users\krisk\source\repos\SimulaciaMraveniska\DatoveStruktury\obj\Debug\DatoveStruktury.csprojAssemblyReference.cache
+C:\Users\krisk\source\repos\SimulaciaMraveniska\DatoveStruktury\obj\Debug\DatoveStruktury.csproj.CoreCompileInputs.cache
+C:\Users\krisk\source\repos\SimulaciaMraveniska\DatoveStruktury\obj\Debug\DatoveStruktury.dll
+C:\Users\krisk\source\repos\SimulaciaMraveniska\DatoveStruktury\obj\Debug\DatoveStruktury.pdb

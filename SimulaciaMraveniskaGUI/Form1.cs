@@ -12,6 +12,7 @@ using SimulaciaMraveniskaObjektyNaMravenisku;
 using SimulaciaMraveniskaSimulacia;
 using SimulaciaMraveniskaUdalostiSpravaUdalosti;
 using SimulaciaMraveniskaGUI;
+using System.Threading;
 
 namespace SimulaciaMraveniskaGUI
 {
@@ -30,6 +31,20 @@ namespace SimulaciaMraveniskaGUI
                                                             pocetMravcovTypu3Nastavenia, pocetMravcovTypu4Nastavenia);
             NacitaneHodnoty.InicializujIneHodnoty(pocetSkalNastavenia, mnozstvoZaciatocnejPotravyNastavenia,
                                                     minimalneMnozstvoPotravyNastavenia);
+
+            OdkazNaFormu.NastavFormu(this);
+        }
+
+        //spusti vykreslovanie mraveniskad
+        public void VykresliMravenisko(Mravenisko mravenisko)
+        {
+            Graphics graphics;
+
+            graphics = Simulacia.TabPages[1].CreateGraphics();
+
+            TabPage tabPage = Simulacia.TabPages[1];
+
+            GrafickyVystup.VykresliMravenisko(mravenisko, graphics, tabPage);
 
         }
 
@@ -262,6 +277,122 @@ namespace SimulaciaMraveniskaGUI
             minimalnaPotrava
         }
 
+        //spravuje graficke zobrazovanie mraveniska
+        public static class GrafickyVystup
+        {
+            public static void VykresliMravenisko(Mravenisko mravenisko, Graphics graphics, TabPage tabPage)
+            {
+
+                int vyska;
+                int sirka;
+                int velkostStvorceka;
+
+                vyska = tabPage.Height;
+                sirka = tabPage.Width;
+
+                velkostStvorceka = Math.Min(vyska / mravenisko.ZistiRozmerMraveniska(), sirka / mravenisko.ZistiRozmerMraveniska());
+
+                for (int i = 0; i < mravenisko.ZistiRozmerMraveniska(); i++)
+                    for (int j = 0; j < mravenisko.ZistiRozmerMraveniska(); j++)
+                    {
+                        switch (mravenisko.VratObjektNepohybujuceSaNaDanychSuradniciach(new Suradnice(i, j)).ZistiTypObjektu())
+                        {
+                            case TypyObjektov.potrava:
+                                {
+                                    if (mravenisko.VratObjektPohybujuceSaNaDanychSuradniciach(new Suradnice(i, j)).Count == 0)
+                                        VykresliObdlznik(i * velkostStvorceka, j * velkostStvorceka, velkostStvorceka, velkostStvorceka, Color.LawnGreen, graphics);
+                                    else
+                                    {
+                                        VykresliObdlznik(i * velkostStvorceka, j * velkostStvorceka, velkostStvorceka / 2, velkostStvorceka, Color.LawnGreen, graphics);
+
+                                        VyfarbenieMravcov(mravenisko, graphics, i, j, velkostStvorceka);
+                                    }
+                                }
+                                break;
+                            case TypyObjektov.prazdnaZem:
+                                {
+                                    if (mravenisko.VratObjektPohybujuceSaNaDanychSuradniciach(new Suradnice(i, j)).Count == 0)
+                                        VykresliObdlznik(i * velkostStvorceka, j * velkostStvorceka, velkostStvorceka, velkostStvorceka,
+                                            Color.Khaki, graphics);
+                                    else
+                                    {
+                                        VykresliObdlznik(i * velkostStvorceka, j * velkostStvorceka, velkostStvorceka / 2, velkostStvorceka, Color.Khaki,
+                                            graphics);
+
+                                        VyfarbenieMravcov(mravenisko, graphics, i, j, velkostStvorceka);
+                                    }
+
+                                }
+                                break;
+                            case TypyObjektov.skala:
+                                {
+                                    VykresliObdlznik(i * velkostStvorceka, j * velkostStvorceka, velkostStvorceka, velkostStvorceka,
+                                                Color.Gray, graphics);
+                                }
+                                break;
+                        }
+                    }
+            }
+
+            private static void VyfarbenieMravcov(Mravenisko mravenisko, Graphics graphics, int i, int j, int velkostStvorceka)
+            {
+                switch ((mravenisko.VratObjektPohybujuceSaNaDanychSuradniciach(new Suradnice(i, j))[0] as Mravec).ZistiTypyMravcov())
+                {
+                    case TypyMravcov.MravecTypu1:
+                        {
+                            VykresliObdlznik(i * velkostStvorceka + velkostStvorceka / 2, j * velkostStvorceka
+                                            , velkostStvorceka / 2,
+                                            velkostStvorceka, Color.Blue, graphics);
+                        }
+                        break;
+                    case TypyMravcov.MravecTypu2:
+                        {
+                            VykresliObdlznik(i * velkostStvorceka + velkostStvorceka / 2, j * velkostStvorceka,
+                                velkostStvorceka / 2, velkostStvorceka, Color.Brown, graphics);
+                        }
+                        break;
+                    case TypyMravcov.MravecTypu3:
+                        {
+                            VykresliObdlznik(i * velkostStvorceka + velkostStvorceka / 2, j * velkostStvorceka,
+                                            velkostStvorceka / 2, velkostStvorceka, Color.DarkRed, graphics);
+                        }
+                        break;
+                    case TypyMravcov.MravecTypu4:
+                        {
+                            VykresliObdlznik(i * velkostStvorceka + velkostStvorceka / 2, j * velkostStvorceka,
+                                    velkostStvorceka / 2, velkostStvorceka, Color.LimeGreen, graphics);
+                        }
+                        break;
+                }
+            }
+
+            private static void VykresliObdlznik(int x, int y, int sirka, int vyska, Color farba, Graphics graphics)
+            {
+                //Pen pen = new Pen(Color.Black,1);
+
+                SolidBrush solidBrush = new SolidBrush(farba);
+
+                //graphics.DrawRectangle(pen, x, y, sirka, vyska);
+                graphics.FillRectangle(solidBrush, x, y, sirka, vyska);
+
+            }
+        }
+
+        public static class OdkazNaFormu
+        {
+            private static Form1 MainForm;
+
+            public static void NastavFormu(Form1 form1)
+            {
+                MainForm = form1;
+            }
+
+            public static Form1 ZistiOdkazNaFormu()
+            {
+                return MainForm;
+            }
+        }
+
         //hodnoty reprezentujuce stav simulacie nastavovanej v casti Simulacia
         public static class Hodnoty
         {
@@ -366,13 +497,14 @@ namespace SimulaciaMraveniskaGUI
             {
                 jeNastavenieMiestoUlozenia = false;
                 miestoUlozenia = "";
-            } 
+            }
         }
 
         //spravuje beh simulacie podla prikazov z uzivatelskeho rozhrania
         public static class SpravaBehuGUI
         {
             static BehSimulacie behSimulacie;
+            static Thread thread;
 
             //spravuje spustenie simulacie
             public static void SimulaciaBolaSpustena()
@@ -393,7 +525,25 @@ namespace SimulaciaMraveniskaGUI
                 behSimulacie = new BehSimulacie();
                 behSimulacie.InicializujSimulaciu(Hodnoty.ZistiMiestoUlozenia());
 
-                behSimulacie.SpustiSimulaciu();
+                thread = new Thread(SpustiSimulaciu);
+                thread.Start();
+
+                //SpustiSimulaciu();
+            }
+
+            private static void SpustiSimulaciu()
+            {
+                Mravenisko mravenisko;
+                Form1 form1;
+
+                form1 = OdkazNaFormu.ZistiOdkazNaFormu();
+
+                while (Hodnoty.ZistiBolaSpustena() && !Hodnoty.ZistiBolaZastavena())
+                {
+                    mravenisko = behSimulacie.SpustiSimulaciu();
+
+                    form1.VykresliMravenisko(mravenisko);
+                }
             }
 
             //spravuje zastavenie simulacie
@@ -407,7 +557,9 @@ namespace SimulaciaMraveniskaGUI
             {
                 NastaveneHodnotyPocasKrokov.NastavPokracovanie(true);
 
-                behSimulacie.SpustiSimulaciu();
+                thread.Start();
+
+                //SpustiSimulaciu();
             }
 
             //spravuje ukoncenie simulacie a inicializaciu cast hodnot pre pripadne dalsie spustenie simulacie
@@ -425,7 +577,7 @@ namespace SimulaciaMraveniskaGUI
                 behSimulacie.UkonecieSimulacie();
                 behSimulacie.InicializujSimulaciu("");
 
-                
+
 
                 NacitaneHodnoty.InicializujPoctyHodnotMravcov(pocetMravcovTypu1, pocetMravcovTypu2, pocetMravcovTypu3,
                                                                 poceMravcovTypu4);
@@ -1121,11 +1273,11 @@ namespace SimulaciaMraveniskaGUI
         private void ukladanieSimulacie_Click(object sender, EventArgs e)
         {
             if (Hodnoty.ZistiBolaSpustena() == false)
-                if(saveFileDialog1.ShowDialog() == DialogResult.OK)
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     Hodnoty.NastavMiestoUlozenie(saveFileDialog1.FileName);
                 }
-            else
+                else
                 {
                     MessageBox.Show("Simulácia už prebieha, teda nie je možné vybrať miesto uloženie zápisu behu simulácie.");
                 }
@@ -1139,6 +1291,11 @@ namespace SimulaciaMraveniskaGUI
             else
                 Hodnoty.NastavRychlostSimulacie((int)nastavenieRychlostiNum.Value);
         }
+
+        /* private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+         {
+                }
+                */
     }
 }
 

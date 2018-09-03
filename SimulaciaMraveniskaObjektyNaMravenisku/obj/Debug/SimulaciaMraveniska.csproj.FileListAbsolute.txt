@@ -1,0 +1,11 @@
+C:\Users\krisk\source\repos\SimulaciaMraveniska\SimulaciaMraveniskaObjektyNaMravenisku\bin\Debug\SimulaciaMraveniskaObjektyNaMravenisku.dll
+C:\Users\krisk\source\repos\SimulaciaMraveniska\SimulaciaMraveniskaObjektyNaMravenisku\bin\Debug\SimulaciaMraveniskaObjektyNaMravenisku.pdb
+C:\Users\krisk\source\repos\SimulaciaMraveniska\SimulaciaMraveniskaObjektyNaMravenisku\bin\Debug\DatoveStruktury.dll
+C:\Users\krisk\source\repos\SimulaciaMraveniska\SimulaciaMraveniskaObjektyNaMravenisku\bin\Debug\Nacitanie.dll
+C:\Users\krisk\source\repos\SimulaciaMraveniska\SimulaciaMraveniskaObjektyNaMravenisku\bin\Debug\DatoveStruktury.pdb
+C:\Users\krisk\source\repos\SimulaciaMraveniska\SimulaciaMraveniskaObjektyNaMravenisku\bin\Debug\Nacitanie.pdb
+C:\Users\krisk\source\repos\SimulaciaMraveniska\SimulaciaMraveniskaObjektyNaMravenisku\obj\Debug\SimulaciaMraveniska.csprojAssemblyReference.cache
+C:\Users\krisk\source\repos\SimulaciaMraveniska\SimulaciaMraveniskaObjektyNaMravenisku\obj\Debug\SimulaciaMraveniska.csproj.CoreCompileInputs.cache
+C:\Users\krisk\source\repos\SimulaciaMraveniska\SimulaciaMraveniskaObjektyNaMravenisku\obj\Debug\SimulaciaMraveniska.csproj.CopyComplete
+C:\Users\krisk\source\repos\SimulaciaMraveniska\SimulaciaMraveniskaObjektyNaMravenisku\obj\Debug\SimulaciaMraveniskaObjektyNaMravenisku.dll
+C:\Users\krisk\source\repos\SimulaciaMraveniska\SimulaciaMraveniskaObjektyNaMravenisku\obj\Debug\SimulaciaMraveniskaObjektyNaMravenisku.pdb

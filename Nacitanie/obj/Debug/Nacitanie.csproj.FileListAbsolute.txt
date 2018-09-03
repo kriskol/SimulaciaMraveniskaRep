@@ -1,0 +1,6 @@
+C:\Users\krisk\source\repos\SimulaciaMraveniska\Nacitanie\bin\Debug\Nacitanie.dll
+C:\Users\krisk\source\repos\SimulaciaMraveniska\Nacitanie\bin\Debug\Nacitanie.pdb
+C:\Users\krisk\source\repos\SimulaciaMraveniska\Nacitanie\obj\Debug\Nacitanie.csprojAssemblyReference.cache
+C:\Users\krisk\source\repos\SimulaciaMraveniska\Nacitanie\obj\Debug\Nacitanie.csproj.CoreCompileInputs.cache
+C:\Users\krisk\source\repos\SimulaciaMraveniska\Nacitanie\obj\Debug\Nacitanie.dll
+C:\Users\krisk\source\repos\SimulaciaMraveniska\Nacitanie\obj\Debug\Nacitanie.pdb
