@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{D26352F9-87DC-4D2D-BD26-26A8F106657A}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>SimulaciaMraveniskaGUI</RootNamespace>
     <AssemblyName>SimulaciaMraveniskaGUI</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>

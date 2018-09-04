@@ -1618,7 +1618,7 @@ namespace SimulaciaMraveniskaUdalostiSpravaUdalosti
             halda.VlozPrvok(udalost, udalost.ZistiCasNastania(), udalost.ZistiPriorita());
         }
 
-
+        //len konzolova verzia
         public static void VypisStatistickychUdajov(Mravenisko mravenisko, Halda<Udalost> halda, int cas)
         {
             HlaskyInformacnePocasSimulacie.VypisCasu(mravenisko.ZistiCasMraveniska());
@@ -1667,7 +1667,7 @@ namespace SimulaciaMraveniskaUdalostiSpravaUdalosti
             SpravaSpravaMraveniska.NajdiStojacichMravcov(mravenisko);
         }
 
-        //zisti ci chce uzivatel pokracovat v simulacii
+        //zisti ci chce uzivatel pokracovat v simulacii, len konzolova verzia
         public static bool OtazkaNaUkoncenieMraveniska(Mravenisko mravenisko, Halda<Udalost> halda, int cas)
         {
             Reader nacitavac = Reader.Console();
@@ -1689,6 +1689,7 @@ namespace SimulaciaMraveniskaUdalostiSpravaUdalosti
 
         }
 
+        //udalost pre vypisovanie mraveniska, len GUI verzia
         public static void GrafickyVypisMraveniska(Halda<Udalost> halda, int cas)
         {
             Udalost udalost = new Udalost(cas + 1, (int)TypyUdalosti.grafickyVypisMraveniska, TypyUdalosti.grafickyVypisMraveniska);
@@ -3018,7 +3019,7 @@ namespace SimulaciaMraveniskaSimulacia
         bool vypis;
 
         //spustenie simulacie
-        public Mravenisko SpustiSimulaciu()
+        public void SpustiSimulaciu()
         {
             while (NastaveneHodnotyPocasKrokov.ZistiPokracovanie() && !vypis)
             {
@@ -3031,7 +3032,7 @@ namespace SimulaciaMraveniskaSimulacia
 
             NastavVypis(false);
 
-            return mravenisko;
+            //return mravenisko;
         }
 
         //nastavy to hodnotu premennej vypis
@@ -3068,6 +3069,11 @@ namespace SimulaciaMraveniskaSimulacia
                                                                     dobaBehu);
 
             return vypisovacieUdaje;
+        }
+
+        public Mravenisko ZistiMravenisko()
+        {
+            return mravenisko;
         }
 
         //spravuje ukoncenie simulacie

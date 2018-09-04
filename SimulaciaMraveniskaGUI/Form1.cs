@@ -35,19 +35,7 @@ namespace SimulaciaMraveniskaGUI
             OdkazNaFormu.NastavFormu(this);
         }
 
-        //spusti vykreslovanie mraveniskad
-        public void VykresliMravenisko(Mravenisko mravenisko)
-        {
-            Graphics graphics;
-
-            graphics = Simulacia.TabPages[1].CreateGraphics();
-
-            TabPage tabPage = Simulacia.TabPages[1];
-
-            GrafickyVystup.VykresliMravenisko(mravenisko, graphics, tabPage);
-
-        }
-
+        
         private void label9_Click(object sender, EventArgs e)
         {
         }
@@ -215,22 +203,30 @@ namespace SimulaciaMraveniskaGUI
         //reakcia na spustenie simulacie
         private void spustenieSimulacie_Click(object sender, EventArgs e)
         {
-            if (!Hodnoty.ZistiBolaSpustena()) Hodnoty.NastavBolasSpustena(true);
+            TabPage tabPage;
+
+            tabPage = Simulacia.TabPages[1];
+
+            if (!Hodnoty.ZistiBolaSpustena()) Hodnoty.NastavBolasSpustena(true, tabPage);
         }
 
         //reakcia na zastavenie, resp. pokracovanie, simulacie
         private void zastaveniePokracovanieSimulacie_Click(object sender, EventArgs e)
         {
+            TabPage tabPage;
+
+            tabPage = Simulacia.TabPages[1];
+
             if (Hodnoty.ZistiBolaSpustena())
             {
                 if (!Hodnoty.ZistiBolaZastavena())
                 {
-                    Hodnoty.NastavBolaZastavenaPokracuje(true);
+                    Hodnoty.NastavBolaZastavenaPokracuje(true, tabPage);
                     zastaveniePokracovanieSimulacie.Text = "pokracuj";
                 }
                 else
                 {
-                    Hodnoty.NastavBolaZastavenaPokracuje(false);
+                    Hodnoty.NastavBolaZastavenaPokracuje(false, tabPage);
                     zastaveniePokracovanieSimulacie.Text = "zastav";
                 }
             }
@@ -254,6 +250,14 @@ namespace SimulaciaMraveniskaGUI
                              pocetSkalNastavenia,
                              mnozstvoZaciatocnejPotravyNastavenia,
                              minimalneMnozstvoPotravyNastavenia);
+
+                VypisovacieUdaje vypisovacieUdaje = new VypisovacieUdaje(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+                HodnotyNaVypisovanie.NacitajUdaje(vypisovacieUdaje);
+                HodnotyNaVypisovanie.VypisUdaje(dobaSimulacia, pocetMravcovTypu1TerazSimulacia, pocetMravcovTypu1CelkovoSimulacia, pocetMravcovTypu2TerazSimulacia,
+                                                pocetMravcovTypu2CelkovoSimulacia, pocetMravcovTypu3TerazSimulacia, pocetMravcovTypu3CelkovoSimulacia,
+                                                pocetMravcovTypu4TerazSimulacia, pocetMravcovTypu4CelkovoSimulacia, mnoztvoPotravyTerazSimulacia,
+                                                mnozstvoPotravyCelkovoSimulacia);
             }
             else MessageBox.Show("Nema zmysel ukoncovat simulaciu");
         }
@@ -268,6 +272,7 @@ namespace SimulaciaMraveniskaGUI
                                     mnoztvoPotravyTerazSimulacia, mnozstvoPotravyCelkovoSimulacia);
         }
 
+
         //prvky reprezentuju ci bol v casti Nastavenie nastavy pocet skal,
         //mnozstvo potravy zaciatocnej alebo minimalnej
         public enum Nastaveny
@@ -277,22 +282,41 @@ namespace SimulaciaMraveniskaGUI
             minimalnaPotrava
         }
 
+        public static BehSimulacie behSimulacieSimulacia;
+        //static Thread thread;
+        public static Mravenisko mravenisko;
+
         //spravuje graficke zobrazovanie mraveniska
         public static class GrafickyVystup
-        {
-            public static void VykresliMravenisko(Mravenisko mravenisko, Graphics graphics, TabPage tabPage)
+        {            
+            //spusti vykreslovanie mraveniska
+            public static void VykresliMravenisko(Mravenisko mravenisko, TabPage tabPage)
+            {
+                Graphics graphics;
+
+                graphics = tabPage.CreateGraphics();
+                
+
+                VykresliMravenisko(mravenisko, graphics, tabPage);
+
+            }
+
+            private static void VykresliMravenisko(Mravenisko mravenisko, Graphics graphics, TabPage tabPage)
             {
 
                 int vyska;
                 int sirka;
                 int velkostStvorceka;
 
+
                 vyska = tabPage.Height;
                 sirka = tabPage.Width;
 
                 velkostStvorceka = Math.Min(vyska / mravenisko.ZistiRozmerMraveniska(), sirka / mravenisko.ZistiRozmerMraveniska());
 
-                for (int i = 0; i < mravenisko.ZistiRozmerMraveniska(); i++)
+                graphics.FillRectangle(new SolidBrush(Color.White), 0, 0, vyska, sirka);
+
+                for (int i = 0;i < mravenisko.ZistiRozmerMraveniska(); i++)
                     for (int j = 0; j < mravenisko.ZistiRozmerMraveniska(); j++)
                     {
                         switch (mravenisko.VratObjektNepohybujuceSaNaDanychSuradniciach(new Suradnice(i, j)).ZistiTypObjektu())
@@ -348,7 +372,7 @@ namespace SimulaciaMraveniskaGUI
                     case TypyMravcov.MravecTypu2:
                         {
                             VykresliObdlznik(i * velkostStvorceka + velkostStvorceka / 2, j * velkostStvorceka,
-                                velkostStvorceka / 2, velkostStvorceka, Color.Brown, graphics);
+                                velkostStvorceka / 2, velkostStvorceka, Color.Orange, graphics);
                         }
                         break;
                     case TypyMravcov.MravecTypu3:
@@ -368,12 +392,13 @@ namespace SimulaciaMraveniskaGUI
 
             private static void VykresliObdlznik(int x, int y, int sirka, int vyska, Color farba, Graphics graphics)
             {
-                //Pen pen = new Pen(Color.Black,1);
+                Pen pen = new Pen(Color.Black,2);
 
                 SolidBrush solidBrush = new SolidBrush(farba);
 
-                //graphics.DrawRectangle(pen, x, y, sirka, vyska);
-                graphics.FillRectangle(solidBrush, x, y, sirka, vyska);
+
+                graphics.DrawRectangle(pen, x, y, sirka, vyska);
+                graphics.FillRectangle(solidBrush, x+2, y+2, sirka-4, vyska-4);
 
             }
         }
@@ -410,7 +435,7 @@ namespace SimulaciaMraveniskaGUI
 
                 konanieMravcov = listBoxes;
             }//pomaha pri nastavovani strategie mravcov
-            public static void NastavBolasSpustena(bool pravdivost)
+            public static void NastavBolasSpustena(bool pravdivost, TabPage tabPage)
             {
                 if (NacitaneHodnoty.ZistiNastaveneNastavenia())
                 {
@@ -418,20 +443,20 @@ namespace SimulaciaMraveniskaGUI
 
                     if (simulaciaBolaSpustena) { simmulaciaBolaZastavena = false; simulaviaBolaUkoncena = false; }
 
-                    SpravaBehuGUI.SimulaciaBolaSpustena();
+                    SpravaBehuGUI.SimulaciaBolaSpustena(tabPage);
                 }
                 else
                 {
                     MessageBox.Show("Pred spustenim simulácie musíte nastaviť nastavenia.");
                 }
             }//spravuje spustenie simulacie
-            public static void NastavBolaZastavenaPokracuje(bool pravdivost)
+            public static void NastavBolaZastavenaPokracuje(bool pravdivost, TabPage tabPage)
             {
 
                 simmulaciaBolaZastavena = pravdivost;
 
                 if (ZistiBolaZastavena()) SpravaBehuGUI.SimulaciaBolaZastavena();
-                else SpravaBehuGUI.SimulaciaPokracuje();
+                else SpravaBehuGUI.SimulaciaPokracuje(tabPage);
             }//spravuje zastavenie, alebo spustenie
              //simulacie
             public static void NastavBolaUkoncena(bool pravdivost, NumericUpDown pocetMravcovTypu1, //spravuje 
@@ -450,6 +475,8 @@ namespace SimulaciaMraveniskaGUI
                 SpravaBehuGUI.SimulaciaBolaUkoncena(pocetMravcovTypu1, pocetMravcovTypu2, pocetMravcovTypu3,
                                                         pocetMravocvTypu4, pocetSkal, mnozstvoPotravyZaciatocnej,
                                                         mnozstvoPotravyMinimalnej);
+
+                if (Konstanty.jeNastaveneMiestoUlozenia) Konstanty.zapisovacUdajov.Close();
 
 
             }
@@ -503,11 +530,9 @@ namespace SimulaciaMraveniskaGUI
         //spravuje beh simulacie podla prikazov z uzivatelskeho rozhrania
         public static class SpravaBehuGUI
         {
-            static BehSimulacie behSimulacie;
-            static Thread thread;
 
             //spravuje spustenie simulacie
-            public static void SimulaciaBolaSpustena()
+            public static void SimulaciaBolaSpustena(TabPage tabPage)
             {
                 ZadaneHodnoty.NastavPocetMravcovTypu1(NacitaneHodnoty.ZistiPocetMravcovTypu1());
                 ZadaneHodnoty.NastavPocetMravcovTypu2(NacitaneHodnoty.ZistiPocetMravcovTypu2());
@@ -522,29 +547,20 @@ namespace SimulaciaMraveniskaGUI
 
                 Konstanty.NastavNasobokDobyPrestavky(Hodnoty.ZistiRychlostSimulacie());
 
-                behSimulacie = new BehSimulacie();
-                behSimulacie.InicializujSimulaciu(Hodnoty.ZistiMiestoUlozenia());
+                behSimulacieSimulacia = new BehSimulacie();
+                behSimulacieSimulacia.InicializujSimulaciu(Hodnoty.ZistiMiestoUlozenia());
 
-                thread = new Thread(SpustiSimulaciu);
-                thread.Start();
-
-                //SpustiSimulaciu();
+                VykreslovanieASpustenieBehuSimulacie(tabPage);
             }
 
-            private static void SpustiSimulaciu()
+            private static void VykreslovanieASpustenieBehuSimulacie(object tabPageObj)
             {
-                Mravenisko mravenisko;
                 Form1 form1;
-
                 form1 = OdkazNaFormu.ZistiOdkazNaFormu();
+                form1.backgroundWorker1.RunWorkerAsync();
 
-                while (Hodnoty.ZistiBolaSpustena() && !Hodnoty.ZistiBolaZastavena())
-                {
-                    mravenisko = behSimulacie.SpustiSimulaciu();
-
-                    form1.VykresliMravenisko(mravenisko);
-                }
             }
+
 
             //spravuje zastavenie simulacie
             public static void SimulaciaBolaZastavena()
@@ -553,13 +569,11 @@ namespace SimulaciaMraveniskaGUI
             }
 
             //spravuje pokracovanie simulacie
-            public static void SimulaciaPokracuje()
+            public static void SimulaciaPokracuje(TabPage tabPage)
             {
                 NastaveneHodnotyPocasKrokov.NastavPokracovanie(true);
 
-                thread.Start();
-
-                //SpustiSimulaciu();
+                VykreslovanieASpustenieBehuSimulacie(tabPage);
             }
 
             //spravuje ukoncenie simulacie a inicializaciu cast hodnot pre pripadne dalsie spustenie simulacie
@@ -574,8 +588,8 @@ namespace SimulaciaMraveniskaGUI
 
                 Hodnoty.ResetujMiestoUlozenia();
 
-                behSimulacie.UkonecieSimulacie();
-                behSimulacie.InicializujSimulaciu("");
+                behSimulacieSimulacia.UkonecieSimulacie();
+                behSimulacieSimulacia.InicializujSimulaciu("");
 
 
 
@@ -595,7 +609,7 @@ namespace SimulaciaMraveniskaGUI
 
                 if (Hodnoty.ZistiBolaSpustena())
                 {
-                    vypisovacieUdaje = behSimulacie.ZistiUdaje();
+                    vypisovacieUdaje = behSimulacieSimulacia.ZistiUdaje();
                     HodnotyNaVypisovanie.NacitajUdaje(vypisovacieUdaje);
                     HodnotyNaVypisovanie.VypisUdaje(dobaBehu, pocetMravcovTypu1, pocetMravcovTypu1Celkovo,
                                                 pocetMravcovTypu2, pocetMravcovTypu2Celkovo, pocetMravcovTypu3,
@@ -1292,10 +1306,31 @@ namespace SimulaciaMraveniskaGUI
                 Hodnoty.NastavRychlostSimulacie((int)nastavenieRychlostiNum.Value);
         }
 
-        /* private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-         {
-                }
-                */
+        //spustenie vypoctu simulacie
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+            TabPage tabPage;
+
+            tabPage = Simulacia.TabPages[1];
+
+            while (Hodnoty.ZistiBolaSpustena() && !Hodnoty.ZistiBolaZastavena())
+            {
+
+                behSimulacieSimulacia.SpustiSimulaciu();      
+
+                mravenisko = behSimulacieSimulacia.ZistiMravenisko();
+                GrafickyVystup.VykresliMravenisko(mravenisko, tabPage);
+            }
+
+                
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+        }
+
+        
     }
 }
 

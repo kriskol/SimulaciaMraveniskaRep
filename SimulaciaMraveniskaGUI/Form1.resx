@@ -118,7 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="textVysvetlivky.Text" xml:space="preserve">
-    <value>Sú prítomné 4 typy mravcov, mravec 1.typu, 2.typu, 3.typu, 4.typu.
+    <value>Sú prítomné 4 typy mravcov, mravec 1.typu( modrá farba), 2.typu( hnedá faba), 3.typu 
+ (tmavo čierna farba), 4.typu (limetkovo-zelená farba).
 
 Typy políčok(stratégia mravca):
 prázdna zem - políčko na ktoré je možné vstúpiť,
@@ -185,9 +186,16 @@ prázdna zem, skala, potrava, priatelPrazdna, priatelPotrava, nepriatelPrazdna, 
 
 V časti simulácia je možné nastavenie rýchlosti behu simulácie (čím väčšie číslo, tým je simulácia
 pomalšia) a miesto kam sa uloží textový výstup.
-</value>
+
+Policka v casti vystup su zobrazovane, takymi farbami ako v casti Nastavenia Mravcov, pokiaľ
+nich nie su mravce. Pokial su tak sa jedno policko zobrazuje pomocou 2
+obdlznikov, kde 1.obdlznik (zlava) ma farbu typu policka tak ako v casti Nastavenia Mravcov
+druhy ma farbu typu mravcov, ktory na nom su.</value>
   </data>
   <metadata name="saveFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
+  </metadata>
+  <metadata name="backgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>179, 17</value>
   </metadata>
 </root>
