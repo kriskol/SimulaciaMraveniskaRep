@@ -203,30 +203,22 @@ namespace SimulaciaMraveniskaGUI
         //reakcia na spustenie simulacie
         private void spustenieSimulacie_Click(object sender, EventArgs e)
         {
-            TabPage tabPage;
-
-            tabPage = Simulacia.TabPages[1];
-
-            if (!Hodnoty.ZistiBolaSpustena()) Hodnoty.NastavBolasSpustena(true, tabPage);
+            if (!Hodnoty.ZistiBolaSpustena()) Hodnoty.NastavBolasSpustena(true);
         }
 
         //reakcia na zastavenie, resp. pokracovanie, simulacie
         private void zastaveniePokracovanieSimulacie_Click(object sender, EventArgs e)
         {
-            TabPage tabPage;
-
-            tabPage = Simulacia.TabPages[1];
-
             if (Hodnoty.ZistiBolaSpustena())
             {
                 if (!Hodnoty.ZistiBolaZastavena())
                 {
-                    Hodnoty.NastavBolaZastavenaPokracuje(true, tabPage);
+                    Hodnoty.NastavBolaZastavenaPokracuje(true);
                     zastaveniePokracovanieSimulacie.Text = "pokracuj";
                 }
                 else
                 {
-                    Hodnoty.NastavBolaZastavenaPokracuje(false, tabPage);
+                    Hodnoty.NastavBolaZastavenaPokracuje(false);
                     zastaveniePokracovanieSimulacie.Text = "zastav";
                 }
             }
@@ -273,7 +265,7 @@ namespace SimulaciaMraveniskaGUI
         }
 
 
-        //prvky reprezentuju ci bol v casti Nastavenie nastavy pocet skal,
+        //prvky reprezentuju ci bol v casti Nastavenie nastavene: pocet skal,
         //mnozstvo potravy zaciatocnej alebo minimalnej
         public enum Nastaveny
         {
@@ -290,7 +282,7 @@ namespace SimulaciaMraveniskaGUI
         public static class GrafickyVystup
         {            
             //spusti vykreslovanie mraveniska
-            public static void VykresliMravenisko(Mravenisko mravenisko, TabPage tabPage)
+            public static void VykresliMraveniskoUvod(Mravenisko mravenisko, TabPage tabPage)
             {
                 Graphics graphics;
 
@@ -301,6 +293,7 @@ namespace SimulaciaMraveniskaGUI
 
             }
 
+            //zacne vykreslovanie mraveniska
             private static void VykresliMravenisko(Mravenisko mravenisko, Graphics graphics, TabPage tabPage)
             {
 
@@ -358,6 +351,7 @@ namespace SimulaciaMraveniskaGUI
                     }
             }
 
+            //nastavi ako sa maju vykreslit mravce
             private static void VyfarbenieMravcov(Mravenisko mravenisko, Graphics graphics, int i, int j, int velkostStvorceka)
             {
                 switch ((mravenisko.VratObjektPohybujuceSaNaDanychSuradniciach(new Suradnice(i, j))[0] as Mravec).ZistiTypyMravcov())
@@ -390,6 +384,7 @@ namespace SimulaciaMraveniskaGUI
                 }
             }
 
+            //vykresli samotne policko
             private static void VykresliObdlznik(int x, int y, int sirka, int vyska, Color farba, Graphics graphics)
             {
                 Pen pen = new Pen(Color.Black,2);
@@ -403,6 +398,7 @@ namespace SimulaciaMraveniskaGUI
             }
         }
 
+        //odkaz na prave beziacu windows form
         public static class OdkazNaFormu
         {
             private static Form1 MainForm;
@@ -435,7 +431,7 @@ namespace SimulaciaMraveniskaGUI
 
                 konanieMravcov = listBoxes;
             }//pomaha pri nastavovani strategie mravcov
-            public static void NastavBolasSpustena(bool pravdivost, TabPage tabPage)
+            public static void NastavBolasSpustena(bool pravdivost)
             {
                 if (NacitaneHodnoty.ZistiNastaveneNastavenia())
                 {
@@ -443,20 +439,20 @@ namespace SimulaciaMraveniskaGUI
 
                     if (simulaciaBolaSpustena) { simmulaciaBolaZastavena = false; simulaviaBolaUkoncena = false; }
 
-                    SpravaBehuGUI.SimulaciaBolaSpustena(tabPage);
+                    SpravaBehuGUI.SimulaciaBolaSpustena();
                 }
                 else
                 {
                     MessageBox.Show("Pred spustenim simulácie musíte nastaviť nastavenia.");
                 }
             }//spravuje spustenie simulacie
-            public static void NastavBolaZastavenaPokracuje(bool pravdivost, TabPage tabPage)
+            public static void NastavBolaZastavenaPokracuje(bool pravdivost)
             {
 
                 simmulaciaBolaZastavena = pravdivost;
 
                 if (ZistiBolaZastavena()) SpravaBehuGUI.SimulaciaBolaZastavena();
-                else SpravaBehuGUI.SimulaciaPokracuje(tabPage);
+                else SpravaBehuGUI.SimulaciaPokracuje();
             }//spravuje zastavenie, alebo spustenie
              //simulacie
             public static void NastavBolaUkoncena(bool pravdivost, NumericUpDown pocetMravcovTypu1, //spravuje 
@@ -532,7 +528,7 @@ namespace SimulaciaMraveniskaGUI
         {
 
             //spravuje spustenie simulacie
-            public static void SimulaciaBolaSpustena(TabPage tabPage)
+            public static void SimulaciaBolaSpustena()
             {
                 ZadaneHodnoty.NastavPocetMravcovTypu1(NacitaneHodnoty.ZistiPocetMravcovTypu1());
                 ZadaneHodnoty.NastavPocetMravcovTypu2(NacitaneHodnoty.ZistiPocetMravcovTypu2());
@@ -550,10 +546,10 @@ namespace SimulaciaMraveniskaGUI
                 behSimulacieSimulacia = new BehSimulacie();
                 behSimulacieSimulacia.InicializujSimulaciu(Hodnoty.ZistiMiestoUlozenia());
 
-                VykreslovanieASpustenieBehuSimulacie(tabPage);
+                VykreslovanieASpustenieBehuSimulacie();
             }
 
-            private static void VykreslovanieASpustenieBehuSimulacie(object tabPageObj)
+            private static void VykreslovanieASpustenieBehuSimulacie()
             {
                 Form1 form1;
                 form1 = OdkazNaFormu.ZistiOdkazNaFormu();
@@ -569,11 +565,11 @@ namespace SimulaciaMraveniskaGUI
             }
 
             //spravuje pokracovanie simulacie
-            public static void SimulaciaPokracuje(TabPage tabPage)
+            public static void SimulaciaPokracuje()
             {
                 NastaveneHodnotyPocasKrokov.NastavPokracovanie(true);
 
-                VykreslovanieASpustenieBehuSimulacie(tabPage);
+                VykreslovanieASpustenieBehuSimulacie();
             }
 
             //spravuje ukoncenie simulacie a inicializaciu cast hodnot pre pripadne dalsie spustenie simulacie
@@ -860,7 +856,7 @@ namespace SimulaciaMraveniskaGUI
                 }
             }
 
-            //nastavy medzi pre hodnoty pocet skal, mnnozstvo potravy a mnozstvo potravy minimalnej; pripadne ich i nastavi
+            //nastavy medze pre hodnoty pocet skal, mnnozstvo potravy a mnozstvo potravy minimalnej; pripadne ich i nastavi
             private static void NastavHodnotyVzhladomRozmer(NumericUpDown numericUpDownPocetSkal,
                                                             NumericUpDown numericUpDownMnozstvoPotravy,
                                                             NumericUpDown numericUpDownMnozstvoPotravyMin)
@@ -1283,7 +1279,7 @@ namespace SimulaciaMraveniskaGUI
             NacitaneHodnoty.NastavNastavenia(true);
         }
 
-        //správa miesta, kam sa má výpis simulácie ulozit
+        //ulozi miesta, kam sa má výpis simulácie ulozit
         private void ukladanieSimulacie_Click(object sender, EventArgs e)
         {
             if (Hodnoty.ZistiBolaSpustena() == false)
@@ -1306,7 +1302,7 @@ namespace SimulaciaMraveniskaGUI
                 Hodnoty.NastavRychlostSimulacie((int)nastavenieRychlostiNum.Value);
         }
 
-        //spustenie vypoctu simulacie
+        //spustenie vypoctu simulacie pomocou backgroundworker
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
 
@@ -1320,7 +1316,7 @@ namespace SimulaciaMraveniskaGUI
                 behSimulacieSimulacia.SpustiSimulaciu();      
 
                 mravenisko = behSimulacieSimulacia.ZistiMravenisko();
-                GrafickyVystup.VykresliMravenisko(mravenisko, tabPage);
+                GrafickyVystup.VykresliMraveniskoUvod(mravenisko, tabPage);
             }
 
                 
