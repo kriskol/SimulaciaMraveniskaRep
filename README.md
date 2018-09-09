@@ -13,7 +13,8 @@ To či má byť simulácia ukončená je dotazované po 1. kroku (po jednej čas
 
 Informácie o simulácii:
 
-V simulácii sú prítomné 4 typy mravcov, mravec 1.typu, 2.typu, 3.typu, 4.typu.
+V simulácii sú prítomné 4 typy mravcov, mravec 1.typu (modrá farba), 2.typu( hnedá farba), 3.typu(rúžová farba), 
+4.typu (limetkovo-zelená farba).
 
 Typy políčok(stratégia mravca):
 prázdna zem - políčko na ktoré je možné vstúpiť,
@@ -80,3 +81,21 @@ prázdna zem, skala, potrava, priatelPrazdna, priatelPotrava, nepriatelPrazdna, 
 
 V časti simulácia je možné nastavenie rýchlosti behu simulácie (čím väčšie číslo, tým je simulácia
 pomalšia) a miesto kam sa uloží textový výstup.
+
+Policka v casti vystup su zobrazovane, takymi farbami ako v casti Nastavenia Mravcov, pokiaľ
+nich nie su mravce. Pokial su tak sa jedno policko zobrazuje pomocou 2
+obdlznikov, kde 1.obdlznik (zprava) ma farbu typu policka tak ako v casti Nastavenia Mravcov
+druhy ma farbu typu mravcov, ktory na nom su.
+
+Vykreslovanie špeciálnych situácií:
+
+Boj pri prechadzani medzi dvomi susedným políčkami: obe sú zobrazené červenou farbou, a 
+vedú medzi nimi dve čiary, kde každá čiara zastupuje jeden typ bojujucich mravcov a odpoveda
+tym i svojou farbou - vykreslenie vo fáze "Boje pri prechadzani"
+
+Boj na policku: vykresla sa 4 menšie štvorčeky, kde každý štvorček reprezentuje jeden typ mravcov
+s ich odopovedajucov farbou, pokiaľ sa dany typ mravcov účastní boja, inak je farba biela
+- vykreslenie vo fáze "Boje na policku"
+
+Parenie: vykresli sa na danom policku kruh, ktoreho farba je farba mravcov, ktorý sa pária
+- vykreslenie vo fáze "Parenie"
