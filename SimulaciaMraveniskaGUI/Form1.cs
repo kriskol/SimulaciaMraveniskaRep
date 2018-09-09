@@ -14,6 +14,9 @@ using SimulaciaMraveniskaUdalostiSpravaUdalosti;
 using SimulaciaMraveniskaGUI;
 using System.Threading;
 
+//zmen strategiu mravcov 
+//ukoncenie simulacie
+
 namespace SimulaciaMraveniskaGUI
 {
     public partial class Form1 : Form
@@ -26,58 +29,9 @@ namespace SimulaciaMraveniskaGUI
             //takisto rozmery mravenisk
             //taktiez inicializacie "ListBoxov" reprezentujucich konanie mravcov "Nastavenia Mravcov"
             InicializujListBoxs();
-            InicializaciaNastaveni();
-            NacitaneHodnoty.InicializujPoctyHodnotMravcov(pocetMravcovTypu1Nastavenia, pocetMravcovTypu2Nastavenia,
-                                                            pocetMravcovTypu3Nastavenia, pocetMravcovTypu4Nastavenia);
-            NacitaneHodnoty.InicializujIneHodnoty(pocetSkalNastavenia, mnozstvoZaciatocnejPotravyNastavenia,
-                                                    minimalneMnozstvoPotravyNastavenia);
+            InicializaciaNastaveniHodnot();
 
             OdkazNaFormu.NastavFormu(this);
-        }
-
-        
-        private void label9_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void label19_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label15_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label19_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label24_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label28_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         //inicializuje pole "ListBox-ov", ktore reprezentuje nastavenie konania mravcov v danej situacii
@@ -99,20 +53,24 @@ namespace SimulaciaMraveniskaGUI
             Hodnoty.NastavKonanie(listBoxes);
         }
 
-        //spravuje nastavenie strategie mravcov
+        //spravuje nastavenie strategie mravcov, resp. sposobi ich nastavenie
         private void nastavNastavenMravca_Click(object sender, EventArgs e)
         {
             SpravaStrategiaMravcov.Nastav(vyberTypuMravca, pocetMravcovTypu3Nastavenia, pocetMravcovTypu4Nastavenia);
         }
 
-        //inicializacia niektorych nastaveni, v sucasnom stave, nastavuje ako
+        //inicializacia niektorych nastaveni a hodnot v casti NacitaneHodnoty, v sucasnom stave, nastavuje ako
         //pociatocny rozmer mraveniska na 8x8
-        private void InicializaciaNastaveni()
+        private void InicializaciaNastaveniHodnot()
         {
             velkostMraveniskaNastavenia.SetSelected(0, true);
 
             NacitaneHodnoty.NastavRozmerMraveniska(8, pocetSkalNastavenia, mnozstvoZaciatocnejPotravyNastavenia,
                                                     minimalneMnozstvoPotravyNastavenia);
+
+            NacitaneHodnoty.InicializujHodnoty(pocetSkalNastavenia, mnozstvoZaciatocnejPotravyNastavenia, minimalneMnozstvoPotravyNastavenia);
+            NacitaneHodnoty.InicializujPoctyHodnotMravcov(pocetMravcovTypu1Nastavenia, pocetMravcovTypu2Nastavenia, pocetMravcovTypu3Nastavenia, pocetMravcovTypu4Nastavenia);
+
 
 
         }
@@ -120,27 +78,27 @@ namespace SimulaciaMraveniskaGUI
         //reakcia na nastavenie zaciatocneho poctu potravi v casti Nastavenia
         private void mnozstvoZaciatocnejPotravyNastavenia_ValueChanged(object sender, EventArgs e)
         {
-            NumericUpDown numericUpDown = sender as NumericUpDown;
+            NumericUpDown numericUpDownMnozstvoZaciatocnejPotravy = sender as NumericUpDown;
 
-            NacitaneHodnoty.NastavMnozstvoZaciatocnejPotravy((int)numericUpDown.Value, mnozstvoZaciatocnejPotravyNastavenia,
+            NacitaneHodnoty.NastavMnozstvoZaciatocnejPotravy((int)numericUpDownMnozstvoZaciatocnejPotravy.Value, mnozstvoZaciatocnejPotravyNastavenia,
                                                             pocetSkalNastavenia, minimalneMnozstvoPotravyNastavenia);
         }
 
         //reakcia na nastavenie mnozstav minimalnej potravy v casti Nastavenia
         private void minimalneMnozstvoPotravyNastavenia_ValueChanged(object sender, EventArgs e)
         {
-            NumericUpDown numericUpDown = sender as NumericUpDown;
+            NumericUpDown numericUpDownMinimalneMnozstvoPotravy = sender as NumericUpDown;
 
-            NacitaneHodnoty.NastavMnozstvoMinimalnejPotravy((int)numericUpDown.Value, minimalneMnozstvoPotravyNastavenia,
+            NacitaneHodnoty.NastavMnozstvoMinimalnejPotravy((int)numericUpDownMinimalneMnozstvoPotravy.Value, minimalneMnozstvoPotravyNastavenia,
                                                             pocetSkalNastavenia, mnozstvoZaciatocnejPotravyNastavenia);
         }
 
         //reakcia na nastavenie poctu skal v casti Nastavenia
         private void pocetSkalNastavenia_ValueChanged(object sender, EventArgs e)
         {
-            NumericUpDown numericUpDown = sender as NumericUpDown;
+            NumericUpDown numericUpDownPocetSkal = sender as NumericUpDown;
 
-            NacitaneHodnoty.NastavPocetSkal((int)numericUpDown.Value, pocetSkalNastavenia,
+            NacitaneHodnoty.NastavPocetSkal((int)numericUpDownPocetSkal.Value, pocetSkalNastavenia,
                                             mnozstvoZaciatocnejPotravyNastavenia,
                                             minimalneMnozstvoPotravyNastavenia);
         }
@@ -148,9 +106,9 @@ namespace SimulaciaMraveniskaGUI
         //reakcia na nastavenie velkosti mraveniska v casti Nastavenia
         private void velkostMraveniskaNastavenia_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ListBox listBox = sender as ListBox;
+            ListBox listBoxNastavovanieRozmeruMraveniska = sender as ListBox;
 
-            switch (listBox.GetItemText(listBox.SelectedItem))
+            switch (listBoxNastavovanieRozmeruMraveniska.GetItemText(listBoxNastavovanieRozmeruMraveniska.SelectedItem))
             {
                 case "8x8":
                     NacitaneHodnoty.NastavRozmerMraveniska(8, minimalneMnozstvoPotravyNastavenia,
@@ -171,39 +129,40 @@ namespace SimulaciaMraveniskaGUI
         //reakcia na nastavenie poctu mravcov typu 1 v casti nastavenia
         private void pocetMravcovTypu1Nastavenia_ValueChanged(object sender, EventArgs e)
         {
-            NumericUpDown numericUpDown = sender as NumericUpDown;
+            NumericUpDown numericUpDownPocetMravcovTypu1 = sender as NumericUpDown;
 
-            NacitaneHodnoty.NastavPocetMravcovTypu1((int)numericUpDown.Value);
+            NacitaneHodnoty.NastavPocetMravcovTypu1((int)numericUpDownPocetMravcovTypu1.Value);
         }
 
         //reakcia na nastavenie poctu mravcov typu 2 v casti Nastavenia
         private void pocetMravcovTypu2Nastavenia_ValueChanged(object sender, EventArgs e)
         {
-            NumericUpDown numericUpDown = sender as NumericUpDown;
+            NumericUpDown numericUpDownPocetMravcovTypu2 = sender as NumericUpDown;
 
-            NacitaneHodnoty.NastavPocetMravcovTypu2((int)numericUpDown.Value);
+            NacitaneHodnoty.NastavPocetMravcovTypu2((int)numericUpDownPocetMravcovTypu2.Value);
         }
 
         //reakcia na nastavenie poctu mravcov typu 3 v casti Nastavenia
         private void pocetMravcovTypu3Nastavenia_ValueChanged(object sender, EventArgs e)
         {
-            NumericUpDown numericUpDown = sender as NumericUpDown;
+            NumericUpDown numericUpDownPocetMravcovTypu3 = sender as NumericUpDown;
 
-            NacitaneHodnoty.NastavPocetMravcovTypu3((int)numericUpDown.Value);
+            NacitaneHodnoty.NastavPocetMravcovTypu3((int)numericUpDownPocetMravcovTypu3.Value);
         }
 
         //reakcia na nastavenie poctu mravcov  typu 4 v casti Nastavenia
         private void pocetMravcovTypu4Nastavenia_ValueChanged(object sender, EventArgs e)
         {
-            NumericUpDown numericUpDown = sender as NumericUpDown;
+            NumericUpDown numericUpDownPocetMravcovTypu4 = sender as NumericUpDown;
 
-            NacitaneHodnoty.NastavPocetMravcovTypu4((int)numericUpDown.Value);
+            NacitaneHodnoty.NastavPocetMravcovTypu4((int)numericUpDownPocetMravcovTypu4.Value);
         }
 
         //reakcia na spustenie simulacie
         private void spustenieSimulacie_Click(object sender, EventArgs e)
         {
-            if (!Hodnoty.ZistiBolaSpustena()) Hodnoty.NastavBolasSpustena(true);
+            if (!Hodnoty.ZistiBolaSpustena()) Hodnoty.NastavBolasSpustena();
+            else MessageBox.Show("Simulacia uz je spustena.");
         }
 
         //reakcia na zastavenie, resp. pokracovanie, simulacie
@@ -231,11 +190,12 @@ namespace SimulaciaMraveniskaGUI
         //reakcia na skoncenie simulacie
         private void skoncenieSimulacie_Click(object sender, EventArgs e)
         {
-            if (!Hodnoty.ZistiBolaUkoncena() && Hodnoty.ZistiBolaSpustena())
+            if (!Hodnoty.ZistiBolaUkoncena())
             {
-                InicializaciaNastaveni();
+                InicializaciaNastaveniHodnot();
 
-                Hodnoty.NastavBolaUkoncena(true, pocetMravcovTypu1Nastavenia,
+
+                Hodnoty.NastavBolaUkoncena(pocetMravcovTypu1Nastavenia,
                              pocetMravcovTypu2Nastavenia,
                              pocetMravcovTypu3Nastavenia,
                              pocetMravcovTypu4Nastavenia,
@@ -274,9 +234,61 @@ namespace SimulaciaMraveniskaGUI
             minimalnaPotrava
         }
 
-        public static BehSimulacie behSimulacieSimulacia;
-        //static Thread thread;
-        public static Mravenisko mravenisko;
+        public static class StatickeHodnoty
+        {
+            private static BehSimulacie behSimulacieSimulacia;
+
+            private static Mravenisko mravenisko;
+
+            private static AutoResetEvent autoReset = new AutoResetEvent(false);
+
+            public static void NastavBehSimulacieSimulacia(BehSimulacie behSimulacie)
+            {
+                behSimulacieSimulacia = behSimulacie;
+            }
+            public static void NastavMravenisko(Mravenisko mraveniskoNastav)
+            {
+                mravenisko = mraveniskoNastav;
+            }
+            public static void NastavAutoResetEvent(AutoResetEvent autoResetEvent)
+            {
+                autoReset = autoResetEvent;
+            }
+
+            public static BehSimulacie ZistiBehSimulacieSimulacia()
+            {
+                return behSimulacieSimulacia;
+            }
+            public static Mravenisko ZistiMravenisko()
+            {
+                return mravenisko;
+            }
+            public static AutoResetEvent ZistiAutoResetEvent()
+            {
+                return autoReset;
+            }
+        }
+
+        public static class VypisFazeMraveniska
+        {
+            public static void VypisFazeMraveniskaUvod(Mravenisko mravenisko, Label labelCas, Label labelFaza)
+            {
+                labelCas.Text = mravenisko.ZistiCasMraveniska().ToString();
+
+                VypisFazeMraveniskaRozhod(mravenisko, labelFaza);
+            }
+
+            private static void VypisFazeMraveniskaRozhod(Mravenisko mravenisko, Label labelFaza)
+            {
+                switch (mravenisko.ZistiFazaMraveniska())
+                {
+                    case FazaMraveniska.poBojiPolicku: labelFaza.Text = "Boje na polickach."; break;
+                    case FazaMraveniska.poBojiPrechadzani: labelFaza.Text = "Boje pri prechadzani."; break;
+                    case FazaMraveniska.poKonciKroku: labelFaza.Text = "Koniec kroku simulacie."; break;
+                    case FazaMraveniska.poPareni: labelFaza.Text = "Parenie."; break;
+                }
+            }
+        }
 
         //spravuje graficke zobrazovanie mraveniska
         public static class GrafickyVystup
@@ -307,8 +319,6 @@ namespace SimulaciaMraveniskaGUI
 
                 velkostStvorceka = Math.Min(vyska / mravenisko.ZistiRozmerMraveniska(), sirka / mravenisko.ZistiRozmerMraveniska());
 
-                graphics.FillRectangle(new SolidBrush(Color.White), 0, 0, vyska, sirka);
-
                 for (int i = 0;i < mravenisko.ZistiRozmerMraveniska(); i++)
                     for (int j = 0; j < mravenisko.ZistiRozmerMraveniska(); j++)
                     {
@@ -316,28 +326,23 @@ namespace SimulaciaMraveniskaGUI
                         {
                             case TypyObjektov.potrava:
                                 {
-                                    if (mravenisko.VratObjektPohybujuceSaNaDanychSuradniciach(new Suradnice(i, j)).Count == 0)
-                                        VykresliObdlznik(i * velkostStvorceka, j * velkostStvorceka, velkostStvorceka, velkostStvorceka, Color.LawnGreen, graphics);
-                                    else
-                                    {
-                                        VykresliObdlznik(i * velkostStvorceka, j * velkostStvorceka, velkostStvorceka / 2, velkostStvorceka, Color.LawnGreen, graphics);
+                                    VykresliObdlznik(i * velkostStvorceka, j * velkostStvorceka, velkostStvorceka, velkostStvorceka, Color.LawnGreen, graphics);
 
-                                        VyfarbenieMravcov(mravenisko, graphics, i, j, velkostStvorceka);
-                                    }
+                                    if(mravenisko.VratObjektPohybujuceSaNaDanychSuradniciach(new Suradnice(i,j)).Count > 0)
+                                    
+                                        RozhodovanieOVyfarbovaniMravcov(mravenisko, graphics, i, j, velkostStvorceka);
+                                    
                                 }
                                 break;
                             case TypyObjektov.prazdnaZem:
                                 {
-                                    if (mravenisko.VratObjektPohybujuceSaNaDanychSuradniciach(new Suradnice(i, j)).Count == 0)
-                                        VykresliObdlznik(i * velkostStvorceka, j * velkostStvorceka, velkostStvorceka, velkostStvorceka,
+                                    VykresliObdlznik(i * velkostStvorceka, j * velkostStvorceka, velkostStvorceka, velkostStvorceka,
                                             Color.Khaki, graphics);
-                                    else
-                                    {
-                                        VykresliObdlznik(i * velkostStvorceka, j * velkostStvorceka, velkostStvorceka / 2, velkostStvorceka, Color.Khaki,
-                                            graphics);
 
-                                        VyfarbenieMravcov(mravenisko, graphics, i, j, velkostStvorceka);
-                                    }
+                                    if(mravenisko.VratObjektPohybujuceSaNaDanychSuradniciach(new Suradnice(i,j)).Count > 0)
+
+                                        RozhodovanieOVyfarbovaniMravcov(mravenisko, graphics, i, j, velkostStvorceka);
+                                    
 
                                 }
                                 break;
@@ -345,46 +350,233 @@ namespace SimulaciaMraveniskaGUI
                                 {
                                     VykresliObdlznik(i * velkostStvorceka, j * velkostStvorceka, velkostStvorceka, velkostStvorceka,
                                                 Color.Gray, graphics);
+
                                 }
                                 break;
                         }
                     }
+
+                if (mravenisko.ZistiFazaMraveniska() == FazaMraveniska.poBojiPrechadzani)
+                    for (int i = 0; i < mravenisko.ZistiRozmerMraveniska(); i++)
+                        for (int j = 0; j < mravenisko.ZistiRozmerMraveniska(); j++)
+                            VyfarbenieBojPriPrechadzaniSpojnice(mravenisko, graphics, i, j, velkostStvorceka);
             }
 
-            //nastavi ako sa maju vykreslit mravce
-            private static void VyfarbenieMravcov(Mravenisko mravenisko, Graphics graphics, int i, int j, int velkostStvorceka)
+            
+            // rozhoduje sa o tom ako, ake vykreslovanie mravcov sa bude diat, podla typu fazy vykreslovania
+            public static void RozhodovanieOVyfarbovaniMravcov(Mravenisko mravenisko, Graphics graphics, int i, int j, int velkostStvorceka)
             {
-                switch ((mravenisko.VratObjektPohybujuceSaNaDanychSuradniciach(new Suradnice(i, j))[0] as Mravec).ZistiTypyMravcov())
+                switch (mravenisko.ZistiFazaMraveniska())
                 {
-                    case TypyMravcov.MravecTypu1:
+                    case FazaMraveniska.poKonciKroku: VyfarbenieMravcov(mravenisko, graphics, i, j, velkostStvorceka, 2); break;
+                    case FazaMraveniska.poBojiPrechadzani:
                         {
-                            VykresliObdlznik(i * velkostStvorceka + velkostStvorceka / 2, j * velkostStvorceka
-                                            , velkostStvorceka / 2,
-                                            velkostStvorceka, Color.Blue, graphics);
+                            VyfarbenieMravcov(mravenisko, graphics, i, j, velkostStvorceka, 2);
+                            VyfarbenieBojPriPrechadzaniPolicko(mravenisko, i, j, graphics, velkostStvorceka);
                         }
                         break;
-                    case TypyMravcov.MravecTypu2:
-                        {
-                            VykresliObdlznik(i * velkostStvorceka + velkostStvorceka / 2, j * velkostStvorceka,
-                                velkostStvorceka / 2, velkostStvorceka, Color.Orange, graphics);
-                        }
-                        break;
-                    case TypyMravcov.MravecTypu3:
-                        {
-                            VykresliObdlznik(i * velkostStvorceka + velkostStvorceka / 2, j * velkostStvorceka,
-                                            velkostStvorceka / 2, velkostStvorceka, Color.DarkRed, graphics);
-                        }
-                        break;
-                    case TypyMravcov.MravecTypu4:
-                        {
-                            VykresliObdlznik(i * velkostStvorceka + velkostStvorceka / 2, j * velkostStvorceka,
-                                    velkostStvorceka / 2, velkostStvorceka, Color.LimeGreen, graphics);
-                        }
-                        break;
+                    case FazaMraveniska.poBojiPolicku: {VyfarbenieMravcov(mravenisko, graphics, i, j, velkostStvorceka, 2) ;
+                            VyfarbenieMravcovBojNaPolickach(mravenisko, graphics, i, j, velkostStvorceka);} break;
+                    case FazaMraveniska.poPareni: {
+                            VyfarbenieMravcov(mravenisko, graphics, i, j, velkostStvorceka, 2);
+                            VyfarbenieMravcovParenie(mravenisko, graphics, i, j, velkostStvorceka); } break;
                 }
             }
 
-            //vykresli samotne policko
+            //zisti farbu mravcov podla typu
+            private static Color ZistiFarbuMravcov(TypyMravcov typyMravcov)
+            {
+                switch (typyMravcov)
+                {
+                    case TypyMravcov.MravecTypu1:return Color.Blue;
+                    case TypyMravcov.MravecTypu2:return Color.Orange;
+                    case TypyMravcov.MravecTypu3:return Color.Pink;
+                    case TypyMravcov.MravecTypu4:return Color.LimeGreen;
+                }
+
+                return default(Color);
+            }
+
+            //zisti pritomnost daneho typu mravcov v poli, ktore obsahuje typy mr
+            private static bool ZistiPritomnostMravcovDanehoTypu(TypyMravcov typyMravcov, List<TypyMravcov> typyMravcovs)
+            {
+                foreach (TypyMravcov typMravca in typyMravcovs) if (typMravca == typyMravcov) return true;
+
+                return false;
+            }
+
+            //nastavi ako sa maju vykreslit mravce v zakladnej podobe
+            private static void VyfarbenieMravcov(Mravenisko mravenisko, Graphics graphics, int i, int j, int velkostStvorceka, int velkostCast)
+            {
+
+                Color farba = ZistiFarbuMravcov((mravenisko.VratObjektPohybujuceSaNaDanychSuradniciach(new Suradnice(i, j))[0] as Mravec).ZistiTypyMravcov());
+
+                     VykresliObdlznik(i * velkostStvorceka, j * velkostStvorceka
+                                       , velkostStvorceka / velkostCast,
+                                      velkostStvorceka, farba,
+                                       graphics);
+
+            }
+
+            private static void VyfarbenieBojPriPrechadzaniPolicko(Mravenisko mravenisko, int i, int j, Graphics graphics, int velkostStvorceka)
+            {
+                if (mravenisko.ZistiPolickBojPrechadzajuce(i, j) != default(List<PolickaPriPrechadzajucomBoji>) && mravenisko.ZistiPolickBojPrechadzajuce(i, j).Count
+                    > 0)
+                    foreach (PolickaPriPrechadzajucomBoji polickoPrechadzajuce in mravenisko.ZistiPolickBojPrechadzajuce(i, j))
+                    {
+                        VykresliObdlznik(polickoPrechadzajuce.ZistiSuradniceMravcov().ZistiXSuradnicu() * velkostStvorceka,
+                            polickoPrechadzajuce.ZistiSuradniceMravcov().ZistiYSuradnicu() * velkostStvorceka,
+                            velkostStvorceka, velkostStvorceka, Color.Red, graphics);
+
+                        VykresliObdlznik(polickoPrechadzajuce.ZistiDruhePolicko().ZistiSuradniceMravcov().ZistiXSuradnicu() * velkostStvorceka,
+                            polickoPrechadzajuce.ZistiDruhePolicko().ZistiSuradniceMravcov().ZistiYSuradnicu() * velkostStvorceka, velkostStvorceka,
+                            velkostStvorceka, Color.Red, graphics);
+                    }
+            }
+
+            //vykresli 2 spojnice spajajuce policka, tieto ciary reprezentuju boj mravcov pri prechadzani medzi tymito polickami, farby ciar reprezentuju typy mravcov, ktore bojuju
+            //takisto vykresli
+            private static void VyfarbenieBojPriPrechadzaniSpojnice(Mravenisko mravenisko, Graphics graphics, int i, int j, int velkostStvorceka)
+            {
+                if (mravenisko.ZistiPolickBojPrechadzajuce(i, j) != default(List<PolickaPriPrechadzajucomBoji>) && mravenisko.ZistiPolickBojPrechadzajuce(i, j).Count > 0)
+                {
+
+                    foreach (PolickaPriPrechadzajucomBoji polickaPriPrechadzajucomBoji1 in mravenisko.ZistiPolickBojPrechadzajuce(i, j))
+                    {
+                        PolickaPriPrechadzajucomBoji polickaPriPrechadzajucomBoji2 = polickaPriPrechadzajucomBoji1.ZistiDruhePolicko();
+
+                        Suradnice suradnice1 = polickaPriPrechadzajucomBoji1.ZistiSuradniceMravcov();
+                        Suradnice suradnice2 = polickaPriPrechadzajucomBoji2.ZistiSuradniceMravcov();
+
+                        Pen pen1 = new Pen(ZistiFarbuMravcov(polickaPriPrechadzajucomBoji1.ZistiTypMravcov()), 3);
+                        Pen pen2 = new Pen(ZistiFarbuMravcov(polickaPriPrechadzajucomBoji2.ZistiTypMravcov()), 3);
+
+                        if (NasledujucePolickoMraveniska.SmerJ(suradnice1, mravenisko.ZistiRozmerMraveniska()) == suradnice2)
+                        {
+                            if (Math.Abs(suradnice1.ZistiYSuradnicu() - suradnice2.ZistiYSuradnicu()) == 1)
+                            {
+                                VykresliCiaru(pen1, suradnice1.ZistiXSuradnicu() * velkostStvorceka, suradnice1.ZistiYSuradnicu() * velkostStvorceka,
+                                                suradnice2.ZistiXSuradnicu() * velkostStvorceka, suradnice2.ZistiYSuradnicu() * velkostStvorceka, graphics, velkostStvorceka / 2,
+                                                    velkostStvorceka / 2);
+
+                                VykresliCiaru(pen2, suradnice1.ZistiXSuradnicu() * velkostStvorceka, suradnice1.ZistiYSuradnicu() * velkostStvorceka,
+                                                suradnice2.ZistiXSuradnicu() * velkostStvorceka, suradnice2.ZistiYSuradnicu() * velkostStvorceka, graphics, velkostStvorceka / 2 + 3,
+                                                 velkostStvorceka / 2);
+                            }
+                            else
+                            {
+                                VykresliCiaru(pen1, suradnice1.ZistiXSuradnicu() * velkostStvorceka, suradnice1.ZistiYSuradnicu() * velkostStvorceka,
+                                                suradnice1.ZistiXSuradnicu() * velkostStvorceka , suradnice1.ZistiYSuradnicu() * velkostStvorceka + velkostStvorceka/2
+                                                , graphics, velkostStvorceka / 2,
+                                                    velkostStvorceka / 2);
+
+                                VykresliCiaru(pen2, suradnice1.ZistiXSuradnicu() * velkostStvorceka, suradnice1.ZistiYSuradnicu() * velkostStvorceka,
+                                                suradnice1.ZistiXSuradnicu() * velkostStvorceka, suradnice1.ZistiYSuradnicu() * velkostStvorceka + velkostStvorceka/2, 
+                                                graphics, velkostStvorceka / 2 + 3,
+                                                 velkostStvorceka / 2);
+
+                                VykresliCiaru(pen1, suradnice2.ZistiXSuradnicu() * velkostStvorceka, suradnice2.ZistiYSuradnicu() * velkostStvorceka,
+                                                suradnice2.ZistiXSuradnicu() * velkostStvorceka, suradnice2.ZistiYSuradnicu() * velkostStvorceka - velkostStvorceka/2,
+                                                graphics, velkostStvorceka / 2,
+                                                    velkostStvorceka / 2);
+
+                                VykresliCiaru(pen2, suradnice2.ZistiXSuradnicu() * velkostStvorceka, suradnice2.ZistiYSuradnicu() * velkostStvorceka,
+                                                suradnice2.ZistiXSuradnicu() * velkostStvorceka, suradnice2.ZistiYSuradnicu() * velkostStvorceka - velkostStvorceka/2, 
+                                                graphics, velkostStvorceka / 2 + 3,
+                                                 velkostStvorceka / 2);
+                            }
+
+                        }
+                        else
+                        {
+                          if(Math.Abs(suradnice1.ZistiXSuradnicu() - suradnice2.ZistiXSuradnicu()) == 1){
+                                VykresliCiaru(pen1, suradnice1.ZistiXSuradnicu() * velkostStvorceka, suradnice1.ZistiYSuradnicu() * velkostStvorceka,
+                                                suradnice2.ZistiXSuradnicu() * velkostStvorceka, suradnice2.ZistiYSuradnicu() * velkostStvorceka, graphics, velkostStvorceka / 2,
+                                                velkostStvorceka / 2);
+
+                                VykresliCiaru(pen2, suradnice1.ZistiXSuradnicu() * velkostStvorceka, suradnice1.ZistiYSuradnicu() * velkostStvorceka, suradnice2.ZistiXSuradnicu()
+                                    * velkostStvorceka, suradnice2.ZistiYSuradnicu() * velkostStvorceka, graphics, velkostStvorceka / 2, velkostStvorceka / 2 + 3);
+                            }
+                            else
+                            {
+                                VykresliCiaru(pen1, suradnice1.ZistiXSuradnicu() * velkostStvorceka, suradnice1.ZistiYSuradnicu() * velkostStvorceka,
+                                                suradnice1.ZistiXSuradnicu() * velkostStvorceka + velkostStvorceka/2, suradnice1.ZistiYSuradnicu() * velkostStvorceka, 
+                                                graphics, velkostStvorceka / 2,
+                                                velkostStvorceka / 2);
+
+                                VykresliCiaru(pen2, suradnice1.ZistiXSuradnicu() * velkostStvorceka, suradnice1.ZistiYSuradnicu() * velkostStvorceka, 
+                                    suradnice1.ZistiXSuradnicu()* velkostStvorceka + velkostStvorceka/2, 
+                                    suradnice1.ZistiYSuradnicu() * velkostStvorceka, graphics, velkostStvorceka / 2, velkostStvorceka / 2 + 3);
+
+                                VykresliCiaru(pen1, suradnice2.ZistiXSuradnicu() * velkostStvorceka, suradnice2.ZistiYSuradnicu() * velkostStvorceka,
+                                                suradnice2.ZistiXSuradnicu() * velkostStvorceka - velkostStvorceka/2, suradnice2.ZistiYSuradnicu() * velkostStvorceka, graphics, 
+                                                velkostStvorceka / 2,
+                                                velkostStvorceka / 2);
+
+                                VykresliCiaru(pen2, suradnice2.ZistiXSuradnicu() * velkostStvorceka, suradnice2.ZistiYSuradnicu() * velkostStvorceka, 
+                                    suradnice2.ZistiXSuradnicu() - velkostStvorceka/2
+                                    * velkostStvorceka, suradnice2.ZistiYSuradnicu() * velkostStvorceka, graphics, velkostStvorceka / 2, velkostStvorceka / 2 + 3);
+
+                            }
+                        }
+
+                    }
+                }
+                
+            }
+
+            //vykresli policka, kde mravce bojuju na danom policku
+            private static void VyfarbenieMravcovBojNaPolickach(Mravenisko mravenisko, Graphics graphics, int i, int j, int velkostStvorceka)
+            {
+                PolickaPriBojiNaPolicku polickaPriBojiNaPolicku = mravenisko.ZistiPolickoBojNaPolicko(i, j);
+                List<TypyMravcov> typyMravcovPole;
+
+                if(polickaPriBojiNaPolicku != default(PolickaPriBojiNaPolicku)) {
+
+                typyMravcovPole = polickaPriBojiNaPolicku.ZistiTypyMravcovPole();
+
+                if ((ZistiPritomnostMravcovDanehoTypu(TypyMravcov.MravecTypu1, typyMravcovPole))) VykresliObdlznik(i * velkostStvorceka, j * velkostStvorceka,
+                                                                                velkostStvorceka / 2, velkostStvorceka / 2,
+                                                                                                     ZistiFarbuMravcov(TypyMravcov.MravecTypu1), graphics);
+                else VykresliObdlznik(i * velkostStvorceka, j * velkostStvorceka, velkostStvorceka / 2, velkostStvorceka / 2, Color.White, graphics);
+
+                if ((ZistiPritomnostMravcovDanehoTypu(TypyMravcov.MravecTypu2, typyMravcovPole))) VykresliObdlznik(i * velkostStvorceka + velkostStvorceka / 2,
+                                                                                                                    j * velkostStvorceka, velkostStvorceka / 2,
+                                                                                                                    velkostStvorceka / 2, ZistiFarbuMravcov(TypyMravcov.MravecTypu2),
+                                                                                                                    graphics);
+                else VykresliObdlznik(i * velkostStvorceka + velkostStvorceka / 2, j * velkostStvorceka, velkostStvorceka / 2, velkostStvorceka / 2, Color.White,
+                                        graphics);
+
+                if ((ZistiPritomnostMravcovDanehoTypu(TypyMravcov.MravecTypu3, typyMravcovPole))) VykresliObdlznik(i * velkostStvorceka, j * velkostStvorceka + velkostStvorceka / 2,
+                                                                                                                   velkostStvorceka / 2, velkostStvorceka / 2,
+                                                                                                                   ZistiFarbuMravcov(TypyMravcov.MravecTypu3), graphics);
+                else VykresliObdlznik(i * velkostStvorceka, j * velkostStvorceka  + velkostStvorceka / 2, velkostStvorceka / 2, velkostStvorceka / 2, Color.White, graphics);
+
+                if ((ZistiPritomnostMravcovDanehoTypu(TypyMravcov.MravecTypu4, typyMravcovPole))) VykresliObdlznik(i * velkostStvorceka + velkostStvorceka / 2,
+                                                                                                                    j * velkostStvorceka + velkostStvorceka / 2,
+                                                                                                                    velkostStvorceka / 2, velkostStvorceka / 2,
+                                                                                                                    ZistiFarbuMravcov(TypyMravcov.MravecTypu4), graphics);
+                else VykresliObdlznik(i * velkostStvorceka + velkostStvorceka / 2, j * velkostStvorceka + velkostStvorceka / 2, velkostStvorceka / 2, velkostStvorceka / 2,
+                    Color.White, graphics);
+                }
+                 
+                
+            }
+
+            //vykresli policka, kde prebieha parenie
+            private static void VyfarbenieMravcovParenie(Mravenisko mravenisko, Graphics graphics, int i, int j, int velkostStvorceka)
+            {
+                if (mravenisko.ZistiParenie(i, j))
+                {
+                    VykresliObdlznik(i * velkostStvorceka, j * velkostStvorceka, velkostStvorceka, velkostStvorceka, Color.White, graphics);
+
+                    VykresliElipsu(i * velkostStvorceka, j * velkostStvorceka, velkostStvorceka, velkostStvorceka,
+                        (ZistiFarbuMravcov((mravenisko.VratObjektPohybujuceSaNaDanychSuradniciach(new Suradnice(i, j))[0] as Mravec).ZistiTypyMravcov())), graphics);
+                }
+                 
+            }
+
+            //vykresli samotne policko, obldznik
             private static void VykresliObdlznik(int x, int y, int sirka, int vyska, Color farba, Graphics graphics)
             {
                 Pen pen = new Pen(Color.Black,2);
@@ -393,8 +585,25 @@ namespace SimulaciaMraveniskaGUI
 
 
                 graphics.DrawRectangle(pen, x, y, sirka, vyska);
-                graphics.FillRectangle(solidBrush, x+2, y+2, sirka-4, vyska-4);
+                graphics.FillRectangle(solidBrush, x, y, sirka, vyska);
 
+            }
+
+            //vykresli samotne policko, obdlznik
+            private static void VykresliElipsu(int x, int y, int sirka, int vyska, Color farba, Graphics graphics)
+            {
+                Pen pen = new Pen(Color.Black, 2);
+
+                SolidBrush solidBrush = new SolidBrush(farba);
+
+                graphics.DrawEllipse(pen, x, y, sirka, vyska);
+                graphics.FillEllipse(solidBrush, x , y , sirka , vyska);
+            }
+
+            //vykresli ciaru s pripadnym posunutim
+            private static void VykresliCiaru(Pen pen, int x1, int y1, int x2, int y2, Graphics graphics, int posunX, int posunY)
+            {
+                graphics.DrawLine(pen, x1 + posunX, y1 + posunY, x2 + posunX, y2 + posunY);
             }
         }
 
@@ -419,25 +628,26 @@ namespace SimulaciaMraveniskaGUI
         {
             static bool simulaciaBolaSpustena = false;
             static bool simmulaciaBolaZastavena = false;
-            static bool simulaviaBolaUkoncena = true;
-            static bool jeNastavenieMiestoUlozenia = false;
+            static bool simulaciaBolaUkoncena = true;
+            static bool jeNastaveneMiestoUlozenia = false;
             static string miestoUlozenia = "";
             static int rychlostSimulacie = 1;
 
             static ListBox[,] konanieMravcov = new ListBox[4, 7];
 
+            //pomaha pri nastavovani strategie mravcov
             public static void NastavKonanie(ListBox[,] listBoxes)
             {
-
                 konanieMravcov = listBoxes;
-            }//pomaha pri nastavovani strategie mravcov
-            public static void NastavBolasSpustena(bool pravdivost)
+            }
+            
+            //spravuje spustenie simulacie
+            public static void NastavBolasSpustena()
             {
                 if (NacitaneHodnoty.ZistiNastaveneNastavenia())
                 {
-                    simulaciaBolaSpustena = pravdivost;
-
-                    if (simulaciaBolaSpustena) { simmulaciaBolaZastavena = false; simulaviaBolaUkoncena = false; }
+                    simulaciaBolaSpustena = true;
+                    simmulaciaBolaZastavena = false; simulaciaBolaUkoncena = false;
 
                     SpravaBehuGUI.SimulaciaBolaSpustena();
                 }
@@ -445,7 +655,9 @@ namespace SimulaciaMraveniskaGUI
                 {
                     MessageBox.Show("Pred spustenim simulácie musíte nastaviť nastavenia.");
                 }
-            }//spravuje spustenie simulacie
+            }
+
+            //spravuje spustenie, alebo zastavenie simulacie
             public static void NastavBolaZastavenaPokracuje(bool pravdivost)
             {
 
@@ -453,9 +665,10 @@ namespace SimulaciaMraveniskaGUI
 
                 if (ZistiBolaZastavena()) SpravaBehuGUI.SimulaciaBolaZastavena();
                 else SpravaBehuGUI.SimulaciaPokracuje();
-            }//spravuje zastavenie, alebo spustenie
-             //simulacie
-            public static void NastavBolaUkoncena(bool pravdivost, NumericUpDown pocetMravcovTypu1, //spravuje 
+            }
+
+            //spravuje ukoncenie simulacie
+            public static void NastavBolaUkoncena( NumericUpDown pocetMravcovTypu1, //spravuje 
                                                     NumericUpDown pocetMravcovTypu2,                //ukoncenie simulacie
                                                     NumericUpDown pocetMravcovTypu3,
                                                     NumericUpDown pocetMravocvTypu4,
@@ -464,7 +677,7 @@ namespace SimulaciaMraveniskaGUI
                                                     NumericUpDown mnozstvoPotravyMinimalnej)
             {
 
-                simulaviaBolaUkoncena = pravdivost;
+                simulaciaBolaUkoncena = true;
                 simulaciaBolaSpustena = false;
                 simmulaciaBolaZastavena = false;
 
@@ -472,15 +685,12 @@ namespace SimulaciaMraveniskaGUI
                                                         pocetMravocvTypu4, pocetSkal, mnozstvoPotravyZaciatocnej,
                                                         mnozstvoPotravyMinimalnej);
 
-                if (Konstanty.jeNastaveneMiestoUlozenia) Konstanty.zapisovacUdajov.Close();
-
-
             }
             public static void NastavMiestoUlozenie(string miesto)
             {
                 miestoUlozenia = miesto;
                 Console.WriteLine(miestoUlozenia);
-                jeNastavenieMiestoUlozenia = true;
+                jeNastaveneMiestoUlozenia = true;
             }
             public static void NastavRychlostSimulacie(int rychlost)
             {
@@ -501,11 +711,11 @@ namespace SimulaciaMraveniskaGUI
             }
             public static bool ZistiBolaUkoncena()
             {
-                return simulaviaBolaUkoncena;
+                return simulaciaBolaUkoncena;
             }
             public static bool ZistiNastavenostMiestaUlozenia()
             {
-                return jeNastavenieMiestoUlozenia;
+                return jeNastaveneMiestoUlozenia;
             }
             public static string ZistiMiestoUlozenia()
             {
@@ -518,7 +728,7 @@ namespace SimulaciaMraveniskaGUI
 
             public static void ResetujMiestoUlozenia()
             {
-                jeNastavenieMiestoUlozenia = false;
+                jeNastaveneMiestoUlozenia = false;
                 miestoUlozenia = "";
             }
         }
@@ -529,6 +739,16 @@ namespace SimulaciaMraveniskaGUI
 
             //spravuje spustenie simulacie
             public static void SimulaciaBolaSpustena()
+            {
+                NastavHodnotySimulacie();
+
+                StatickeHodnoty.NastavBehSimulacieSimulacia(new BehSimulacie());
+                StatickeHodnoty.ZistiBehSimulacieSimulacia().InicializujSimulaciu(Hodnoty.ZistiMiestoUlozenia());
+
+                VykreslovanieASpustenieBehuSimulacie();
+            }
+
+            private static void NastavHodnotySimulacie()
             {
                 ZadaneHodnoty.NastavPocetMravcovTypu1(NacitaneHodnoty.ZistiPocetMravcovTypu1());
                 ZadaneHodnoty.NastavPocetMravcovTypu2(NacitaneHodnoty.ZistiPocetMravcovTypu2());
@@ -542,11 +762,6 @@ namespace SimulaciaMraveniskaGUI
                 ZadaneHodnoty.NastavRozmerMraveniska(NacitaneHodnoty.ZistiRozmerMraveniska());
 
                 Konstanty.NastavNasobokDobyPrestavky(Hodnoty.ZistiRychlostSimulacie());
-
-                behSimulacieSimulacia = new BehSimulacie();
-                behSimulacieSimulacia.InicializujSimulaciu(Hodnoty.ZistiMiestoUlozenia());
-
-                VykreslovanieASpustenieBehuSimulacie();
             }
 
             private static void VykreslovanieASpustenieBehuSimulacie()
@@ -579,19 +794,23 @@ namespace SimulaciaMraveniskaGUI
                                                         NumericUpDown pocetSkal, NumericUpDown mnozstvoPotravyZaciatocnej,
                                                         NumericUpDown mnozstvoPotravyMinnimalnej)
             {
+
                 NastaveneHodnotyPocasKrokov.NastavPokracovanie(false);
                 NacitaneHodnoty.NastavNastavenia(false);
 
+
                 Hodnoty.ResetujMiestoUlozenia();
 
-                behSimulacieSimulacia.UkonecieSimulacie();
-                behSimulacieSimulacia.InicializujSimulaciu("");
+                StatickeHodnoty.ZistiBehSimulacieSimulacia().UkonecieSimulacie();
+                StatickeHodnoty.ZistiBehSimulacieSimulacia().InicializujSimulaciu("");
 
 
 
                 NacitaneHodnoty.InicializujPoctyHodnotMravcov(pocetMravcovTypu1, pocetMravcovTypu2, pocetMravcovTypu3,
                                                                 poceMravcovTypu4);
-                NacitaneHodnoty.InicializujIneHodnoty(pocetSkal, mnozstvoPotravyZaciatocnej, mnozstvoPotravyMinnimalnej);
+                NacitaneHodnoty.InicializujHodnoty(pocetSkal, mnozstvoPotravyZaciatocnej, mnozstvoPotravyMinnimalnej);
+
+                if (Konstanty.jeNastaveneMiestoUlozenia) Konstanty.zapisovacUdajov.Close(); 
             }
 
             //spravuje vypisovanie udajov v casti Simulacia
@@ -605,7 +824,7 @@ namespace SimulaciaMraveniskaGUI
 
                 if (Hodnoty.ZistiBolaSpustena())
                 {
-                    vypisovacieUdaje = behSimulacieSimulacia.ZistiUdaje();
+                    vypisovacieUdaje = StatickeHodnoty.ZistiBehSimulacieSimulacia().ZistiUdaje();
                     HodnotyNaVypisovanie.NacitajUdaje(vypisovacieUdaje);
                     HodnotyNaVypisovanie.VypisUdaje(dobaBehu, pocetMravcovTypu1, pocetMravcovTypu1Celkovo,
                                                 pocetMravcovTypu2, pocetMravcovTypu2Celkovo, pocetMravcovTypu3,
@@ -763,30 +982,30 @@ namespace SimulaciaMraveniskaGUI
             //aktualizuje medze mravca typu 3, pokial bola nastavena jeho strategia
             public static void AktualizujPocetMravcovTypu3(NumericUpDown numericUpDown)
             {
-                if (numericUpDown.Maximum == 0) numericUpDown.Maximum = 200;
+                numericUpDown.Maximum = 200;
             }
 
             //aktualizuje medze mravca typu 4, pokial bola nastavena jeho strategia
             public static void AktualizujPocetMravcovTypu4(NumericUpDown numericUpDown)
             {
-                if (numericUpDown.Maximum == 0) numericUpDown.Maximum = 200;
+                numericUpDown.Maximum = 200;
             }
 
             //inicializuje niektore hodnoty
-            public static void InicializujIneHodnoty(NumericUpDown mnozstvoSkal, NumericUpDown mnozstvoPotravy,
-                                                        NumericUpDown mnozstvoPotravyMinimum)
+            public static void InicializujHodnoty(NumericUpDown numUpDownPocetSkal, NumericUpDown numUpDownMnozstvoPotravy,
+                                                        NumericUpDown numUpDownMnozstvoPotravyMinimum)
             {
-                mnozstvoSkal.Minimum = 0;
-                mnozstvoPotravy.Minimum = 0;
-                mnozstvoPotravyMinimum.Minimum = 0;
+                numUpDownPocetSkal.Minimum = 0;
+                numUpDownMnozstvoPotravy.Minimum = 0;
+                numUpDownMnozstvoPotravyMinimum.Minimum = 0;
 
-                mnozstvoSkal.Value = 0;
-                mnozstvoPotravyMinimum.Value = 0;
-                mnozstvoPotravy.Value = 0;
+                numUpDownPocetSkal.Value = 0;
+                numUpDownMnozstvoPotravyMinimum.Value = 0;
+                numUpDownMnozstvoPotravy.Value = 0;
 
-                mnozstvoPotravyMinimum.Maximum = 0;
-                mnozstvoSkal.Maximum = rozmer * rozmer - 4;
-                mnozstvoPotravy.Maximum = rozmer * rozmer - (int)mnozstvoSkal.Value;
+                numUpDownMnozstvoPotravyMinimum.Maximum = 0;
+                numUpDownPocetSkal.Maximum = rozmer * rozmer - 4;
+                numUpDownMnozstvoPotravy.Maximum = rozmer * rozmer - (int)numUpDownPocetSkal.Value;
 
                 NastavNastavenia(false);
 
@@ -824,7 +1043,7 @@ namespace SimulaciaMraveniskaGUI
                 else mravceTypu4.Maximum = 0;
             }
 
-            //nastvi medze pre hodnoty pocet skal, mnozstvo potravy a mnozstvo potravy minimalnej; pripadne i ich nastavi
+            //nastavi medze pre hodnoty pocet skal, mnozstvo potravy a mnozstvo potravy minimalnej; pripadne i ich nastavi
             private static void NastavRozmedziaPreHodnoty(Nastaveny nastaveny, NumericUpDown numericUpDownPocetSkal,
                                                             NumericUpDown numericUpDownMnozstvoPotravy,
                                                             NumericUpDown numericUpDownMnozstvoPotravyMin)
@@ -836,7 +1055,7 @@ namespace SimulaciaMraveniskaGUI
                     if (numericUpDownMnozstvoPotravy.Value >= 4)
                         numericUpDownPocetSkal.Maximum = rozmer * rozmer - numericUpDownMnozstvoPotravy.Value;
                     else
-                        numericUpDownPocetSkal.Maximum = rozmer * rozmer - 4 - numericUpDownMnozstvoPotravy.Value;
+                        numericUpDownPocetSkal.Maximum = rozmer * rozmer - (4 - numericUpDownMnozstvoPotravy.Value);
                 }
                 else if (nastaveny == Nastaveny.zaciatocnaPotrava)
                 {
@@ -844,7 +1063,7 @@ namespace SimulaciaMraveniskaGUI
                     if (numericUpDownMnozstvoPotravy.Value >= 4)
                         numericUpDownPocetSkal.Maximum = rozmer * rozmer - numericUpDownMnozstvoPotravy.Value;
                     else
-                        numericUpDownPocetSkal.Maximum = rozmer * rozmer - 4 - numericUpDownMnozstvoPotravy.Value;
+                        numericUpDownPocetSkal.Maximum = rozmer * rozmer - (4 - numericUpDownMnozstvoPotravy.Value);
 
                     if (numericUpDownMnozstvoPotravyMin.Value > numericUpDownMnozstvoPotravy.Value)
                     {
@@ -858,7 +1077,7 @@ namespace SimulaciaMraveniskaGUI
 
             //nastavy medze pre hodnoty pocet skal, mnnozstvo potravy a mnozstvo potravy minimalnej; pripadne ich i nastavi
             private static void NastavHodnotyVzhladomRozmer(NumericUpDown numericUpDownPocetSkal,
-                                                            NumericUpDown numericUpDownMnozstvoPotravy,
+                                                            NumericUpDown numericUpDownMnozstvoPotravyZaciatocnej,
                                                             NumericUpDown numericUpDownMnozstvoPotravyMin)
             {
 
@@ -871,23 +1090,23 @@ namespace SimulaciaMraveniskaGUI
 
                 numericUpDownPocetSkal.Maximum = rozmer * rozmer - 4;
 
-                if (numericUpDownMnozstvoPotravy.Value > rozmer * rozmer - (int)numericUpDownPocetSkal.Value)
+                if (numericUpDownMnozstvoPotravyZaciatocnej.Value > rozmer * rozmer - (int)numericUpDownPocetSkal.Value)
                 {
-                    numericUpDownMnozstvoPotravy.Value = rozmer * rozmer - (int)numericUpDownPocetSkal.Value;
+                    numericUpDownMnozstvoPotravyZaciatocnej.Value = rozmer * rozmer - (int)numericUpDownPocetSkal.Value;
 
-                    NastavMnozstvoPotravyZaciatocnejVnutro((int)numericUpDownMnozstvoPotravy.Value);
+                    NastavMnozstvoPotravyZaciatocnejVnutro((int)numericUpDownMnozstvoPotravyZaciatocnej.Value);
                 }
 
-                numericUpDownMnozstvoPotravy.Maximum = rozmer * rozmer - (int)numericUpDownPocetSkal.Value;
+                numericUpDownMnozstvoPotravyZaciatocnej.Maximum = rozmer * rozmer - (int)numericUpDownPocetSkal.Value;
 
-                if (numericUpDownMnozstvoPotravyMin.Value > numericUpDownMnozstvoPotravy.Value)
+                if (numericUpDownMnozstvoPotravyMin.Value > numericUpDownMnozstvoPotravyZaciatocnej.Value)
                 {
-                    numericUpDownMnozstvoPotravyMin.Value = numericUpDownMnozstvoPotravy.Value;
+                    numericUpDownMnozstvoPotravyMin.Value = numericUpDownMnozstvoPotravyZaciatocnej.Value;
 
                     NastavMnozstvoPotravyMinimalnejVnutro((int)numericUpDownMnozstvoPotravyMin.Value);
                 }
 
-                numericUpDownMnozstvoPotravyMin.Maximum = numericUpDownMnozstvoPotravy.Value;
+                numericUpDownMnozstvoPotravyMin.Maximum = numericUpDownMnozstvoPotravyZaciatocnej.Value;
             }
 
         }
@@ -1026,24 +1245,24 @@ namespace SimulaciaMraveniskaGUI
 
             //vypise udaje do GUI
             public static void VypisUdaje(Label dobaBehu, Label pocetMravcovTypu1,
-                                            Label pocetMravcovTypu1Cel, Label pocetMravcovTypu2,
-                                            Label pocetMravcovTypu2Cel, Label pocetMravcovTypu3,
-                                            Label pocetMravcovTypu3Cel, Label pocetMravcovTypu4,
-                                            Label pocetMravcovTypu4Cel, Label mnozstvoPotravy,
-                                            Label pocetPotravyCel)
+                                            Label pocetMravcovTypu1Celkovo, Label pocetMravcovTypu2,
+                                            Label pocetMravcovTypu2Celkovo, Label pocetMravcovTypu3,
+                                            Label pocetMravcovTypu3Celkovo, Label pocetMravcovTypu4,
+                                            Label pocetMravcovTypu4Celkovo, Label mnozstvoPotravy,
+                                            Label pocetPotravyCelkovo)
             {
 
                 dobaBehu.Text = ZistiCas().ToString();
                 pocetMravcovTypu1.Text = ZistiPocetMravcovTypu1().ToString();
-                pocetMravcovTypu1Cel.Text = ZistiPocetMravcovTypu1Celkovo().ToString();
+                pocetMravcovTypu1Celkovo.Text = ZistiPocetMravcovTypu1Celkovo().ToString();
                 pocetMravcovTypu2.Text = ZistiPocetMravcovTypu2().ToString();
-                pocetMravcovTypu2Cel.Text = ZistiPocetMravcovTypu2Celkovo().ToString();
+                pocetMravcovTypu2Celkovo.Text = ZistiPocetMravcovTypu2Celkovo().ToString();
                 pocetMravcovTypu3.Text = ZistiPocetMravcovTypu3().ToString();
-                pocetMravcovTypu3Cel.Text = ZistiPocetMravcovTypu3Celkovo().ToString();
+                pocetMravcovTypu3Celkovo.Text = ZistiPocetMravcovTypu3Celkovo().ToString();
                 pocetMravcovTypu4.Text = ZistiPocetMravcovTypu4().ToString();
-                pocetMravcovTypu4Cel.Text = ZistiPocetMravcovTypu4Celkovo().ToString();
+                pocetMravcovTypu4Celkovo.Text = ZistiPocetMravcovTypu4Celkovo().ToString();
                 mnozstvoPotravy.Text = ZistiMnozstvoPotravy().ToString();
-                pocetPotravyCel.Text = ZistiMnozstvoPotravyCelkovo().ToString();
+                pocetPotravyCelkovo.Text = ZistiMnozstvoPotravyCelkovo().ToString();
             }
         }
 
@@ -1059,9 +1278,9 @@ namespace SimulaciaMraveniskaGUI
             {
                 typyMravcov = typ;
             }
-            public static void NastavNastavenyTyp3(bool nastav)
+            public static void NastavNastavenyTyp3(bool nastavenie)
             {
-                nastavenyTyp3 = nastav;
+                nastavenyTyp3 = nastavenie;
             }
             public static void NastavNastavenyTyp4(bool nastavenie)
             {
@@ -1083,12 +1302,12 @@ namespace SimulaciaMraveniskaGUI
 
             //pokial je vybraty v casti Nastavenia mravce typ mravca a jeho konanie v kazdej situacii, tak 
             //sa nastavi jeho strategia pomocou funkkcii Nastav, NastavCinnostPozicia a NastavCinnostMravca
-            public static void Nastav(ListView vyber, NumericUpDown numericUpDown3, NumericUpDown numericUpDown4)
+            public static void Nastav(ListView vyber, NumericUpDown numericUpDownPocetMravcovTypu3, NumericUpDown numericUpDownPocetMravcovTypu4)
             {
                 if (vyber.SelectedItems.Count > 0)
                 {
-                    if (vyber.SelectedItems[0].Text == "mravec typu 3") typyMravcov = TypyMravcov.MravecTypu3;
-                    else typyMravcov = TypyMravcov.MravecTypu4;
+                    if (vyber.SelectedItems[0].Text == "mravec typu 3") NastavTypyMravcov(TypyMravcov.MravecTypu3);
+                    else NastavTypyMravcov(TypyMravcov.MravecTypu4);
 
                     strategiaMravca = new CinnostiMravcov[4, 7];
 
@@ -1099,7 +1318,7 @@ namespace SimulaciaMraveniskaGUI
                             if (!NastavCinnostPozicia(i, j, strategiaMravca, (Hodnoty.ZistiKonanie())[i, j]))
                                 hodnotaUspech = false;
 
-                    if (hodnotaUspech) NastavCinnostMravca(typyMravcov, strategiaMravca, numericUpDown3, numericUpDown4);
+                    if (hodnotaUspech) NastavCinnostMravca(typyMravcov, strategiaMravca, numericUpDownPocetMravcovTypu3, numericUpDownPocetMravcovTypu4);
 
                 }
                 else
@@ -1109,18 +1328,18 @@ namespace SimulaciaMraveniskaGUI
             }
 
             //nastavi cinnost mravca vzhladom k danej situacii
-            private static bool NastavCinnostPozicia(int i, int j, CinnostiMravcov[,] cinnostiMravcov, ListBox listBox)
+            private static bool NastavCinnostPozicia(int i, int j, CinnostiMravcov[,] cinnostiMravcovStrategia, ListBox listBoxNastavenaStrategia)
             {
-                if (listBox.SelectedItems.Count == 0) { MessageBox.Show("Nevybrali ste pre mravca konanie vo všetkých situáciách."); return false; }
+                if (listBoxNastavenaStrategia.SelectedItems.Count == 0) { MessageBox.Show("Nevybrali ste pre mravca konanie vo všetkých situáciách."); return false; }
                 else
-                    switch (listBox.GetItemText(listBox.SelectedItem))
+                    switch (listBoxNastavenaStrategia.GetItemText(listBoxNastavenaStrategia.SelectedItem))
                     {
-                        case "zostaň stáť": cinnostiMravcov[i, j] = CinnostiMravcov.zostan; break;
-                        case "otoč sa vľavo": cinnostiMravcov[i, j] = CinnostiMravcov.otocSaVlavo; break;
-                        case "choď dopredu obranne": cinnostiMravcov[i, j] = CinnostiMravcov.chodDopreduObrana; break;
-                        case "choď dopredu útočne": cinnostiMravcov[i, j] = CinnostiMravcov.chodDopreduUtok; break;
-                        case "najedz sa": cinnostiMravcov[i, j] = CinnostiMravcov.najedzSa; break;
-                        case "rozmnožuj sa": cinnostiMravcov[i, j] = CinnostiMravcov.paritSa; break;
+                        case "zostaň stáť": cinnostiMravcovStrategia[i, j] = CinnostiMravcov.zostan; break;
+                        case "otoč sa vľavo": cinnostiMravcovStrategia[i, j] = CinnostiMravcov.otocSaVlavo; break;
+                        case "choď dopredu obranne": cinnostiMravcovStrategia[i, j] = CinnostiMravcov.chodDopreduObrana; break;
+                        case "choď dopredu útočne": cinnostiMravcovStrategia[i, j] = CinnostiMravcov.chodDopreduUtok; break;
+                        case "najedz sa": cinnostiMravcovStrategia[i, j] = CinnostiMravcov.najedzSa; break;
+                        case "rozmnožuj sa": cinnostiMravcovStrategia[i, j] = CinnostiMravcov.paritSa; break;
                     }
 
                 return true;
@@ -1128,149 +1347,20 @@ namespace SimulaciaMraveniskaGUI
 
             //nastavi strategiu mravca, taktisto nastavy, ze pocet mravcov typu 3 alebo 4 moze byt rozny od 0
             private static void NastavCinnostMravca(TypyMravcov typyMravcov, CinnostiMravcov[,] cinnostiMravcov,
-                NumericUpDown numericUpDown3, NumericUpDown numericUpDown4)
+                NumericUpDown numericUpDownPocetMravcovTypu3, NumericUpDown numericUpDownPocetMravcovTypu4)
             {
                 switch (typyMravcov)
                 {
                     case TypyMravcov.MravecTypu3:
-                        Konstanty.NastavStrategiu3(cinnostiMravcov); NastavNastavenyTyp3(true);
-                        NacitaneHodnoty.AktualizujPocetMravcovTypu3(numericUpDown3); break;
+                        Konstanty.NastavStrategiuMravceTypu3(cinnostiMravcov); NastavNastavenyTyp3(true);
+                        NacitaneHodnoty.AktualizujPocetMravcovTypu3(numericUpDownPocetMravcovTypu3); break;
                     case TypyMravcov.MravecTypu4:
-                        Konstanty.NastavStrategiu4(cinnostiMravcov); NastavNastavenyTyp4(true);
-                        NacitaneHodnoty.AktualizujPocetMravcovTypu4(numericUpDown4); break;
+                        Konstanty.NastavStrategiuMravceTypu4(cinnostiMravcov); NastavNastavenyTyp4(true);
+                        NacitaneHodnoty.AktualizujPocetMravcovTypu4(numericUpDownPocetMravcovTypu4); break;
                 }
             }
         }
-
-        private void potravaSkalaStrategia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void prazdnaVpreduPriatelPrazdnaStrategia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void prazdnaVpreduPriatelPotravaStrategia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void prazdnaVpreduNepriatelPrazdnaStrategia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void prazdnaVpreduNepriatelPotravaStrategia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void potravaVpreduNepriatelPotravaStrategia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void potravaVpreduNepriatelPrazdnaStrategia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void potravaVpreduPriatelPotravaStrategia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void potravaVpreduPriatelPrazdnaStrategia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void potravaPotravaStrategia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void prazdnaPotravaStrategia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void potraPrazdnaStrategia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void priatelPrazdnaPrazdnaStrategia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void priatelPrazdnaSkalaStrategia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void priatelPrazdnaPotravaStrategia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void priatelPrazdnaVpreduPriatelPrazdnaStrategia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void priatelPrazdnaVpreduPriatelPotravaStrategia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void priatelPrazdnaVpreduNepriatelPrazdnaStrategia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void priatelPrazdnaVpreduNepriatelPotravaStrategia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void priatelPotravaVpreduNepriatelPotravaStrategia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void priatelPotravaVpreduNepriatelPrazdnaStrategia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void priatelPotravaVpreduPriatelPotravaStrategia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void priatelPotravaVpreduPriatelPrazdnaStrategia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void priatelPotravaPotravaStrategia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void prazdnaSkalaStrategia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void priatelPotravaPrazdnaStrategia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         //pokial uzivatel nastavi nastavenia v casti "Nastavenia"
         //tak tato funkcia zabezpeci nastavenie hodnoty "nastavenieNastavenia" v casti NacitaneHodnoty
@@ -1283,14 +1373,14 @@ namespace SimulaciaMraveniskaGUI
         private void ukladanieSimulacie_Click(object sender, EventArgs e)
         {
             if (Hodnoty.ZistiBolaSpustena() == false)
+            {
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                {
                     Hodnoty.NastavMiestoUlozenie(saveFileDialog1.FileName);
-                }
-                else
-                {
-                    MessageBox.Show("Simulácia už prebieha, teda nie je možné vybrať miesto uloženie zápisu behu simulácie.");
-                }
+            }
+            else
+
+                MessageBox.Show("Simulácia už prebieha, teda nie je možné vybrať miesto uloženie zápisu behu simulácie.");
+           
         }
 
         //nastavenie rychlosti simulacie
@@ -1306,27 +1396,30 @@ namespace SimulaciaMraveniskaGUI
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
 
-            TabPage tabPage;
-
-            tabPage = Simulacia.TabPages[1];
-
             while (Hodnoty.ZistiBolaSpustena() && !Hodnoty.ZistiBolaZastavena())
             {
-
-                behSimulacieSimulacia.SpustiSimulaciu();      
-
-                mravenisko = behSimulacieSimulacia.ZistiMravenisko();
-                GrafickyVystup.VykresliMraveniskoUvod(mravenisko, tabPage);
+                StatickeHodnoty.ZistiBehSimulacieSimulacia().SpustiSimulaciu();
+                if(StatickeHodnoty.ZistiBehSimulacieSimulacia().ZistiDobaBehu() == 0) Thread.Sleep(2000);
+                backgroundWorker1.ReportProgress(1);
+                StatickeHodnoty.ZistiAutoResetEvent().WaitOne();
+                Thread.Sleep(Konstanty.ZistiVyslednuDobuPrestavku());
             }
 
                 
         }
 
-        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-        }
-
         
+
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            TabPage tabPage = Simulacia.TabPages[1];
+            StatickeHodnoty.NastavMravenisko(StatickeHodnoty.ZistiBehSimulacieSimulacia().ZistiMravenisko());
+
+            GrafickyVystup.VykresliMraveniskoUvod(StatickeHodnoty.ZistiMravenisko(), tabPage);
+            VypisFazeMraveniska.VypisFazeMraveniskaUvod(StatickeHodnoty.ZistiMravenisko(), casLabelVystup, fazaLabelVystup);
+
+            StatickeHodnoty.ZistiAutoResetEvent().Set();
+        }
     }
 }
 
