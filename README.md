@@ -91,7 +91,8 @@ Vykreslovanie špeciálnych situácií:
 
 Boj pri prechadzani medzi dvomi susedným políčkami: obe sú zobrazené červenou farbou, a 
 vedú medzi nimi dve čiary, kde každá čiara zastupuje jeden typ bojujucich mravcov a odpoveda
-tym i svojou farbou - vykreslenie vo fáze "Boje pri prechadzani"
+tym i svojou farbou 
+- vykreslenie vo fáze "Boje pri prechadzani"
 
 Boj na policku: vykresla sa 4 menšie štvorčeky, kde každý štvorček reprezentuje jeden typ mravcov
 s ich odopovedajucov farbou, pokiaľ sa dany typ mravcov účastní boja, inak je farba biela
