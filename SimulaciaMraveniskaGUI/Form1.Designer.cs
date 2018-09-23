@@ -769,7 +769,7 @@
             this.tableLayoutP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 265F));
             this.tableLayoutP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 172F));
             this.tableLayoutP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 114F));
-            this.tableLayoutP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 98F));
+            this.tableLayoutP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 99F));
             this.tableLayoutP.Controls.Add(this.label12, 3, 1);
             this.tableLayoutP.Controls.Add(this.label13, 1, 2);
             this.tableLayoutP.Controls.Add(this.label14, 1, 3);
@@ -810,7 +810,7 @@
             this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(444, 77);
+            this.label12.Location = new System.Drawing.Point(443, 77);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(261, 125);
@@ -827,7 +827,7 @@
             this.label13.Location = new System.Drawing.Point(50, 202);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(231, 75);
+            this.label13.Size = new System.Drawing.Size(230, 75);
             this.label13.TabIndex = 1;
             this.label13.Text = "Počet mravcov typu 1:";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -841,7 +841,7 @@
             this.label14.Location = new System.Drawing.Point(50, 277);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(231, 71);
+            this.label14.Size = new System.Drawing.Size(230, 71);
             this.label14.TabIndex = 2;
             this.label14.Text = "Počet mravcov typu 2:";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -855,7 +855,7 @@
             this.label15.Location = new System.Drawing.Point(50, 348);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(231, 73);
+            this.label15.Size = new System.Drawing.Size(230, 73);
             this.label15.TabIndex = 3;
             this.label15.Text = "Počet mravcov typu 3:";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -869,7 +869,7 @@
             this.label16.Location = new System.Drawing.Point(50, 421);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(231, 65);
+            this.label16.Size = new System.Drawing.Size(230, 65);
             this.label16.TabIndex = 4;
             this.label16.Text = "Počet mravcov typu 4:";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -880,7 +880,7 @@
             this.label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label17.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(709, 202);
+            this.label17.Location = new System.Drawing.Point(708, 202);
             this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(168, 75);
@@ -894,7 +894,7 @@
             this.label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label18.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(709, 277);
+            this.label18.Location = new System.Drawing.Point(708, 277);
             this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(168, 71);
@@ -908,7 +908,7 @@
             this.label19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label19.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(709, 348);
+            this.label19.Location = new System.Drawing.Point(708, 348);
             this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(168, 73);
@@ -920,7 +920,7 @@
             // 
             this.pocetMravcovTypu1Nastavenia.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pocetMravcovTypu1Nastavenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pocetMravcovTypu1Nastavenia.Location = new System.Drawing.Point(285, 204);
+            this.pocetMravcovTypu1Nastavenia.Location = new System.Drawing.Point(284, 204);
             this.pocetMravcovTypu1Nastavenia.Margin = new System.Windows.Forms.Padding(2);
             this.pocetMravcovTypu1Nastavenia.Name = "pocetMravcovTypu1Nastavenia";
             this.pocetMravcovTypu1Nastavenia.Size = new System.Drawing.Size(155, 23);
@@ -933,7 +933,7 @@
             // 
             this.pocetMravcovTypu2Nastavenia.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pocetMravcovTypu2Nastavenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pocetMravcovTypu2Nastavenia.Location = new System.Drawing.Point(285, 279);
+            this.pocetMravcovTypu2Nastavenia.Location = new System.Drawing.Point(284, 279);
             this.pocetMravcovTypu2Nastavenia.Margin = new System.Windows.Forms.Padding(2);
             this.pocetMravcovTypu2Nastavenia.Name = "pocetMravcovTypu2Nastavenia";
             this.pocetMravcovTypu2Nastavenia.Size = new System.Drawing.Size(155, 23);
@@ -946,7 +946,7 @@
             // 
             this.pocetMravcovTypu3Nastavenia.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pocetMravcovTypu3Nastavenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pocetMravcovTypu3Nastavenia.Location = new System.Drawing.Point(285, 350);
+            this.pocetMravcovTypu3Nastavenia.Location = new System.Drawing.Point(284, 350);
             this.pocetMravcovTypu3Nastavenia.Margin = new System.Windows.Forms.Padding(2);
             this.pocetMravcovTypu3Nastavenia.Name = "pocetMravcovTypu3Nastavenia";
             this.pocetMravcovTypu3Nastavenia.Size = new System.Drawing.Size(155, 23);
@@ -959,7 +959,7 @@
             // 
             this.pocetSkalNastavenia.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pocetSkalNastavenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pocetSkalNastavenia.Location = new System.Drawing.Point(881, 279);
+            this.pocetSkalNastavenia.Location = new System.Drawing.Point(880, 279);
             this.pocetSkalNastavenia.Margin = new System.Windows.Forms.Padding(2);
             this.pocetSkalNastavenia.Name = "pocetSkalNastavenia";
             this.pocetSkalNastavenia.Size = new System.Drawing.Size(110, 23);
@@ -972,7 +972,7 @@
             // 
             this.mnozstvoZaciatocnejPotravyNastavenia.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mnozstvoZaciatocnejPotravyNastavenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mnozstvoZaciatocnejPotravyNastavenia.Location = new System.Drawing.Point(881, 350);
+            this.mnozstvoZaciatocnejPotravyNastavenia.Location = new System.Drawing.Point(880, 350);
             this.mnozstvoZaciatocnejPotravyNastavenia.Margin = new System.Windows.Forms.Padding(2);
             this.mnozstvoZaciatocnejPotravyNastavenia.Name = "mnozstvoZaciatocnejPotravyNastavenia";
             this.mnozstvoZaciatocnejPotravyNastavenia.Size = new System.Drawing.Size(110, 23);
@@ -985,7 +985,7 @@
             // 
             this.pocetMravcovTypu4Nastavenia.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pocetMravcovTypu4Nastavenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pocetMravcovTypu4Nastavenia.Location = new System.Drawing.Point(285, 423);
+            this.pocetMravcovTypu4Nastavenia.Location = new System.Drawing.Point(284, 423);
             this.pocetMravcovTypu4Nastavenia.Margin = new System.Windows.Forms.Padding(2);
             this.pocetMravcovTypu4Nastavenia.Name = "pocetMravcovTypu4Nastavenia";
             this.pocetMravcovTypu4Nastavenia.Size = new System.Drawing.Size(155, 23);
@@ -1004,7 +1004,7 @@
             "8x8",
             "16x16",
             "32x32"});
-            this.velkostMraveniskaNastavenia.Location = new System.Drawing.Point(881, 204);
+            this.velkostMraveniskaNastavenia.Location = new System.Drawing.Point(880, 204);
             this.velkostMraveniskaNastavenia.Margin = new System.Windows.Forms.Padding(2);
             this.velkostMraveniskaNastavenia.Name = "velkostMraveniskaNastavenia";
             this.velkostMraveniskaNastavenia.Size = new System.Drawing.Size(110, 71);
@@ -1015,7 +1015,7 @@
             // 
             this.nastavNastavenia.Dock = System.Windows.Forms.DockStyle.Fill;
             this.nastavNastavenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nastavNastavenia.Location = new System.Drawing.Point(444, 488);
+            this.nastavNastavenia.Location = new System.Drawing.Point(443, 488);
             this.nastavNastavenia.Margin = new System.Windows.Forms.Padding(2);
             this.nastavNastavenia.Name = "nastavNastavenia";
             this.nastavNastavenia.Size = new System.Drawing.Size(261, 74);
@@ -1030,7 +1030,7 @@
             this.label20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label20.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(709, 421);
+            this.label20.Location = new System.Drawing.Point(708, 421);
             this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(168, 65);
@@ -1042,7 +1042,7 @@
             // 
             this.minimalneMnozstvoPotravyNastavenia.Dock = System.Windows.Forms.DockStyle.Fill;
             this.minimalneMnozstvoPotravyNastavenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.minimalneMnozstvoPotravyNastavenia.Location = new System.Drawing.Point(881, 423);
+            this.minimalneMnozstvoPotravyNastavenia.Location = new System.Drawing.Point(880, 423);
             this.minimalneMnozstvoPotravyNastavenia.Margin = new System.Windows.Forms.Padding(2);
             this.minimalneMnozstvoPotravyNastavenia.Name = "minimalneMnozstvoPotravyNastavenia";
             this.minimalneMnozstvoPotravyNastavenia.Size = new System.Drawing.Size(110, 23);
@@ -1080,7 +1080,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 139F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 6F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 21F));
             this.tableLayoutPanel3.Controls.Add(this.label23, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.label25, 6, 5);
             this.tableLayoutPanel3.Controls.Add(this.label24, 1, 0);
@@ -1169,7 +1169,7 @@
             this.label25.BackColor = System.Drawing.Color.Khaki;
             this.label25.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label25.ForeColor = System.Drawing.Color.Khaki;
-            this.label25.Location = new System.Drawing.Point(141, 114);
+            this.label25.Location = new System.Drawing.Point(140, 114);
             this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(142, 44);
@@ -1189,7 +1189,7 @@
             this.label26.AutoSize = true;
             this.label26.BackColor = System.Drawing.Color.Gray;
             this.label26.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label26.Location = new System.Drawing.Point(287, 114);
+            this.label26.Location = new System.Drawing.Point(286, 114);
             this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(84, 44);
@@ -1200,7 +1200,7 @@
             this.label27.AutoSize = true;
             this.label27.BackColor = System.Drawing.Color.LawnGreen;
             this.label27.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label27.Location = new System.Drawing.Point(375, 114);
+            this.label27.Location = new System.Drawing.Point(374, 114);
             this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(134, 44);
@@ -1212,7 +1212,7 @@
             this.label32.BackColor = System.Drawing.Color.Khaki;
             this.label32.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label32.ForeColor = System.Drawing.Color.Khaki;
-            this.label32.Location = new System.Drawing.Point(79, 158);
+            this.label32.Location = new System.Drawing.Point(78, 158);
             this.label32.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(58, 110);
@@ -1223,7 +1223,7 @@
             this.label33.AutoSize = true;
             this.label33.BackColor = System.Drawing.Color.LawnGreen;
             this.label33.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label33.Location = new System.Drawing.Point(79, 268);
+            this.label33.Location = new System.Drawing.Point(78, 268);
             this.label33.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(58, 112);
@@ -1236,7 +1236,7 @@
             this.tableLayoutPanel3.SetColumnSpan(this.label21, 7);
             this.label21.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(141, 71);
+            this.label21.Location = new System.Drawing.Point(140, 71);
             this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(922, 43);
@@ -1247,7 +1247,7 @@
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(513, 116);
+            this.splitContainer1.Location = new System.Drawing.Point(512, 116);
             this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer1.Name = "splitContainer1";
             // 
@@ -1266,7 +1266,7 @@
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(654, 116);
+            this.splitContainer2.Location = new System.Drawing.Point(653, 116);
             this.splitContainer2.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer2.Name = "splitContainer2";
             // 
@@ -1285,7 +1285,7 @@
             // splitContainer3
             // 
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(791, 116);
+            this.splitContainer3.Location = new System.Drawing.Point(790, 116);
             this.splitContainer3.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer3.Name = "splitContainer3";
             // 
@@ -1304,7 +1304,7 @@
             // splitContainer4
             // 
             this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer4.Location = new System.Drawing.Point(928, 116);
+            this.splitContainer4.Location = new System.Drawing.Point(927, 116);
             this.splitContainer4.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer4.Name = "splitContainer4";
             // 
@@ -1323,7 +1323,7 @@
             // splitContainer5
             // 
             this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer5.Location = new System.Drawing.Point(79, 382);
+            this.splitContainer5.Location = new System.Drawing.Point(78, 382);
             this.splitContainer5.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer5.Name = "splitContainer5";
             this.splitContainer5.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -1343,7 +1343,7 @@
             // splitContainer6
             // 
             this.splitContainer6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer6.Location = new System.Drawing.Point(79, 496);
+            this.splitContainer6.Location = new System.Drawing.Point(78, 496);
             this.splitContainer6.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer6.Name = "splitContainer6";
             this.splitContainer6.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -1373,7 +1373,7 @@
             "otoč sa vľavo",
             "choď dopredu obranne",
             "choď dopredu útočne"});
-            this.prazdnaPrazdnaStrategia.Location = new System.Drawing.Point(141, 160);
+            this.prazdnaPrazdnaStrategia.Location = new System.Drawing.Point(140, 160);
             this.prazdnaPrazdnaStrategia.Margin = new System.Windows.Forms.Padding(2);
             this.prazdnaPrazdnaStrategia.Name = "prazdnaPrazdnaStrategia";
             this.prazdnaPrazdnaStrategia.ScrollAlwaysVisible = true;
@@ -1393,7 +1393,7 @@
             "choď dopredu obranne",
             "choď dopredu útočne",
             "najedz sa"});
-            this.potraPrazdnaStrategia.Location = new System.Drawing.Point(141, 270);
+            this.potraPrazdnaStrategia.Location = new System.Drawing.Point(140, 270);
             this.potraPrazdnaStrategia.Margin = new System.Windows.Forms.Padding(2);
             this.potraPrazdnaStrategia.Name = "potraPrazdnaStrategia";
             this.potraPrazdnaStrategia.Size = new System.Drawing.Size(142, 108);
@@ -1412,7 +1412,7 @@
             "choď dopredu obranne",
             "choď dopredu útočne",
             "rozmnožuj sa"});
-            this.priatelPrazdnaPrazdnaStrategia.Location = new System.Drawing.Point(141, 382);
+            this.priatelPrazdnaPrazdnaStrategia.Location = new System.Drawing.Point(140, 382);
             this.priatelPrazdnaPrazdnaStrategia.Margin = new System.Windows.Forms.Padding(2);
             this.priatelPrazdnaPrazdnaStrategia.Name = "priatelPrazdnaPrazdnaStrategia";
             this.priatelPrazdnaPrazdnaStrategia.Size = new System.Drawing.Size(142, 110);
@@ -1432,7 +1432,7 @@
             "choď dopredu útočne",
             "najedz sa",
             "rozmnožuj sa"});
-            this.priatelPotravaPrazdnaStrategia.Location = new System.Drawing.Point(141, 496);
+            this.priatelPotravaPrazdnaStrategia.Location = new System.Drawing.Point(140, 496);
             this.priatelPotravaPrazdnaStrategia.Margin = new System.Windows.Forms.Padding(2);
             this.priatelPotravaPrazdnaStrategia.Name = "priatelPotravaPrazdnaStrategia";
             this.priatelPotravaPrazdnaStrategia.Size = new System.Drawing.Size(142, 122);
@@ -1448,7 +1448,7 @@
             this.prazdnaSkalaStrategia.Items.AddRange(new object[] {
             "zostaň stáť",
             "otoč sa vľavo"});
-            this.prazdnaSkalaStrategia.Location = new System.Drawing.Point(287, 160);
+            this.prazdnaSkalaStrategia.Location = new System.Drawing.Point(286, 160);
             this.prazdnaSkalaStrategia.Margin = new System.Windows.Forms.Padding(2);
             this.prazdnaSkalaStrategia.Name = "prazdnaSkalaStrategia";
             this.prazdnaSkalaStrategia.Size = new System.Drawing.Size(84, 106);
@@ -1465,7 +1465,7 @@
             "zostaň stáť",
             "otoč sa vľavo",
             "najedz sa"});
-            this.potravaSkalaStrategia.Location = new System.Drawing.Point(287, 270);
+            this.potravaSkalaStrategia.Location = new System.Drawing.Point(286, 270);
             this.potravaSkalaStrategia.Margin = new System.Windows.Forms.Padding(2);
             this.potravaSkalaStrategia.Name = "potravaSkalaStrategia";
             this.potravaSkalaStrategia.Size = new System.Drawing.Size(84, 108);
@@ -1482,7 +1482,7 @@
             "zostaň stáť",
             "otoč sa vľavo",
             "rozmnožuj sa"});
-            this.priatelPrazdnaSkalaStrategia.Location = new System.Drawing.Point(287, 382);
+            this.priatelPrazdnaSkalaStrategia.Location = new System.Drawing.Point(286, 382);
             this.priatelPrazdnaSkalaStrategia.Margin = new System.Windows.Forms.Padding(2);
             this.priatelPrazdnaSkalaStrategia.Name = "priatelPrazdnaSkalaStrategia";
             this.priatelPrazdnaSkalaStrategia.Size = new System.Drawing.Size(84, 110);
@@ -1500,7 +1500,7 @@
             "otoč sa vľavo",
             "najedz sa",
             "rozmnožuj sa"});
-            this.priatelPotravaSkalaStrategia.Location = new System.Drawing.Point(287, 496);
+            this.priatelPotravaSkalaStrategia.Location = new System.Drawing.Point(286, 496);
             this.priatelPotravaSkalaStrategia.Margin = new System.Windows.Forms.Padding(2);
             this.priatelPotravaSkalaStrategia.Name = "priatelPotravaSkalaStrategia";
             this.priatelPotravaSkalaStrategia.Size = new System.Drawing.Size(84, 122);
@@ -1518,7 +1518,7 @@
             "otoč sa vľavo",
             "choď dopredu obranne",
             "choď dopredu útočne"});
-            this.prazdnaPotravaStrategia.Location = new System.Drawing.Point(375, 160);
+            this.prazdnaPotravaStrategia.Location = new System.Drawing.Point(374, 160);
             this.prazdnaPotravaStrategia.Margin = new System.Windows.Forms.Padding(2);
             this.prazdnaPotravaStrategia.Name = "prazdnaPotravaStrategia";
             this.prazdnaPotravaStrategia.Size = new System.Drawing.Size(134, 106);
@@ -1537,7 +1537,7 @@
             "choď dopredu obranne",
             "choď dopredu útočne",
             "najedz sa"});
-            this.potravaPotravaStrategia.Location = new System.Drawing.Point(375, 270);
+            this.potravaPotravaStrategia.Location = new System.Drawing.Point(374, 270);
             this.potravaPotravaStrategia.Margin = new System.Windows.Forms.Padding(2);
             this.potravaPotravaStrategia.Name = "potravaPotravaStrategia";
             this.potravaPotravaStrategia.Size = new System.Drawing.Size(134, 108);
@@ -1557,7 +1557,7 @@
             "choď dopredu útočne",
             "najedz sa",
             "rozmnožuj sa"});
-            this.priatelPotravaPotravaStrategia.Location = new System.Drawing.Point(375, 496);
+            this.priatelPotravaPotravaStrategia.Location = new System.Drawing.Point(374, 496);
             this.priatelPotravaPotravaStrategia.Margin = new System.Windows.Forms.Padding(2);
             this.priatelPotravaPotravaStrategia.Name = "priatelPotravaPotravaStrategia";
             this.priatelPotravaPotravaStrategia.Size = new System.Drawing.Size(134, 122);
@@ -1575,7 +1575,7 @@
             "otoč sa vľavo",
             "choď dopredu obranne",
             "choď dopredu útočne"});
-            this.prazdnaVpreduPriatelPrazdnaStrategia.Location = new System.Drawing.Point(513, 160);
+            this.prazdnaVpreduPriatelPrazdnaStrategia.Location = new System.Drawing.Point(512, 160);
             this.prazdnaVpreduPriatelPrazdnaStrategia.Margin = new System.Windows.Forms.Padding(2);
             this.prazdnaVpreduPriatelPrazdnaStrategia.Name = "prazdnaVpreduPriatelPrazdnaStrategia";
             this.prazdnaVpreduPriatelPrazdnaStrategia.Size = new System.Drawing.Size(137, 106);
@@ -1594,7 +1594,7 @@
             "choď dopredu obranne",
             "choď dopredu útočne",
             "najedz sa"});
-            this.potravaVpreduPriatelPrazdnaStrategia.Location = new System.Drawing.Point(513, 270);
+            this.potravaVpreduPriatelPrazdnaStrategia.Location = new System.Drawing.Point(512, 270);
             this.potravaVpreduPriatelPrazdnaStrategia.Margin = new System.Windows.Forms.Padding(2);
             this.potravaVpreduPriatelPrazdnaStrategia.Name = "potravaVpreduPriatelPrazdnaStrategia";
             this.potravaVpreduPriatelPrazdnaStrategia.Size = new System.Drawing.Size(137, 108);
@@ -1613,7 +1613,7 @@
             "choď dopredu obranne",
             "choď dopredu útočne",
             "rozmnožuj sa"});
-            this.priatelPrazdnaPotravaStrategia.Location = new System.Drawing.Point(375, 382);
+            this.priatelPrazdnaPotravaStrategia.Location = new System.Drawing.Point(374, 382);
             this.priatelPrazdnaPotravaStrategia.Margin = new System.Windows.Forms.Padding(2);
             this.priatelPrazdnaPotravaStrategia.Name = "priatelPrazdnaPotravaStrategia";
             this.priatelPrazdnaPotravaStrategia.Size = new System.Drawing.Size(134, 110);
@@ -1632,7 +1632,7 @@
             "choď dopredu obranne",
             "choď dopredu útočne",
             "rozmnožuj sa"});
-            this.priatelPrazdnaVpreduPriatelPrazdnaStrategia.Location = new System.Drawing.Point(513, 382);
+            this.priatelPrazdnaVpreduPriatelPrazdnaStrategia.Location = new System.Drawing.Point(512, 382);
             this.priatelPrazdnaVpreduPriatelPrazdnaStrategia.Margin = new System.Windows.Forms.Padding(2);
             this.priatelPrazdnaVpreduPriatelPrazdnaStrategia.Name = "priatelPrazdnaVpreduPriatelPrazdnaStrategia";
             this.priatelPrazdnaVpreduPriatelPrazdnaStrategia.Size = new System.Drawing.Size(137, 110);
@@ -1651,7 +1651,7 @@
             "choď dopredu obranne",
             "choď dopredu útočne",
             "najedz sa"});
-            this.potravaVpreduPriatelPotravaStrategia.Location = new System.Drawing.Point(654, 270);
+            this.potravaVpreduPriatelPotravaStrategia.Location = new System.Drawing.Point(653, 270);
             this.potravaVpreduPriatelPotravaStrategia.Margin = new System.Windows.Forms.Padding(2);
             this.potravaVpreduPriatelPotravaStrategia.Name = "potravaVpreduPriatelPotravaStrategia";
             this.potravaVpreduPriatelPotravaStrategia.Size = new System.Drawing.Size(133, 108);
@@ -1670,7 +1670,7 @@
             "choď dopredu obranne",
             "choď dopredu útočne",
             "rozmnožuj sa"});
-            this.priatelPrazdnaVpreduPriatelPotravaStrategia.Location = new System.Drawing.Point(654, 382);
+            this.priatelPrazdnaVpreduPriatelPotravaStrategia.Location = new System.Drawing.Point(653, 382);
             this.priatelPrazdnaVpreduPriatelPotravaStrategia.Margin = new System.Windows.Forms.Padding(2);
             this.priatelPrazdnaVpreduPriatelPotravaStrategia.Name = "priatelPrazdnaVpreduPriatelPotravaStrategia";
             this.priatelPrazdnaVpreduPriatelPotravaStrategia.Size = new System.Drawing.Size(133, 110);
@@ -1688,7 +1688,7 @@
             "otoč sa vľavo",
             "choď dopredu obranne",
             "choď dopredu útočne"});
-            this.prazdnaVpreduNepriatelPrazdnaStrategia.Location = new System.Drawing.Point(791, 160);
+            this.prazdnaVpreduNepriatelPrazdnaStrategia.Location = new System.Drawing.Point(790, 160);
             this.prazdnaVpreduNepriatelPrazdnaStrategia.Margin = new System.Windows.Forms.Padding(2);
             this.prazdnaVpreduNepriatelPrazdnaStrategia.Name = "prazdnaVpreduNepriatelPrazdnaStrategia";
             this.prazdnaVpreduNepriatelPrazdnaStrategia.Size = new System.Drawing.Size(133, 106);
@@ -1706,7 +1706,7 @@
             "otoč sa vľavo",
             "choď dopredu obranne",
             "choď dopredu útočne"});
-            this.prazdnaVpreduPriatelPotravaStrategia.Location = new System.Drawing.Point(654, 160);
+            this.prazdnaVpreduPriatelPotravaStrategia.Location = new System.Drawing.Point(653, 160);
             this.prazdnaVpreduPriatelPotravaStrategia.Margin = new System.Windows.Forms.Padding(2);
             this.prazdnaVpreduPriatelPotravaStrategia.Name = "prazdnaVpreduPriatelPotravaStrategia";
             this.prazdnaVpreduPriatelPotravaStrategia.Size = new System.Drawing.Size(133, 106);
@@ -1726,7 +1726,7 @@
             "choď dopredu útočne",
             "najedz sa",
             "rozmnožuj sa"});
-            this.priatelPotravaVpreduPriatelPotravaStrategia.Location = new System.Drawing.Point(654, 496);
+            this.priatelPotravaVpreduPriatelPotravaStrategia.Location = new System.Drawing.Point(653, 496);
             this.priatelPotravaVpreduPriatelPotravaStrategia.Margin = new System.Windows.Forms.Padding(2);
             this.priatelPotravaVpreduPriatelPotravaStrategia.Name = "priatelPotravaVpreduPriatelPotravaStrategia";
             this.priatelPotravaVpreduPriatelPotravaStrategia.Size = new System.Drawing.Size(133, 122);
@@ -1746,7 +1746,7 @@
             "choď dopredu útočne",
             "najedz sa",
             "rozmnožuj sa"});
-            this.priatelPotravaVpreduPriatelPrazdnaStrategia.Location = new System.Drawing.Point(513, 496);
+            this.priatelPotravaVpreduPriatelPrazdnaStrategia.Location = new System.Drawing.Point(512, 496);
             this.priatelPotravaVpreduPriatelPrazdnaStrategia.Margin = new System.Windows.Forms.Padding(2);
             this.priatelPotravaVpreduPriatelPrazdnaStrategia.Name = "priatelPotravaVpreduPriatelPrazdnaStrategia";
             this.priatelPotravaVpreduPriatelPrazdnaStrategia.Size = new System.Drawing.Size(137, 122);
@@ -1765,7 +1765,7 @@
             "choď dopredu obranne",
             "choď dopredu útočne",
             "najedz sa"});
-            this.potravaVpreduNepriatelPrazdnaStrategia.Location = new System.Drawing.Point(791, 270);
+            this.potravaVpreduNepriatelPrazdnaStrategia.Location = new System.Drawing.Point(790, 270);
             this.potravaVpreduNepriatelPrazdnaStrategia.Margin = new System.Windows.Forms.Padding(2);
             this.potravaVpreduNepriatelPrazdnaStrategia.Name = "potravaVpreduNepriatelPrazdnaStrategia";
             this.potravaVpreduNepriatelPrazdnaStrategia.Size = new System.Drawing.Size(133, 108);
@@ -1784,7 +1784,7 @@
             "choď dopredu obranne",
             "choď dopredu útočne",
             "rozmnožuj sa"});
-            this.priatelPrazdnaVpreduNepriatelPrazdnaStrategia.Location = new System.Drawing.Point(791, 382);
+            this.priatelPrazdnaVpreduNepriatelPrazdnaStrategia.Location = new System.Drawing.Point(790, 382);
             this.priatelPrazdnaVpreduNepriatelPrazdnaStrategia.Margin = new System.Windows.Forms.Padding(2);
             this.priatelPrazdnaVpreduNepriatelPrazdnaStrategia.Name = "priatelPrazdnaVpreduNepriatelPrazdnaStrategia";
             this.priatelPrazdnaVpreduNepriatelPrazdnaStrategia.Size = new System.Drawing.Size(133, 110);
@@ -1804,7 +1804,7 @@
             "choď dopredu útočne",
             "najedz sa",
             "rozmnožuj sa"});
-            this.priatelPotravaVpreduNepriatelPrazdnaStrategia.Location = new System.Drawing.Point(791, 496);
+            this.priatelPotravaVpreduNepriatelPrazdnaStrategia.Location = new System.Drawing.Point(790, 496);
             this.priatelPotravaVpreduNepriatelPrazdnaStrategia.Margin = new System.Windows.Forms.Padding(2);
             this.priatelPotravaVpreduNepriatelPrazdnaStrategia.Name = "priatelPotravaVpreduNepriatelPrazdnaStrategia";
             this.priatelPotravaVpreduNepriatelPrazdnaStrategia.Size = new System.Drawing.Size(133, 122);
@@ -1822,7 +1822,7 @@
             "otoč sa vľavo",
             "choď dopredu obranne",
             "choď dopredu útočne"});
-            this.prazdnaVpreduNepriatelPotravaStrategia.Location = new System.Drawing.Point(928, 160);
+            this.prazdnaVpreduNepriatelPotravaStrategia.Location = new System.Drawing.Point(927, 160);
             this.prazdnaVpreduNepriatelPotravaStrategia.Margin = new System.Windows.Forms.Padding(2);
             this.prazdnaVpreduNepriatelPotravaStrategia.Name = "prazdnaVpreduNepriatelPotravaStrategia";
             this.prazdnaVpreduNepriatelPotravaStrategia.Size = new System.Drawing.Size(135, 106);
@@ -1841,7 +1841,7 @@
             "choď dopredu obranne",
             "choď dopredu útočne",
             "najedz sa"});
-            this.potravaVpreduNepriatelPotravaStrategia.Location = new System.Drawing.Point(928, 270);
+            this.potravaVpreduNepriatelPotravaStrategia.Location = new System.Drawing.Point(927, 270);
             this.potravaVpreduNepriatelPotravaStrategia.Margin = new System.Windows.Forms.Padding(2);
             this.potravaVpreduNepriatelPotravaStrategia.Name = "potravaVpreduNepriatelPotravaStrategia";
             this.potravaVpreduNepriatelPotravaStrategia.Size = new System.Drawing.Size(135, 108);
@@ -1860,7 +1860,7 @@
             "choď dopredu obranne",
             "choď dopredu útočne",
             "rozmnožuj sa"});
-            this.priatelPrazdnaVpreduNepriatelPotravaStrategia.Location = new System.Drawing.Point(928, 382);
+            this.priatelPrazdnaVpreduNepriatelPotravaStrategia.Location = new System.Drawing.Point(927, 382);
             this.priatelPrazdnaVpreduNepriatelPotravaStrategia.Margin = new System.Windows.Forms.Padding(2);
             this.priatelPrazdnaVpreduNepriatelPotravaStrategia.Name = "priatelPrazdnaVpreduNepriatelPotravaStrategia";
             this.priatelPrazdnaVpreduNepriatelPotravaStrategia.Size = new System.Drawing.Size(135, 110);
@@ -1880,7 +1880,7 @@
             "choď dopredu útočne",
             "najedz sa",
             "rozmnožuj sa"});
-            this.priatelPotravaVpreduNepriatelPotravaStrategia.Location = new System.Drawing.Point(928, 496);
+            this.priatelPotravaVpreduNepriatelPotravaStrategia.Location = new System.Drawing.Point(927, 496);
             this.priatelPotravaVpreduNepriatelPotravaStrategia.Margin = new System.Windows.Forms.Padding(2);
             this.priatelPotravaVpreduNepriatelPotravaStrategia.Name = "priatelPotravaVpreduNepriatelPotravaStrategia";
             this.priatelPotravaVpreduNepriatelPotravaStrategia.Size = new System.Drawing.Size(135, 122);
@@ -1892,7 +1892,7 @@
             this.label22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label22.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(19, 158);
+            this.label22.Location = new System.Drawing.Point(18, 158);
             this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label22.Name = "label22";
             this.tableLayoutPanel3.SetRowSpan(this.label22, 4);
@@ -1906,7 +1906,7 @@
             this.tableLayoutPanel3.SetColumnSpan(this.nastavNastavenMravca, 2);
             this.nastavNastavenMravca.Dock = System.Windows.Forms.DockStyle.Fill;
             this.nastavNastavenMravca.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nastavNastavenMravca.Location = new System.Drawing.Point(791, 628);
+            this.nastavNastavenMravca.Location = new System.Drawing.Point(790, 628);
             this.nastavNastavenMravca.Margin = new System.Windows.Forms.Padding(2);
             this.nastavNastavenMravca.Name = "nastavNastavenMravca";
             this.nastavNastavenMravca.Size = new System.Drawing.Size(272, 62);
@@ -1929,7 +1929,7 @@
             listViewItem2,
             listViewItem3,
             listViewItem4});
-            this.vyberTypuMravca.Location = new System.Drawing.Point(287, 628);
+            this.vyberTypuMravca.Location = new System.Drawing.Point(286, 628);
             this.vyberTypuMravca.Margin = new System.Windows.Forms.Padding(2);
             this.vyberTypuMravca.MultiSelect = false;
             this.vyberTypuMravca.Name = "vyberTypuMravca";
@@ -1945,7 +1945,7 @@
             this.label29.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label29.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(141, 626);
+            this.label29.Location = new System.Drawing.Point(140, 626);
             this.label29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(142, 66);
@@ -1960,7 +1960,7 @@
             this.tableLayoutPanel3.SetColumnSpan(this.label28, 3);
             this.label28.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(287, 4);
+            this.label28.Location = new System.Drawing.Point(286, 4);
             this.label28.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(363, 45);
