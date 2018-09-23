@@ -43,7 +43,6 @@ namespace SimulaciaMraveniskaGUI
         {
             pocetMravcovTypu4 = pocet;
         }
-
         public static void NastavPocetMravcovTypu1Celkovo(int pocet)
         {
             pocetMravcovTypu1Celkovo = pocet;
@@ -60,7 +59,6 @@ namespace SimulaciaMraveniskaGUI
         {
             pocetMravcovTypu4Celkovo = pocet;
         }
-
         public static void NastavMnozstvoPotravy(int pocet)
         {
             mnozstvoPotravy = pocet;
@@ -69,7 +67,6 @@ namespace SimulaciaMraveniskaGUI
         {
             mnozstvoPotravyCelkovo = pocet;
         }
-
         public static void NastavCas(int casNastav)
         {
             cas = casNastav;
@@ -91,7 +88,6 @@ namespace SimulaciaMraveniskaGUI
         {
             return pocetMravcovTypu4;
         }
-
         public static int ZistiPocetMravcovTypu1Celkovo()
         {
             return pocetMravcovTypu1Celkovo;
@@ -108,7 +104,6 @@ namespace SimulaciaMraveniskaGUI
         {
             return pocetMravcovTypu4Celkovo;
         }
-
         public static int ZistiMnozstvoPotravy()
         {
             return mnozstvoPotravy;
@@ -117,7 +112,6 @@ namespace SimulaciaMraveniskaGUI
         {
             return mnozstvoPotravyCelkovo;
         }
-
         public static int ZistiCas()
         {
             return cas;
@@ -134,13 +128,10 @@ namespace SimulaciaMraveniskaGUI
             NastavPocetMravcovTypu3Celkovo(vypisovacieUdaje.ZistiPocetMravcovTypu3Celkovo());
             NastavPocetMravcovTypu4(vypisovacieUdaje.ZistiPocetMravcovTypu4());
             NastavPocetMravcovTypu4Celkovo(vypisovacieUdaje.ZistiPocetMravcovTypu4Celkovo());
-
             NastavMnozstvoPotravy(vypisovacieUdaje.ZistiMnozstvoPotravy());
             NastavMnozsvtvoPotravyCelkovo(vypisovacieUdaje.ZistiMnozstvoPotravyCelkovo());
-
             NastavCas(vypisovacieUdaje.ZistiCas());
         }
-
         //vypise udaje do GUI
         public static void VypisUdaje(Label dobaBehu, Label pocetMravcovTypu1,
                                         Label pocetMravcovTypu1Celkovo, Label pocetMravcovTypu2,
@@ -149,7 +140,6 @@ namespace SimulaciaMraveniskaGUI
                                         Label pocetMravcovTypu4Celkovo, Label mnozstvoPotravy,
                                         Label pocetPotravyCelkovo)
         {
-
             dobaBehu.Text = ZistiCas().ToString();
             pocetMravcovTypu1.Text = ZistiPocetMravcovTypu1().ToString();
             pocetMravcovTypu1Celkovo.Text = ZistiPocetMravcovTypu1Celkovo().ToString();
@@ -161,6 +151,26 @@ namespace SimulaciaMraveniskaGUI
             pocetMravcovTypu4Celkovo.Text = ZistiPocetMravcovTypu4Celkovo().ToString();
             mnozstvoPotravy.Text = ZistiMnozstvoPotravy().ToString();
             pocetPotravyCelkovo.Text = ZistiMnozstvoPotravyCelkovo().ToString();
+        }
+        //vypise zakladne udaje do GUI
+        public static void VypisUdajeZakladne(Label dobaBehu, Label pocetMravcovTypu1,
+                                                Label pocetMravcovTypu1Celkovo, Label pocetMravcovTypu2,
+                                                Label pocetMravcovTypu2Celkovo, Label pocetMravcovTypu3,
+                                                Label pocetMravcovTypu3Celkovo, Label pocetMravcovTypu4,
+                                                Label pocetMravcovTypu4Celkovo, Label mnozstvoPotravy,
+                                                Label pocetPotravyCelkovo)
+        {
+            dobaBehu.Text = 0.ToString();
+            pocetMravcovTypu1.Text = 0.ToString();
+            pocetMravcovTypu1Celkovo.Text = 0.ToString();
+            pocetMravcovTypu2.Text = 0.ToString();
+            pocetMravcovTypu2Celkovo.Text = 0.ToString();
+            pocetMravcovTypu3.Text = 0.ToString();
+            pocetMravcovTypu3Celkovo.Text = 0.ToString();
+            pocetMravcovTypu4.Text = 0.ToString();
+            pocetMravcovTypu4Celkovo.Text = 0.ToString();
+            mnozstvoPotravy.Text = 0.ToString();
+            pocetPotravyCelkovo.Text = 0.ToString();
         }
     }
 }

@@ -53,14 +53,16 @@ namespace SimulaciaMraveniskaHlasky
             MravecCisloCas(cas, cisloMravca, cisloTypuMravca);
             Console.WriteLine(" sa najedol a zvysila sa jeho energia na " + energia + " na policku so suradnicami " + xSuradnica + "," + ySuradnica + ".");
 
-            if (Konstanty.jeNastaveneMiestoUlozenia) Konstanty.zapisovacUdajov.WriteLine(" sa najedol a zvysila sa jeho energia na " + energia + " na policku so suradnicami " + xSuradnica + "," + ySuradnica + ".");
+            if (Konstanty.jeNastaveneMiestoUlozenia) Konstanty.zapisovacUdajov.WriteLine(" sa najedol a zvysila sa jeho energia na " + energia + 
+                " na policku so suradnicami " + xSuradnica + "," + ySuradnica + ".");
         }
         public static void MravecBojovalV(int cas, int cisloMravca, int cisloTypuMravca, int xSuradnica, int ySuradnica, int energia)
         {
             MravecCisloCas(cas, cisloMravca, cisloTypuMravca);
             Console.WriteLine(" bojoval a vyhral, jeho energia sa zvysila na " + energia + " je na policku so suradnicami" + xSuradnica, "," + ySuradnica + ".");
 
-            if (Konstanty.jeNastaveneMiestoUlozenia) Konstanty.zapisovacUdajov.WriteLine(" bojoval a vyhral, jeho energia sa zvysila na " + energia + " je na policku so suradnicami" + xSuradnica, "," + ySuradnica + ".");
+            if (Konstanty.jeNastaveneMiestoUlozenia) Konstanty.zapisovacUdajov.WriteLine(" bojoval a vyhral, jeho energia sa zvysila na " + energia + 
+                " je na policku so suradnicami" + xSuradnica, "," + ySuradnica + ".");
         }
         public static void MravecSaRozhodolParit(int cas, int cisloMravca, int cisloTypuMravca, int xSuradnica, int ySuradnica)
         {
@@ -89,49 +91,55 @@ namespace SimulaciaMraveniskaHlasky
             MravecCisloCas(cas, cisloMravca, cisloTypuMravca);
             Console.WriteLine(" prisiel pri pareni o energiu, terajsia hodnota energie:" + energia + " je na policku so suradnicami" + xSuradnica + "," + ySuradnica + ".");
 
-            if (Konstanty.jeNastaveneMiestoUlozenia) Konstanty.zapisovacUdajov.WriteLine(" prisiel pri pareni o energiu, terajsia hodnota energie:" + energia + " je na policku so suradnicami" + xSuradnica + "," + ySuradnica + ".");
+            if (Konstanty.jeNastaveneMiestoUlozenia) Konstanty.zapisovacUdajov.WriteLine(" prisiel pri pareni o energiu, terajsia hodnota energie:" + energia + 
+                " je na policku so suradnicami" + xSuradnica + "," + ySuradnica + ".");
         }
         public static void ZnizenaEnergiaMravcaUskok(int cas, int cisloMravca, int cisloTypuMravca, int xSuradnica, int ySuradnica, int energia)
         {
             MravecCisloCas(cas, cisloMravca, cisloTypuMravca);
-            Console.WriteLine(" prisiel pri uskok od boja o energiu, terajsia hodnota energie:" + energia + " teraz je na policku so suradnicamu" + xSuradnica + "," + ySuradnica + ".");
+            Console.WriteLine(" mravec pri smerovani na policko so suradnicami "+xSuradnica+", "+ySuradnica+" uskocil a jeho terajsia energia je: "+energia);
 
-            if (Konstanty.jeNastaveneMiestoUlozenia) Konstanty.zapisovacUdajov.WriteLine(" prisiel pri uskok od boja o energiu, terajsia hodnota energie:" + energia + " teraz je na policku so suradnicamu" + xSuradnica + "," + ySuradnica + ".");
+            if (Konstanty.jeNastaveneMiestoUlozenia) Konstanty.zapisovacUdajov.WriteLine(" prisiel pri uskok od boja o energiu, terajsia hodnota energie:" + energia + 
+                " teraz je na policku so suradnicamu" + xSuradnica + "," + ySuradnica + ".");
         }
         public static void ZnizenaEnergiaMravcaNaKonciDanehoCasu(int cas, int cisloMravca, int cisloTypuMravca, int xSuradnica, int ySuradnica, int energia)
         {
             MravecCisloCas(cas, cisloMravca, cisloTypuMravca);
             Console.WriteLine(" prisiel na konci kroku o energiu, hodnota jeho energie je: " + energia + ", je na policku so suradnicami" + xSuradnica + "," + ySuradnica + ".");
 
-            if (Konstanty.jeNastaveneMiestoUlozenia) Konstanty.zapisovacUdajov.WriteLine(" prisiel na konci kroku o energiu, hodnota jeho energie je: " + energia + ", je na policku so suradnicami" + xSuradnica + "," + ySuradnica + ".");
+            if (Konstanty.jeNastaveneMiestoUlozenia) Konstanty.zapisovacUdajov.WriteLine(" prisiel na konci kroku o energiu, hodnota jeho energie je: " + energia + 
+                ", je na policku so suradnicami" + xSuradnica + "," + ySuradnica + ".");
         }
         public static void MravecZanikolNaPolickuPriBoji(int cas, int cisloMravca, int cisloTypuMravca, int xSuradnica, int ySuradnica)
         {
             MravecCisloCas(cas, cisloMravca, cisloTypuMravca);
             Console.WriteLine(" zanikol pri prehratom boji na policku so suradnicami " + xSuradnica + "," + ySuradnica + ".");
 
-            if (Konstanty.jeNastaveneMiestoUlozenia) Konstanty.zapisovacUdajov.WriteLine(" zanikol pri prehratom boji na policku so suradnicami " + xSuradnica + "," + ySuradnica + ".");
+            if (Konstanty.jeNastaveneMiestoUlozenia) Konstanty.zapisovacUdajov.WriteLine(" zanikol pri prehratom boji na policku so suradnicami " + xSuradnica + 
+                "," + ySuradnica + ".");
         }
         public static void MravecZanikolNaPolickuNedostatokEnergie(int cas, int cisloMravca, int cisloTypuMravca, int xSuradnica, int ySuradnica)
         {
             MravecCisloCas(cas, cisloMravca, cisloTypuMravca);
             Console.WriteLine(" zanikol kvoli nedostatku energie na policku so suradnicami" + xSuradnica + "," + ySuradnica + ".");
 
-            if (Konstanty.jeNastaveneMiestoUlozenia) Konstanty.zapisovacUdajov.WriteLine(" zanikol kvoli nedostatku energie na policku so suradnicami" + xSuradnica + "," + ySuradnica + ".");
+            if (Konstanty.jeNastaveneMiestoUlozenia) Konstanty.zapisovacUdajov.WriteLine(" zanikol kvoli nedostatku energie na policku so suradnicami" + xSuradnica +
+                "," + ySuradnica + ".");
         }
         public static void MravecVznikolNaPolickuSoZaciatocnouEnergiou(int cas, int cisloMravca, int cisloTypuMravca, int xSuradnica, int ySuradnica, int energia)
         {
             MravecCisloCas(cas, cisloMravca, cisloTypuMravca);
             Console.WriteLine(" vznikol so zaciatocnou energiou: " + energia + " na policku so suradnicami " + xSuradnica + "," + ySuradnica + ".");
 
-            if (Konstanty.jeNastaveneMiestoUlozenia) Konstanty.zapisovacUdajov.WriteLine(" vznikol so zaciatocnou energiou: " + energia + " na policku so suradnicami " + xSuradnica + "," + ySuradnica + ".");
+            if (Konstanty.jeNastaveneMiestoUlozenia) Konstanty.zapisovacUdajov.WriteLine(" vznikol so zaciatocnou energiou: " + energia + 
+                " na policku so suradnicami " + xSuradnica + "," + ySuradnica + ".");
         }
-
         public static void PotravaVzniklaNaPolicku(int cas, int xSuradnica, int ySuradnica, int energia)
         {
             Console.WriteLine("[" + cas + "] Vznikla potrava na pozicii so suradnicami " + xSuradnica + "," + ySuradnica + " s energiou " + energia);
 
-            if (Konstanty.jeNastaveneMiestoUlozenia) Konstanty.zapisovacUdajov.WriteLine("[" + cas + "] Vznikla potrava na pozicii so suradnicami " + xSuradnica + "," + ySuradnica + " s energiou " + energia);
+            if (Konstanty.jeNastaveneMiestoUlozenia) Konstanty.zapisovacUdajov.WriteLine("[" + cas + "] Vznikla potrava na pozicii so suradnicami " + xSuradnica + 
+                "," + ySuradnica + " s energiou " + energia);
         }
         public static void PotravaZanikla(int cas, int xSuradnica, int ySuradnica)
         {

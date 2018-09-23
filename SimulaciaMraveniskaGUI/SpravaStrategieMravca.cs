@@ -9,17 +9,27 @@ using System.Windows.Forms;
 //GUI simulacie a jeho sprava a s tym suvisiace objekty a enum
 namespace SimulaciaMraveniskaGUI
 {
-    //spravuje nastavovanie strategie mravocov typu 3 a 4
+    //spravuje nastavovanie strategie mravocov typu 1 - 4
     public static class SpravaStrategiaMravcov
     {
         private static TypyMravcov typyMravcov = default(TypyMravcov);
         private static CinnostiMravcov[,] strategiaMravca = new CinnostiMravcov[4, 7];
-        private static bool nastavenyTyp3;//reprezentuje, ci bola nastavena strategia pre mravca typu 3
-        private static bool nastavenyTyp4;//reprezentuje, ci bola nastavena strategia pre mravca typu 4
+        private static bool nastavenyTyp1 = false;//reprezentuje, ci bola nastavena strategia pre mravca typu 1
+        private static bool nastavenyTyp2 = false;//reprezentuje, ci bola nastavena strategia pre mravca typu 2
+        private static bool nastavenyTyp3 = false;//reprezentuje, ci bola nastavena strategia pre mravca typu 3
+        private static bool nastavenyTyp4 = false;//reprezentuje, ci bola nastavena strategia pre mravca typu 4
 
         public static void NastavTypyMravcov(TypyMravcov typ)
         {
             typyMravcov = typ;
+        }
+        public static void NastavNastavenyTyp1(bool nastavenie)
+        {
+            nastavenyTyp1 = nastavenie;
+        }
+        public static void NastavNastavenyTyp2(bool nastavenie)
+        {
+            nastavenyTyp2 = nastavenie;
         }
         public static void NastavNastavenyTyp3(bool nastavenie)
         {
@@ -33,6 +43,14 @@ namespace SimulaciaMraveniskaGUI
         public static TypyMravcov ZistiTypyMravcov()
         {
             return typyMravcov;
+        }
+        public static bool ZistiNastavenyTyp1()
+        {
+            return nastavenyTyp1;
+        }
+        public static bool ZistiNastavenyTyp2()
+        {
+            return nastavenyTyp2;
         }
         public static bool ZistiNastavenyTyp3()
         {
@@ -49,11 +67,15 @@ namespace SimulaciaMraveniskaGUI
         {
             if (vyber.SelectedItems.Count > 0)
             {
-                if (vyber.SelectedItems[0].Text == "mravec typu 3") NastavTypyMravcov(TypyMravcov.MravecTypu3);
-                else NastavTypyMravcov(TypyMravcov.MravecTypu4);
+                switch (vyber.SelectedItems[0].Text)
+                {
+                    case "mravec typu 1":typyMravcov = TypyMravcov.MravecTypu1; break;
+                    case "mravec typu 2": typyMravcov = TypyMravcov.MravecTypu2; break;
+                    case "mravec typu 3":typyMravcov = TypyMravcov.MravecTypu3; break;
+                    case "mravec typu 4":typyMravcov = TypyMravcov.MravecTypu4; break;
+                }
 
                 strategiaMravca = new CinnostiMravcov[4, 7];
-
                 bool hodnotaUspech = true;
 
                 for (int i = 0; i < 4; i++)
@@ -61,7 +83,10 @@ namespace SimulaciaMraveniskaGUI
                         if (!NastavCinnostPozicia(i, j, strategiaMravca, (HodnotyStavuSimulacie.ZistiKonanie())[i, j]))
                             hodnotaUspech = false;
 
-                if (hodnotaUspech) NastavCinnostMravca(typyMravcov, strategiaMravca, numericUpDownPocetMravcovTypu3, numericUpDownPocetMravcovTypu4);
+                if (hodnotaUspech)
+                    NastavCinnostMravca(typyMravcov, strategiaMravca, numericUpDownPocetMravcovTypu3, numericUpDownPocetMravcovTypu4);
+                else
+                    MessageBox.Show("Nevybrali ste pre mravca konanie vo všetkých situáciách");
 
             }
             else
@@ -69,11 +94,11 @@ namespace SimulaciaMraveniskaGUI
                 MessageBox.Show("Nevybrali ste typ mravca, pre ktorého sa má nastavit daná stratégia");
             }
         }
-
         //nastavi cinnost mravca vzhladom k danej situacii
         private static bool NastavCinnostPozicia(int i, int j, CinnostiMravcov[,] cinnostiMravcovStrategia, ListBox listBoxNastavenaStrategia)
         {
-            if (listBoxNastavenaStrategia.SelectedItems.Count == 0) { MessageBox.Show("Nevybrali ste pre mravca konanie vo všetkých situáciách."); return false; }
+            if (listBoxNastavenaStrategia.SelectedItems.Count == 0)
+                return false;
             else
                 switch (listBoxNastavenaStrategia.GetItemText(listBoxNastavenaStrategia.SelectedItem))
                 {
@@ -87,13 +112,18 @@ namespace SimulaciaMraveniskaGUI
 
             return true;
         }
-
-        //nastavi strategiu mravca, taktisto nastavy, ze pocet mravcov typu 3 alebo 4 moze byt rozny od 0
+        //nastavi strategiu mravca, taktisto nastavy, ze pocet mravcov typu 3 alebo 4 moze byt rozny od 0, ak sa nastavuje ich strategia
         private static void NastavCinnostMravca(TypyMravcov typyMravcov, CinnostiMravcov[,] cinnostiMravcov,
             NumericUpDown numericUpDownPocetMravcovTypu3, NumericUpDown numericUpDownPocetMravcovTypu4)
         {
             switch (typyMravcov)
             {
+                case TypyMravcov.MravecTypu1:
+                    Konstanty.NastavStrategiuMravceTypu1(cinnostiMravcov);
+                    NastavNastavenyTyp1(true); break;
+                case TypyMravcov.MravecTypu2:
+                    Konstanty.NastavStrategiuMravceTypu2(cinnostiMravcov);
+                    NastavNastavenyTyp2(true); break;
                 case TypyMravcov.MravecTypu3:
                     Konstanty.NastavStrategiuMravceTypu3(cinnostiMravcov); NastavNastavenyTyp3(true);
                     NacitaneHodnoty.AktualizujPocetMravcovTypu3(numericUpDownPocetMravcovTypu3); break;

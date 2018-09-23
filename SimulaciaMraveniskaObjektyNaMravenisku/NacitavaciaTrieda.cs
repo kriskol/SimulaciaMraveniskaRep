@@ -23,9 +23,7 @@ namespace SimulaciaMraveniskaSimulacia
             nacitavac.Int(out rozmer);
 
             ZadaneHodnoty.NastavRozmerMraveniska(rozmer);
-
         }
-
         public static void NacitajPoctyMravcov()
         {
             HlaskyPriNacitavaniHodnotRozhodnuti.ZadavaniePoctuMravcov();
@@ -43,7 +41,6 @@ namespace SimulaciaMraveniskaSimulacia
             ZadaneHodnoty.NastavPocetMravcovTypu3(pocetMravcovTypu3);
             ZadaneHodnoty.NastavPocetMravcovTypu4(pocetMravcovTypu4);
         }
-
         public static void NacitajPocetSkal()
         {
             HlaskyPriNacitavaniHodnotRozhodnuti.ZadajtePocetSkal();
@@ -51,12 +48,10 @@ namespace SimulaciaMraveniskaSimulacia
                 ZadaneHodnoty.ZistiRozmerMraveniska() * ZadaneHodnoty.ZistiRozmerMraveniska() - 4);
 
             int pocetSkal;
-
             nacitavac.Int(out pocetSkal);
 
             ZadaneHodnoty.NastavPocetSkal(pocetSkal);
         }
-
         public static void NacitajInfoMnozstvaPotravy()
         {
             HlaskyPriNacitavaniHodnotRozhodnuti.ZadavaniePoctuStartovnejPotravy();
@@ -64,7 +59,7 @@ namespace SimulaciaMraveniskaSimulacia
                                                              ZadaneHodnoty.ZistiRozmerMraveniska() -
                                                              ZadaneHodnoty.ZistiPocetSkal() *
                                                              ZadaneHodnoty.ZistiPocetSkal());
-
+       
             int zaciatocneMnozstvoPotravy;
             int minimalneMnozstvoPotravy;
 
@@ -73,10 +68,7 @@ namespace SimulaciaMraveniskaSimulacia
 
             ZadaneHodnoty.NastavMnozstvoPotravy(zaciatocneMnozstvoPotravy);
             ZadaneHodnoty.NastavMinimalneMnozstvoPotravy(minimalneMnozstvoPotravy);
-
-
         }
-
         public static void SpustiNacitanie()
         {
             NacitajRozmerMraveniska();

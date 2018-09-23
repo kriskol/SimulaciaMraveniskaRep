@@ -16,7 +16,7 @@ namespace SimulaciaMraveniskaObjektyNaMravenisku
         public const int maximumEnergiaMravec = 101;
         public const int minusHodnotaPriKrmeni = 5;
         public static int minimumPotravy;
-        public const int dobaPrestavky = 2000;
+        public const int dobaPrestavky = 5;
         public static bool jeNastaveneMiestoUlozenia = false;
         public static string miestoUlozenia = "";
         public static System.IO.StreamWriter zapisovacUdajov;
@@ -27,24 +27,29 @@ namespace SimulaciaMraveniskaObjektyNaMravenisku
         public static StrategiaMravca strategiaMravcaTypu3;
         public static StrategiaMravca strategiaMravcaTypu4;
 
-        public static CinnostiMravcov[,] cinnostiMravcovTypu1 = {{CinnostiMravcov.chodDopreduObrana, CinnostiMravcov.otocSaVlavo, CinnostiMravcov.chodDopreduObrana, CinnostiMravcov.chodDopreduObrana, CinnostiMravcov.chodDopreduObrana, CinnostiMravcov.otocSaVlavo, CinnostiMravcov.chodDopreduObrana },
-        { CinnostiMravcov.najedzSa, CinnostiMravcov.najedzSa, CinnostiMravcov.najedzSa, CinnostiMravcov.najedzSa, CinnostiMravcov.najedzSa, CinnostiMravcov.najedzSa, CinnostiMravcov.najedzSa },
-        { CinnostiMravcov.paritSa, CinnostiMravcov.paritSa, CinnostiMravcov.chodDopreduObrana, CinnostiMravcov.paritSa, CinnostiMravcov.chodDopreduObrana, CinnostiMravcov.chodDopreduUtok, CinnostiMravcov.chodDopreduUtok },
-        { CinnostiMravcov.paritSa, CinnostiMravcov.paritSa, CinnostiMravcov.paritSa, CinnostiMravcov.paritSa, CinnostiMravcov.paritSa, CinnostiMravcov.najedzSa, CinnostiMravcov.najedzSa},
+        public static CinnostiMravcov[,] cinnostiMravcovTypu1 = {{CinnostiMravcov.chodDopreduObrana, CinnostiMravcov.otocSaVlavo, CinnostiMravcov.chodDopreduObrana,
+                CinnostiMravcov.chodDopreduObrana, CinnostiMravcov.chodDopreduObrana, CinnostiMravcov.otocSaVlavo, CinnostiMravcov.chodDopreduObrana },
+                { CinnostiMravcov.najedzSa, CinnostiMravcov.najedzSa, CinnostiMravcov.najedzSa, CinnostiMravcov.najedzSa, CinnostiMravcov.najedzSa, CinnostiMravcov.najedzSa,
+                CinnostiMravcov.najedzSa },{ CinnostiMravcov.paritSa, CinnostiMravcov.paritSa, CinnostiMravcov.chodDopreduObrana, CinnostiMravcov.paritSa,
+                CinnostiMravcov.chodDopreduObrana, CinnostiMravcov.chodDopreduUtok, CinnostiMravcov.chodDopreduUtok }, { CinnostiMravcov.paritSa,
+                CinnostiMravcov.paritSa, CinnostiMravcov.paritSa, CinnostiMravcov.paritSa, CinnostiMravcov.paritSa, CinnostiMravcov.najedzSa, CinnostiMravcov.najedzSa},
         };
         public static CinnostiMravcov[,] cinnostiMravcovTypu2 =
         {
-            {CinnostiMravcov.chodDopreduObrana, CinnostiMravcov.otocSaVlavo, CinnostiMravcov.chodDopreduObrana, CinnostiMravcov.chodDopreduObrana, CinnostiMravcov.chodDopreduObrana, CinnostiMravcov.chodDopreduUtok, CinnostiMravcov.chodDopreduUtok},
-            {CinnostiMravcov.najedzSa, CinnostiMravcov.najedzSa, CinnostiMravcov.najedzSa, CinnostiMravcov.najedzSa, CinnostiMravcov.chodDopreduObrana, CinnostiMravcov.najedzSa, CinnostiMravcov.chodDopreduUtok },
-            {CinnostiMravcov.paritSa, CinnostiMravcov.paritSa, CinnostiMravcov.chodDopreduObrana, CinnostiMravcov.paritSa, CinnostiMravcov.chodDopreduObrana, CinnostiMravcov.chodDopreduUtok, CinnostiMravcov.chodDopreduUtok},
-            {CinnostiMravcov.najedzSa, CinnostiMravcov.paritSa, CinnostiMravcov.najedzSa, CinnostiMravcov.najedzSa, CinnostiMravcov.najedzSa, CinnostiMravcov.chodDopreduUtok, CinnostiMravcov.chodDopreduUtok },
+            {CinnostiMravcov.chodDopreduObrana, CinnostiMravcov.otocSaVlavo, CinnostiMravcov.chodDopreduObrana, CinnostiMravcov.chodDopreduObrana,
+            CinnostiMravcov.chodDopreduObrana, CinnostiMravcov.chodDopreduUtok, CinnostiMravcov.chodDopreduUtok},
+            {CinnostiMravcov.najedzSa, CinnostiMravcov.najedzSa, CinnostiMravcov.najedzSa, CinnostiMravcov.najedzSa, CinnostiMravcov.chodDopreduObrana,
+            CinnostiMravcov.najedzSa, CinnostiMravcov.chodDopreduUtok }, {CinnostiMravcov.paritSa, CinnostiMravcov.paritSa, CinnostiMravcov.chodDopreduObrana,
+            CinnostiMravcov.paritSa, CinnostiMravcov.chodDopreduObrana, CinnostiMravcov.chodDopreduUtok, CinnostiMravcov.chodDopreduUtok},
+            {CinnostiMravcov.najedzSa, CinnostiMravcov.paritSa, CinnostiMravcov.najedzSa, CinnostiMravcov.najedzSa, CinnostiMravcov.najedzSa,
+            CinnostiMravcov.chodDopreduUtok, CinnostiMravcov.chodDopreduUtok },
         };
 
-        public static void NastavStrategiuMravceTypu1()
+        public static void NastavStrategiuMravceTypu1(CinnostiMravcov[,] cinnostiMravcov)
         {
             strategiaMravcaTypu1 = new StrategiaMravca(cinnostiMravcovTypu1);
         }
-        public static void NastavStrategiuMravceTypu2()
+        public static void NastavStrategiuMravceTypu2(CinnostiMravcov[,] cinnostiMravcov)
         {
             strategiaMravcaTypu2 = new StrategiaMravca(cinnostiMravcovTypu2);
         }
@@ -67,7 +72,6 @@ namespace SimulaciaMraveniskaObjektyNaMravenisku
             if (miesto != "")
             {
                 zapisovacUdajov = new System.IO.StreamWriter(miestoUlozenia);
-
                 ; jeNastaveneMiestoUlozenia = true;
             }
             else jeNastaveneMiestoUlozenia = false;

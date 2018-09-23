@@ -21,7 +21,8 @@ namespace SimulaciaMraveniskaUdalostiSpravaUdalosti
 
             switch (mravenisko.VratObjektNepohybujuceSaNaDanychSuradniciach(suradnice).ZistiTypObjektu())
             {
-                case TypyObjektov.skala: typyPolicok = TypyPolicok.skala; break;
+                case TypyObjektov.skala:
+                    typyPolicok = TypyPolicok.skala; break;
                 case TypyObjektov.prazdnaZem:
                     {
                         List<PohybujuceSaObjekty> mravce = mravenisko.VratObjektPohybujuceSaNaDanychSuradniciach(suradnice);
@@ -42,7 +43,6 @@ namespace SimulaciaMraveniskaUdalostiSpravaUdalosti
 
             return typyPolicok;
         }
-
         //zisti typ policka, na ktorom mravec stoji
         private static TypyPolicok ZistiTypPolickaSucasne(Mravenisko mravenisko, TypyMravcov typyMravcov, Suradnice suradnice)
         {
@@ -68,7 +68,6 @@ namespace SimulaciaMraveniskaUdalostiSpravaUdalosti
 
             return typyPolicok;
         }
-
         //zisti cinnost mravca, ktora vypliva z policok pred mravcom a na ktorom stoji
         private static CinnostiMravcov ZistenieCinnostiMravca(TypyPolicok typyPolicokSucasne, TypyPolicok typyPolicokPred,
                                                             TypyMravcov typyMravcov)
@@ -94,7 +93,6 @@ namespace SimulaciaMraveniskaUdalostiSpravaUdalosti
 
             return cinnostMravca;
         }
-
         //nastavi cinnosti mravca, v zavislosti od toho vytvori Udalost, parit sa je cinnost viacerych mravcov a najedenie sa 
         //nie je pohybova cinnost a tak maju samostatny typ udalosti
         public static void NastavenieCinnostiMravca(Halda<Udalost> halda, int cas, Mravec mravec, Mravenisko mravenisko)
@@ -112,7 +110,6 @@ namespace SimulaciaMraveniskaUdalostiSpravaUdalosti
             if (cinnostiMravcovNova == CinnostiMravcov.paritSa)
             {
                 mravec.NastavParitSa(true);
-
                 if (!NastaveneHodnotyPocasKrokov.ZistiParenie())
                 {
                     Udalost udalost = new Udalost(cas + 1, (int)TypyUdalosti.paritSa,
@@ -120,9 +117,7 @@ namespace SimulaciaMraveniskaUdalostiSpravaUdalosti
                     halda.VlozPrvok(udalost, udalost.ZistiCasNastania(), udalost.ZistiPriorita());
 
                     NastaveneHodnotyPocasKrokov.NastavParenie(true);
-
                 }
-
             }
             else if (cinnostiMravcovNova == CinnostiMravcov.najedzSa)
             {
@@ -132,12 +127,8 @@ namespace SimulaciaMraveniskaUdalostiSpravaUdalosti
             }
             else
             {
-
-
                 Udalost udalost = new Udalost(cas + 1, (int)TypyUdalosti.vykonanieCinnostiMravcovPohybovych + (int)cinnostiMravcovNova,
                                                 TypyUdalosti.vykonanieCinnostiMravcovPohybovych, mravec);
-
-
 
                 halda.VlozPrvok(udalost, udalost.ZistiCasNastania(), udalost.ZistiPriorita());
             }

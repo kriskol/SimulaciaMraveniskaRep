@@ -24,7 +24,6 @@ namespace SimulaciaMraveniskaMravenisko
 
             return noveSuradnica;
         }
-
         //zistuje suradnice nasledujuceho policka v smere j
         public static Suradnice SmerJ(Suradnice suradnice, int rozmer)
         {
@@ -32,13 +31,12 @@ namespace SimulaciaMraveniskaMravenisko
             int ySuradnica;
 
             xSuradnica = suradnice.ZistiXSuradnicu();
-            ySuradnica = (suradnice.ZistiYSuradnicu() + 1 + rozmer) % rozmer;
+            ySuradnica = (suradnice.ZistiYSuradnicu() + 1) % rozmer;
 
             Suradnice noveSuradnice = new Suradnice(xSuradnica, ySuradnica);
 
             return noveSuradnice;
         }
-
         //zistuje suradnice nasledujuceho policka v smere z
         public static Suradnice SmerZ(Suradnice suradnice, int rozmer)
         {
@@ -52,21 +50,19 @@ namespace SimulaciaMraveniskaMravenisko
 
             return noveSuradnice;
         }
-
         //zistuje suradnice nasledujuceho policka v smere v
         public static Suradnice SmerV(Suradnice suradnice, int rozmer)
         {
             int xSuradnica;
             int ySuradnica;
 
-            xSuradnica = (suradnice.ZistiXSuradnicu() + 1 + rozmer) % rozmer;
+            xSuradnica = (suradnice.ZistiXSuradnicu() + 1) % rozmer;
             ySuradnica = suradnice.ZistiYSuradnicu();
 
             Suradnice noveSuradnice = new Suradnice(xSuradnica, ySuradnica);
 
             return noveSuradnice;
         }
-
         //zistuje suradnice nasledujuceho policka podla daneho smeru
         public static Suradnice ZistiSuradniceNasledujucehoPolicka(Suradnice suradnice, SmerPohybu smer, int rozmer)
         {

@@ -17,7 +17,6 @@ namespace SimulaciaMraveniskaGUI
         static bool jeNastaveneMiestoUlozenia = false;
         static string miestoUlozenia = "";
         static int rychlostSimulacie = 1;
-
         static ListBox[,] konanieMravcov = new ListBox[4, 7];
 
         //pomaha pri nastavovani strategie mravcov
@@ -25,7 +24,6 @@ namespace SimulaciaMraveniskaGUI
         {
             konanieMravcov = listBoxes;
         }
-
         //spravuje spustenie simulacie
         public static void NastavBolasSpustena()
         {
@@ -33,25 +31,21 @@ namespace SimulaciaMraveniskaGUI
             {
                 simulaciaBolaSpustena = true;
                 simmulaciaBolaZastavena = false; simulaciaBolaUkoncena = false;
-
                 SpravaBehuGUI.SimulaciaBolaSpustena();
             }
             else
-            {
                 MessageBox.Show("Pred spustenim simulácie musíte nastaviť nastavenia.");
-            }
         }
-
         //spravuje spustenie, alebo zastavenie simulacie
         public static void NastavBolaZastavenaPokracuje(bool pravdivost)
         {
-
             simmulaciaBolaZastavena = pravdivost;
 
-            if (ZistiBolaZastavena()) SpravaBehuGUI.SimulaciaBolaZastavena();
-            else SpravaBehuGUI.SimulaciaPokracuje();
+            if (ZistiBolaZastavena())
+                SpravaBehuGUI.SimulaciaBolaZastavena();
+            else
+                SpravaBehuGUI.SimulaciaPokracuje();
         }
-
         //spravuje ukoncenie simulacie
         public static void NastavBolaUkoncena(NumericUpDown pocetMravcovTypu1, //spravuje 
                                                 NumericUpDown pocetMravcovTypu2,                //ukoncenie simulacie
@@ -59,7 +53,8 @@ namespace SimulaciaMraveniskaGUI
                                                 NumericUpDown pocetMravocvTypu4,
                                                 NumericUpDown pocetSkal,
                                                 NumericUpDown mnozstvoPotravyZaciatocnej,
-                                                NumericUpDown mnozstvoPotravyMinimalnej)
+                                                NumericUpDown mnozstvoPotravyMinimalnej,
+                                                Label labelCas, Label labelFaza)
         {
 
             simulaciaBolaUkoncena = true;
@@ -68,8 +63,7 @@ namespace SimulaciaMraveniskaGUI
 
             SpravaBehuGUI.SimulaciaBolaUkoncena(pocetMravcovTypu1, pocetMravcovTypu2, pocetMravcovTypu3,
                                                     pocetMravocvTypu4, pocetSkal, mnozstvoPotravyZaciatocnej,
-                                                    mnozstvoPotravyMinimalnej);
-
+                                                    mnozstvoPotravyMinimalnej, labelCas, labelFaza);
         }
         public static void NastavMiestoUlozenie(string miesto)
         {

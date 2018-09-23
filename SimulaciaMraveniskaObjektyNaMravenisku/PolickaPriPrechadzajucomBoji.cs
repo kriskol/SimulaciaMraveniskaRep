@@ -12,9 +12,7 @@ namespace SimulaciaMraveniskaMravenisko
     public class PolickaPriPrechadzajucomBoji
     {
         Suradnice SuradniceMravcov;
-
         TypyMravcov typMravcov;
-
         PolickaPriPrechadzajucomBoji druhePolicko;
 
         private void NastavSuradniceMravcov(Suradnice suradnice)

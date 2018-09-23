@@ -18,90 +18,74 @@ namespace SimulaciaMraveniskaUdalostiSpravaUdalosti
         {
             switch (udalost.ZistiUdalost())
             {
-                case TypyUdalosti.zvysenieCasu:
-                    {
-                        cas++; SpravaUdalosti.ZvysenieCasuMraveniska(mravenisko, halda, cas);
-                    }
+                case TypyUdalosti.zvysenieCasu:                   
+                    cas++; SpravaUdalosti.ZvysenieCasuMraveniska(mravenisko, halda, cas);                
                     break;
-                case TypyUdalosti.navysenieVekuMravcov: { SpravaUdalosti.NavysenieVekuMravcov(mravenisko, halda, cas); } break;
-                case TypyUdalosti.vykonanieCinnostiMravcovPohybovych:
-                    {
-                        SpravaUdalosti.VykonanieCinnostiMravcovPohyb(
-                        udalost, mravenisko, halda, cas);
-                    }
+                case TypyUdalosti.navysenieVekuMravcov:
+                    SpravaUdalosti.NavysenieVekuMravcov(mravenisko, halda, cas);
                     break;
-                case TypyUdalosti.bojMravcovPrechadzajucich:
-                    {
-                        SpravaUdalosti.BojMravcovPrechadzajucich(mravenisko, halda,
-                         cas);
-                    }
+                case TypyUdalosti.vykonanieCinnostiMravcovPohybovych:                    
+                    SpravaUdalosti.VykonanieCinnostiMravcovPohyb(
+                    udalost, mravenisko, halda, cas);                   
                     break;
-                case TypyUdalosti.bojMravcovNaPolickach:
-                    {
-                        SpravaUdalosti.BojMravcovNaPolickach(mravenisko, halda, cas);
-                    }
+                case TypyUdalosti.bojMravcovPrechadzajucich:                  
+                    SpravaUdalosti.BojMravcovPrechadzajucich(mravenisko, halda,
+                    cas);                 
                     break;
-                case TypyUdalosti.paritSa: { SpravaUdalosti.ParitSa(mravenisko, cas); } break;
-                case TypyUdalosti.vykonanieCinnostiMravcovNepohybovych:
-                    {
-                        SpravaUdalosti.VykonanieCinnnostiMravcovNepohyb(
-                      udalost, mravenisko, halda, cas);
-                    }
+                case TypyUdalosti.bojMravcovNaPolickach:                
+                    SpravaUdalosti.BojMravcovNaPolickach(mravenisko, halda, cas);                  
                     break;
-                case TypyUdalosti.upravyNepohybujucichPolicok:
-                    {
-                        SpravaUdalosti.UpravaNepohybujucichSaPolicok(
-                       mravenisko, halda, cas);
-                    }
+                case TypyUdalosti.paritSa:
+                    SpravaUdalosti.ParitSa(mravenisko, cas);
+                    break;
+                case TypyUdalosti.vykonanieCinnostiMravcovNepohybovych:                   
+                    SpravaUdalosti.VykonanieCinnnostiMravcovNepohyb(
+                    udalost, mravenisko, halda, cas);
+                    break;
+                case TypyUdalosti.upravyNepohybujucichPolicok:                  
+                    SpravaUdalosti.UpravaNepohybujucichSaPolicok(
+                    mravenisko, halda, cas);
                     break;
                 case TypyUdalosti.znizenieEnergiaNaKonci:
-                    {
-                        SpravaUdalosti.ZnizenieEnergiaNaKonci(
-                        mravenisko, halda, cas);
-                    }
+                    SpravaUdalosti.ZnizenieEnergiaNaKonci(
+                    mravenisko, halda, cas);                   
                     break;
                 case TypyUdalosti.vypisStatistickychUdajov:
-                    {
-                        SpravaUdalosti.VypisStatistickychUdajov(mravenisko, halda, cas);
-                    }
+                    SpravaUdalosti.VypisStatistickychUdajov(mravenisko, halda, cas);
                     break;
                 case TypyUdalosti.nastavenieNasledujucichCinnostiMravcov:
-                    {
-                        SpravaUdalosti.NastavenieNovychCinnostiMravcov(mravenisko, halda, cas);
-                    }
+                    SpravaUdalosti.NastavenieNovychCinnostiMravcov(mravenisko, halda, cas);
                     break;
                 case TypyUdalosti.precistenieHodnot:
-                    {
-                        SpravaUdalosti.PrecistenieNastavenychHodnot(mravenisko, halda, cas);
-                    }
+                    SpravaUdalosti.PrecistenieNastavenychHodnot(mravenisko, halda, cas);
                     break;
                 case TypyUdalosti.grafickyVypisMraveniska:
-                    {
-                        SpravaUdalosti.GrafickyVypisMraveniska(mravenisko, halda, cas);
-                        return true;
-                    }
+                    SpravaUdalosti.GrafickyVypisMraveniska(mravenisko, halda, cas);
+                    return true;
                 case TypyUdalosti.otazkaNaKoniec:
-                    {
-                        NastaveneHodnotyPocasKrokov.NastavPokracovanie(SpravaUdalosti.OtazkaNaUkoncenieMraveniska(mravenisko, halda, cas));
-                    }
+                    NastaveneHodnotyPocasKrokov.NastavPokracovanie(SpravaUdalosti.OtazkaNaUkoncenieMraveniska(mravenisko, halda, cas));
                     break;
                 case TypyUdalosti.grafickyVypisMraveniskaBojPrechadzajuci:
-                    {
-                        SpravaUdalosti.GrafickyVypisMraveniskaBojPrechadzanie(mravenisko, halda, cas);
-
-                        return true;
-                    }
+                    SpravaUdalosti.GrafickyVypisMraveniskaBojPrechadzanie(mravenisko, halda, cas);
+                    return true;
                 case TypyUdalosti.grafickyVypisMraveniskaBojNaPolicku:
-                    {
-                        SpravaUdalosti.GrafickyVypisMraveniskaBojPolicku(mravenisko, halda, cas);
-                        return true;
-                    }
+                    SpravaUdalosti.GrafickyVypisMraveniskaBojPolicku(mravenisko, halda, cas);
+                    return true;
                 case TypyUdalosti.grafickyVypisMraveniskaParenie:
-                    {
-                        SpravaUdalosti.GrafickyVypisMraveniskaPoPareni(mravenisko, halda, cas);
-
-                        return true;
-                    }
+                    SpravaUdalosti.GrafickyVypisMraveniskaPoPareni(mravenisko, halda, cas);
+                    return true;
+                case TypyUdalosti.grafickyVypisSmerOtocenia:
+                    SpravaUdalosti.GrafickyVypisMraveniskaSmerOtocenia(mravenisko, halda, cas);
+                    return true;
+                case TypyUdalosti.grafickyvVypisPoVykonaniCinnostiNepohybovych:
+                    SpravaUdalosti.GrafickyVypisMraveniskaPoVykonaniCinnostiNepohybovych(mravenisko, halda, cas);
+                    return true;
+                case TypyUdalosti.grafickyVypisPoZnizeniEnergieMravcov:
+                    SpravaUdalosti.GrafickyVypisMraveniskaPoZnizeniEnergie(mravenisko, halda, cas);
+                    return true;
+                case TypyUdalosti.grafickyVypisSmerAktivnehoPohybuStatie:
+                    SpravaUdalosti.GrafickyVypisMraveniskaSmerAktivnehoPohybuStatie(mravenisko, halda, cas);
+                    return true;
 
             }
 

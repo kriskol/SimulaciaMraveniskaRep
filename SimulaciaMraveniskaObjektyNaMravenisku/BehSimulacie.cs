@@ -30,22 +30,17 @@ namespace SimulaciaMraveniskaSimulacia
             while (NastaveneHodnotyPocasKrokov.ZistiPokracovanie() && !vypis)
             {
                 Udalost udalost = halda.VratPrvok();
-
                 vypis = TriedenieUdalosti.RoztriedUdalost(udalost, mravenisko, halda, ref dobaBehu);
-
-
             }
 
             NastavVypis(false);
 
         }
-
         //nastavy to hodnotu premennej vypis
         public void NastavVypis(bool hodnota)
         {
             vypis = hodnota;
         }
-
         //inicializacia objektov simulacia, ako mravenisko, hala, prvotne udalosti,...
         public void InicializujSimulaciu(string miestoUlozenia)
         {
@@ -53,14 +48,13 @@ namespace SimulaciaMraveniskaSimulacia
             NastavVypis(false);
             //len konzolove
             //NacitavaciaTrieda.SpustiNacitanie(); 
-            Konstanty.NastavStrategiuMravceTypu1();
-            Konstanty.NastavStrategiuMravceTypu2();
+            Konstanty.NastavStrategiuMravceTypu1(Konstanty.cinnostiMravcovTypu1);
+            Konstanty.NastavStrategiuMravceTypu2(Konstanty.cinnostiMravcovTypu2);
             Konstanty.NastavMiestoUlozenia(miestoUlozenia);
             mravenisko = InicializaciaObjektovMraveniskoHalda.InicializaciaMraveniska();
             halda = InicializaciaObjektovMraveniskoHalda.InicializaciaHaldy();
             InicializaciaObjektovMraveniskoHalda.InicializujHodnoty(mravenisko);
         }
-
         //vracia objekt, ktory reprezentuje hodnoty, ktore su vypisovane, pri GUI v casti "Simulacia"
         public VypisovacieUdaje ZistiUdaje()
         {
@@ -78,27 +72,24 @@ namespace SimulaciaMraveniskaSimulacia
 
             return vypisovacieUdaje;
         }
-
         //vrati mravenisko
         public Mravenisko ZistiMravenisko()
         {
             return mravenisko;
         }
-
+        //zisti dobaBehu
         public int ZistiDobaBehu()
         {
             return dobaBehu;
         }
-
         //spravuje ukoncenie simulacie
         public void UkonecieSimulacie()
         {
             HlaskyInformacnePocasSimulacie.KoniecSimulacie(dobaBehu);
         }
-
+        //inicializacia objektu
         public BehSimulacie()
         {
         }
-
     }
 }

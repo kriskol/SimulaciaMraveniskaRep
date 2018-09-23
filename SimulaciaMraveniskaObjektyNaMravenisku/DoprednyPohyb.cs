@@ -11,8 +11,7 @@ namespace SimulaciaMraveniskaObjektyNaMravenisku
     //trieda reprezentujuca smer pohybu
     class DoprednyPohyb
     {
-        private int dopreduX;
-        private int dopreduY;
+        
         private SmerPohybu smer;
 
         public void OtocenieVlavo()
@@ -25,49 +24,33 @@ namespace SimulaciaMraveniskaObjektyNaMravenisku
                 case SmerPohybu.s: SmerZ(); break;
             }
         }
-
         public void SmerS()
         {
-            dopreduX = 0;
-            dopreduY = -1;
             smer = SmerPohybu.s;
         }
-
         public void SmerJ()
         {
-            dopreduX = 0;
-            dopreduY = 1;
             smer = SmerPohybu.j;
         }
-
         public void SmerZ()
         {
-            dopreduY = 0;
-            dopreduX = -1;
             smer = SmerPohybu.z;
         }
-
         public void SmerV()
         {
             smer = SmerPohybu.v;
-            dopreduY = 0;
-            dopreduX = 1;
         }
-
         public SmerPohybu ZistiSmerPohybu()
         {
             return smer;
         }
-
         public void NastavSmerPohybu(SmerPohybu smer)
         {
             this.smer = smer;
         }
-
         public DoprednyPohyb()
         {
             Random random = new Random();
-
             int smerPohybu = random.Next(4);
 
             switch ((SmerPohybu)smerPohybu)

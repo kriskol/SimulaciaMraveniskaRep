@@ -17,7 +17,6 @@ namespace SimulaciaMraveniskaGUI
         private static int pocetMravcovTypu2;
         private static int pocetMravcovTypu3;
         private static int pocetMravcovTypu4;
-
         private static int pocetSkal;
         private static int mnozstvoZaciatocnejPotravy;
         private static int mnozstvoMinimalnejPotravy;
@@ -39,7 +38,6 @@ namespace SimulaciaMraveniskaGUI
         {
             pocetMravcovTypu4 = pocet;
         }
-
         //nastavy pocet skal, v zavislosti od hodnoty budu potom v casti NastavRozmedziaPreHodnoty, 
         //prenastavene rozmedzia pre pocet skal, mnozstvo potravy zaciatocnej a minimalnej
         public static void NastavPocetSkal(int pocet, NumericUpDown numericUpDownPocetSkal, NumericUpDown
@@ -50,7 +48,6 @@ namespace SimulaciaMraveniskaGUI
             NastavRozmedziaPreHodnoty(Nastaveny.skaly, numericUpDownPocetSkal, numericUpDownMnozstvoPotravy,
                 numericUpDownMnozstvoPotravyMin);
         }
-
         //nastavy pocet zaciatocnej potravy, v zavislosti od hodnoty budu potom v casti NastavRozmerdiaPreHodnoty
         //prenastavene rozmedzia pre pocet skal, mnozstvo potravy zaciatocnej a minimalnej
         public static void NastavMnozstvoZaciatocnejPotravy(int pocet, NumericUpDown numericUpDownMnozstvoPotravy,
@@ -62,7 +59,6 @@ namespace SimulaciaMraveniskaGUI
             NastavRozmedziaPreHodnoty(Nastaveny.zaciatocnaPotrava, numericUpDownPocetSkal, numericUpDownMnozstvoPotravy,
                                         numericUpDownMnozstvoPotravyMin);
         }
-
         //nastavy pocet pocet minimalnej potravy, v zavislosti od hodnoty budu potom v casti NastavRozmedziaPreHodnoty
         //prenastavene rozmedzia pre pocet skal, mnozstvo potravy zaciatocnej a minimalnej
         public static void NastavMnozstvoMinimalnejPotravy(int pocet, NumericUpDown numericUpDownMnozstvoPotravyMin,
@@ -74,7 +70,6 @@ namespace SimulaciaMraveniskaGUI
             NastavRozmedziaPreHodnoty(Nastaveny.minimalnaPotrava, numericUpDownPocetSkal,
                                         numericUpDownMnozstvoPotravy, numericUpDownMnozstvoPotravyMin);
         }
-
         //nastavy rozmer mraveniska, a v casti NastavHodnotyVzhladomRozmer prenastavy medze a hodnoty
         //pre pocet skal, mnozstvo potravy zaciatocnej a minimalnej
         public static void NastavRozmerMraveniska(int rozmerNastavenie, NumericUpDown numericUpDownMnozstvoPotravyMin,
@@ -91,19 +86,16 @@ namespace SimulaciaMraveniskaGUI
         {
             nastavenieNastavenia = pravdivost;
         }
-
         //nastavi pocet skal, neaktualizuje ale rozmedzia
         private static void NastavPocetSkalVnutro(int pocet)
         {
             pocetSkal = pocet;
         }
-
         //nastavi pocet potravy minimalnej, neaktualizuje ale rozmedzia
         private static void NastavMnozstvoPotravyMinimalnejVnutro(int mnozstvo)
         {
             mnozstvoMinimalnejPotravy = mnozstvo;
         }
-
         //nastavi pocet potravy zaciatocnej, neaktualizuje ale rozmedzia
         private static void NastavMnozstvoPotravyZaciatocnejVnutro(int mnozstvo)
         {
@@ -126,7 +118,6 @@ namespace SimulaciaMraveniskaGUI
         {
             return pocetMravcovTypu4;
         }
-
         public static int ZistiPocetSkal()
         {
             return pocetSkal;
@@ -155,7 +146,6 @@ namespace SimulaciaMraveniskaGUI
         {
             numericUpDown.Maximum = 200;
         }
-
         //aktualizuje medze mravca typu 4, pokial bola nastavena jeho strategia
         public static void AktualizujPocetMravcovTypu4(NumericUpDown numericUpDown)
         {
@@ -184,7 +174,6 @@ namespace SimulaciaMraveniskaGUI
             mnozstvoZaciatocnejPotravy = 0;
             mnozstvoMinimalnejPotravy = 0;
         }
-
         //inicializuje hodnoty mravcov
         public static void InicializujPoctyHodnotMravcov(NumericUpDown mravceTypu1, NumericUpDown mravceTypu2,
                                                             NumericUpDown mravceTypu3, NumericUpDown mravceTypu4)
@@ -213,7 +202,6 @@ namespace SimulaciaMraveniskaGUI
             if (SpravaStrategiaMravcov.ZistiNastavenyTyp4()) mravceTypu4.Maximum = 200;
             else mravceTypu4.Maximum = 0;
         }
-
         //nastavi medze pre hodnoty pocet skal, mnozstvo potravy a mnozstvo potravy minimalnej; pripadne i ich nastavi
         private static void NastavRozmedziaPreHodnoty(Nastaveny nastaveny, NumericUpDown numericUpDownPocetSkal,
                                                         NumericUpDown numericUpDownMnozstvoPotravy,
@@ -231,16 +219,15 @@ namespace SimulaciaMraveniskaGUI
             else if (nastaveny == Nastaveny.zaciatocnaPotrava)
             {
                 numericUpDownMnozstvoPotravy.Maximum = rozmer * rozmer - numericUpDownPocetSkal.Value;
+
                 if (numericUpDownMnozstvoPotravy.Value >= 4)
                     numericUpDownPocetSkal.Maximum = rozmer * rozmer - numericUpDownMnozstvoPotravy.Value;
                 else
                     numericUpDownPocetSkal.Maximum = rozmer * rozmer - (4 - numericUpDownMnozstvoPotravy.Value);
 
                 if (numericUpDownMnozstvoPotravyMin.Value > numericUpDownMnozstvoPotravy.Value)
-                {
                     numericUpDownMnozstvoPotravyMin.Value = numericUpDownMnozstvoPotravy.Value;
                     NastavMnozstvoPotravyMinimalnejVnutro((int)numericUpDownMnozstvoPotravyMin.Value);
-                }
 
                 numericUpDownMnozstvoPotravyMin.Maximum = numericUpDownMnozstvoPotravy.Value;
             }
@@ -255,7 +242,6 @@ namespace SimulaciaMraveniskaGUI
             if (numericUpDownPocetSkal.Value > rozmer * rozmer - 4)
             {
                 numericUpDownPocetSkal.Value = rozmer * rozmer - 4;
-
                 NastavPocetSkalVnutro((int)numericUpDownPocetSkal.Value);
             }
 
@@ -264,7 +250,6 @@ namespace SimulaciaMraveniskaGUI
             if (numericUpDownMnozstvoPotravyZaciatocnej.Value > rozmer * rozmer - (int)numericUpDownPocetSkal.Value)
             {
                 numericUpDownMnozstvoPotravyZaciatocnej.Value = rozmer * rozmer - (int)numericUpDownPocetSkal.Value;
-
                 NastavMnozstvoPotravyZaciatocnejVnutro((int)numericUpDownMnozstvoPotravyZaciatocnej.Value);
             }
 
@@ -273,7 +258,6 @@ namespace SimulaciaMraveniskaGUI
             if (numericUpDownMnozstvoPotravyMin.Value > numericUpDownMnozstvoPotravyZaciatocnej.Value)
             {
                 numericUpDownMnozstvoPotravyMin.Value = numericUpDownMnozstvoPotravyZaciatocnej.Value;
-
                 NastavMnozstvoPotravyMinimalnejVnutro((int)numericUpDownMnozstvoPotravyMin.Value);
             }
 

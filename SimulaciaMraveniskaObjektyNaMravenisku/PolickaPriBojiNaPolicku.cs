@@ -37,7 +37,6 @@ namespace SimulaciaMraveniskaMravenisko
         {
             NastavSuradnice(suradnice);
             if (typyMravcovPole != default(List<TypyMravcov>) && typyMravcovPole.Count > 0) this.typyMravcovPole = typyMravcovPole;
-
         }
     }
 }

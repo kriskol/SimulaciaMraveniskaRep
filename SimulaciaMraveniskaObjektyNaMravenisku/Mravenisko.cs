@@ -13,34 +13,33 @@ namespace SimulaciaMraveniskaMravenisko
     public class Mravenisko
     {
         private List<PohybujuceSaObjekty>[,] mraveniskoMravce;
+        private List<PohybujuceSaObjekty>[,] mraveniskoMravcePredPohybom;
         private NepohybujuceSaObjekty[,] mraveniskoTypyPolicok;
         private List<PolickaPriPrechadzajucomBoji>[,] polickaPriPrechadzajucomBojiPole;// pole reprezentujuce, kde sa odohrali boje pri prechadzani
         private PolickaPriBojiNaPolicku[,] polickaPriBojiNaPolickuPole;// pole reprezentujuce, kde sa odohrali boje na polickach
         private bool[,] miestaParenia;// pole reprezentujuce, kde sa odohralo parenie, True - na policku sa vykonalo parenie
+        private bool[,] miestaJedenia;// pole reprezentujuce, na ktorych polickach mravce zvysili energiu jedenim
+        private bool[,] miestaZnizeniaMravcov; // pole reprezentujuce, kde nastal ubytok mravcov z dovodu znizenia energie na konci kroku
+        private int[,] pocetMravcovOdisloZnizenimEnergie; // pole reprezentujuce kolko mravcov odislo z dovodu znizenia energie
+
 
         private int casExistencieMraveniska;
         private int rozmer;
-
         private int pocet = 0;
         private int pocetTypovMravcovZaciatok = 0;
-
         private FazaMraveniska fazaMraveniska;
-
         private int mnzostvoPotravy;
         private int pocetSkaly;
         private int pocetPrazdnaZem;
-
         private int pocetMravcovTypu1;
         private int pocetMravcovTypu2;
         private int pocetMravcovTypu3;
         private int pocetMravcovTypu4;
         private int cisloNasledujucehoMravca;
-
         private int pocetMravcovTypu1Celkovo;
         private int pocetMravcovTypu2Celkovo;
         private int pocetMravcovTypu3Celkovo;
         private int pocetMravcovTypu4Celkovo;
-
         private int mnozstvoPotravyCelkovo;
 
         public Mravenisko(int zaciatocneMnozstvoPotravy, int pocetSkaly, int pocetPrazdnaZem,
@@ -49,7 +48,7 @@ namespace SimulaciaMraveniskaMravenisko
         {
             mraveniskoMravce = new List<PohybujuceSaObjekty>[rozmerMraveniska, rozmerMraveniska];
             mraveniskoTypyPolicok = new NepohybujuceSaObjekty[rozmerMraveniska, rozmerMraveniska];
-
+            mraveniskoMravcePredPohybom = new List<PohybujuceSaObjekty>[rozmerMraveniska, rozmerMraveniska];
 
             for (int i = 0; i < rozmerMraveniska; i++)
                 for (int j = 0; j < rozmerMraveniska; j++)
@@ -89,7 +88,7 @@ namespace SimulaciaMraveniskaMravenisko
             GenerovanieMravceTypu3(zaciatocnyPocetMravcovTypu3);
             GenerovanieMravceTypu4(zaciatocnyPocetMravcovTypu4);
 
-            InicializujPoliaSPolickamiBojeParenie();
+            InicializujPoliaReprezuntujceStavyPreVypis();
         }
 
         private void GenerovaniePotrava(int zaciatocneMnozstvoPotravy)
@@ -274,7 +273,7 @@ namespace SimulaciaMraveniskaMravenisko
             List<int[]> pozicieNove = new List<int[]>();
             int[] pozicia;
 
-            int pocetVolnychPoziciiNaVybratieTyp = Math.Min((rozmer * rozmer - ZistiPocetSkaly()) / pocetTypovMravcovZaciatok, pocetPoziciiNaVybratie);
+            int pocetVolnychPoziciiNaVybratieTyp = Math.Min((rozmer * rozmer - ZistiPocetSkaly()) / Math.Max(pocetTypovMravcovZaciatok,1), pocetPoziciiNaVybratie);
 
             for (int i = 0; i < pocetVolnychPoziciiNaVybratieTyp; i++)
             {
@@ -295,6 +294,7 @@ namespace SimulaciaMraveniskaMravenisko
 
             return pozicieNove;
         }
+
         //znizenie poctu daneho typu nepohybujucich objektov
         private void ZnizenieDanehoPoctuNepohybujuceSaObjekty(int[] pozicia)
         {
@@ -393,13 +393,12 @@ namespace SimulaciaMraveniskaMravenisko
         {
             pocetMravcovTypu4--;
         }
-
         //zvysi cas a zaroven resetuje niektore polia pre nasledujuci krok
         public void ZvysCasExistencieMraveniska()
         {
             casExistencieMraveniska++;
 
-            InicializujPoliaSPolickamiBojeParenie();
+            InicializujPoliaReprezuntujceStavyPreVypis();
         }
         public void NavysVekMravcov()
         {
@@ -446,6 +445,18 @@ namespace SimulaciaMraveniskaMravenisko
         {
             miestaParenia[x, y] = pravdivost;
         }
+        public void NastavJedenie(int x, int y, bool pravdivost)
+        {
+            miestaJedenia[x, y] = pravdivost;
+        }
+        public void NastavUbytokMravcovPoZnizeniEnergie(int x, int y, bool pravdivost)
+        {
+            miestaZnizeniaMravcov[x, y] = pravdivost;
+        }
+        public void ZvysPocetMravcovOdisliZnizenimEnergie(int x, int y)
+        {
+            pocetMravcovOdisloZnizenimEnergie[x, y]++;
+        }
 
         public int ZistiRozmerMraveniska()
         {
@@ -462,6 +473,10 @@ namespace SimulaciaMraveniskaMravenisko
         public int ZistiPocetPrazdnaZem()
         {
             return pocetPrazdnaZem;
+        }
+        public int ZistiPocetVsetkychMravcov()
+        {
+            return ZistiPocetMravcovTypu1() + ZistiPocetMravcovTypu2() + ZistiPocetMravcovTypu3() + ZistiPocetMravcovTypu4();
         }
         public int ZistiPocetMravcovTypu1()
         {
@@ -482,6 +497,10 @@ namespace SimulaciaMraveniskaMravenisko
         public int ZistiCasMraveniska()
         {
             return casExistencieMraveniska;
+        }
+        public int ZistiPocetMravcovOdisliZnizenimEnergie(int x, int y)
+        {
+            return pocetMravcovOdisloZnizenimEnergie[x, y];
         }
 
         public int ZistiPocetMravcovTypu1Celkovo()
@@ -508,7 +527,7 @@ namespace SimulaciaMraveniskaMravenisko
         {
             return fazaMraveniska;
         }
-        public List<PolickaPriPrechadzajucomBoji> ZistiPolickBojPrechadzajuce(int x, int y)
+        public List<PolickaPriPrechadzajucomBoji> ZistiPolickaBojPrechadzajuce(int x, int y)
         {
             return polickaPriPrechadzajucomBojiPole[x, y];
         }
@@ -519,6 +538,15 @@ namespace SimulaciaMraveniskaMravenisko
         public bool ZistiParenie(int x, int y)
         {
             return miestaParenia[x, y];
+        }
+        public bool ZistiJedenie(int x, int y)
+        {
+            return miestaJedenia[x, y];
+
+        }
+        public bool ZistiUbytokMravcovPoZnizeniEnergie(int x, int y)
+        {
+            return miestaZnizeniaMravcov[x, y];
         }
 
         //zisti typ nepohybujuceho objektu na suradniciach
@@ -537,22 +565,51 @@ namespace SimulaciaMraveniskaMravenisko
         }
         public List<PohybujuceSaObjekty> VratObjektPohybujuceSaNaDanychSuradniciach(Suradnice suradnice)
         {
-            return mraveniskoMravce[suradnice.ZistiXSuradnicu(), suradnice.ZistiYSuradnicu()];
+            return mraveniskoMravce[suradnice.ZistiXSuradnicu(), suradnice.ZistiYSuradnicu()];  
+
+        }
+        public List<PohybujuceSaObjekty> VratObjektPohybujuceSaNaDanychSuradniciachZobrazovanie(Suradnice suradnice)
+        {
+            if (ZistiFazaMraveniska() == FazaMraveniska.poNastaveniSmerOtocenia || ZistiFazaMraveniska() == FazaMraveniska.poNastaveniSmerAktivnehoPohybuStatie)
+                return mraveniskoMravcePredPohybom[suradnice.ZistiXSuradnicu(), suradnice.ZistiYSuradnicu()];
+            else
+                return mraveniskoMravce[suradnice.ZistiXSuradnicu(), suradnice.ZistiYSuradnicu()];
         }
 
-        private void InicializujPoliaSPolickamiBojeParenie()
+        private void InicializujPoliaReprezuntujceStavyPreVypis()
         {
             polickaPriPrechadzajucomBojiPole = new List<PolickaPriPrechadzajucomBoji>[rozmer, rozmer];
             polickaPriBojiNaPolickuPole = new PolickaPriBojiNaPolicku[rozmer, rozmer];
             miestaParenia = new bool[rozmer, rozmer];
+            miestaJedenia = new bool[rozmer, rozmer];
+            miestaZnizeniaMravcov = new bool[rozmer, rozmer];
+            pocetMravcovOdisloZnizenimEnergie = new int[rozmer, rozmer];
 
             for (int i = 0; i < ZistiRozmerMraveniska(); i++)
                 for (int j = 0; j < ZistiRozmerMraveniska(); j++)
+                {
                     polickaPriPrechadzajucomBojiPole[i, j] = new List<PolickaPriPrechadzajucomBoji>();
+                }
 
             for (int i = 0; i < rozmer; i++)
                 for (int j = 0; j < rozmer; j++)
+                {
                     miestaParenia[i, j] = false;
+                    miestaJedenia[i, j] = false;
+                    miestaZnizeniaMravcov[i, j] = false;
+
+                    pocetMravcovOdisloZnizenimEnergie[i, j] = 0;
+                }
+
+            for(int i = 0; i < rozmer; i++)
+                for (int j=0; j < rozmer; j++)
+                {
+                    mraveniskoMravcePredPohybom[i, j] = new List<PohybujuceSaObjekty>();
+
+                    foreach (PohybujuceSaObjekty pohybujuceSa in VratObjektPohybujuceSaNaDanychSuradniciach(new Suradnice(i, j)))
+                        mraveniskoMravcePredPohybom[i, j].Add(pohybujuceSa);
+                }
+
         }
     }
 }

@@ -15,6 +15,5 @@ namespace SimulaciaMraveniskaObjektyNaMravenisku
             bool viditelnost, bool existencia) : base(xSuradnica, ySuradnica, TypyObjektov.prazdnaZem, "",
                 viditelnost, existencia, true)
         { }
-
     }
 }

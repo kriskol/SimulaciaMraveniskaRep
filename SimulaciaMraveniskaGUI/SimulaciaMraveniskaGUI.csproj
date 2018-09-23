@@ -56,6 +56,7 @@
     <Compile Include="GrafickyVystup.cs" />
     <Compile Include="HodnotyStavuSimulacie.cs" />
     <Compile Include="HodnotyNaVypisovanie.cs" />
+    <Compile Include="HodnotyStavuZobrazovaniaSimulacie.cs" />
     <Compile Include="NacitaneHodnoty.cs" />
     <Compile Include="Nastaveny.cs" />
     <Compile Include="OdkazNaFormu.cs" />

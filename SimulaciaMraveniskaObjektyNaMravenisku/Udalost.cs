@@ -55,21 +55,15 @@ namespace SimulaciaMraveniskaUdalostiSpravaUdalosti
             if (typUdalost == TypyUdalosti.vykonanieCinnostiMravcovPohybovych ||
                 typUdalost == TypyUdalosti.vykonanieCinnostiMravcovNepohybovych)
             {
-
-
                 if (mravec != default(Mravec))
                 {
                     return mravec.ZistiCinnostMravca();
                 }
                 else
-                {
                     return default(CinnostiMravcov);
-                }
             }
             else
-            {
                 return default(CinnostiMravcov);
-            }
         }
 
 

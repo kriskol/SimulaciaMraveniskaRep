@@ -15,10 +15,8 @@ namespace SimulaciaMraveniskaHlasky
         public static void VypisCasu(int cas)
         {
             Console.WriteLine("Terajsi cas je:" + cas);
-
             if (Konstanty.jeNastaveneMiestoUlozenia) Konstanty.zapisovacUdajov.WriteLine("Terajsi cas je:" + cas);
         }
-
         public static void VypisPoctuMravcov(int pocetMravcovTypu1, int pocetMravcovTypu2,
                                             int pocetMravcovTypu3, int pocetMravcovTypu4)
         {
@@ -34,18 +32,14 @@ namespace SimulaciaMraveniskaHlasky
             if (Konstanty.jeNastaveneMiestoUlozenia) Konstanty.zapisovacUdajov.WriteLine("typu 3:" + pocetMravcovTypu3);
             if (Konstanty.jeNastaveneMiestoUlozenia) Konstanty.zapisovacUdajov.WriteLine("typu 4:" + pocetMravcovTypu4);
         }
-
         public static void VypisPoctuPotravy(int pocetPotravy)
         {
             Console.WriteLine("Mnozstvo policok s potravou " + pocetPotravy);
-
             if (Konstanty.jeNastaveneMiestoUlozenia) Konstanty.zapisovacUdajov.WriteLine("Mnozstvo policok s potravou " + pocetPotravy);
         }
-
         public static void KoniecSimulacie(int cas)
         {
             Console.WriteLine("Simulacie skoncila v case: " + cas);
-
             if (Konstanty.jeNastaveneMiestoUlozenia) Konstanty.zapisovacUdajov.WriteLine("Simulacie skoncila v case: " + cas);
         }
     }

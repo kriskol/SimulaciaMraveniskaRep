@@ -22,7 +22,6 @@ namespace SimulaciaMraveniskaSimulacia
 
             return halda;
         }
-
         public static Mravenisko InicializaciaMraveniska()
         {
             Mravenisko mravenisko = new Mravenisko(ZadaneHodnoty.ZistiMnozstvoPotravy(), ZadaneHodnoty.ZistiPocetSkal(),
@@ -40,7 +39,6 @@ namespace SimulaciaMraveniskaSimulacia
         {
             Konstanty.NastavMinimumPotravy(ZadaneHodnoty.ZistiMinimalneMnozstvoPotravy());
         }
-
         private static void NastavNekonstantneHodnoty(Mravenisko mravenisko)
         {
             NastaveneHodnotyPocasKrokov.NastavParenie(false);
@@ -56,7 +54,6 @@ namespace SimulaciaMraveniskaSimulacia
 
             return udalost;
         }
-
         public static Udalost ZaciatocnaNavysenieVekuMravcov()
         {
             Udalost udalost = new Udalost(1, (int)TypyUdalosti.navysenieVekuMravcov,
@@ -64,7 +61,6 @@ namespace SimulaciaMraveniskaSimulacia
 
             return udalost;
         }
-
         public static Udalost ZaciatocnaBojMravcovPrechadzajucich()
         {
             Udalost udalost = new Udalost(1, (int)TypyUdalosti.bojMravcovPrechadzajucich,
@@ -72,7 +68,6 @@ namespace SimulaciaMraveniskaSimulacia
 
             return udalost;
         }
-
         public static Udalost ZaciatocnaBojMravcovStojacich()
         {
             Udalost udalost = new Udalost(1, (int)TypyUdalosti.bojMravcovNaPolickach,
@@ -80,7 +75,6 @@ namespace SimulaciaMraveniskaSimulacia
 
             return udalost;
         }
-
         public static Udalost ZaciatocnaNepohybujucePolicka()
         {
             Udalost udalost = new Udalost(1, (int)TypyUdalosti.upravyNepohybujucichPolicok,
@@ -88,7 +82,6 @@ namespace SimulaciaMraveniskaSimulacia
 
             return udalost;
         }
-
         public static Udalost ZaciatocnaZnizenieEnergie()
         {
             Udalost udalost = new Udalost(1, (int)TypyUdalosti.znizenieEnergiaNaKonci,
@@ -96,7 +89,6 @@ namespace SimulaciaMraveniskaSimulacia
 
             return udalost;
         }
-
         public static Udalost ZaciatocnaVypisStatistickych()
         {
             Udalost udalost = new Udalost(1, (int)TypyUdalosti.vypisStatistickychUdajov,
@@ -104,7 +96,6 @@ namespace SimulaciaMraveniskaSimulacia
 
             return udalost;
         }
-
         public static Udalost ZaciatocnaPrecistenieHodnot()
         {
             Udalost udalost = new Udalost(1, (int)TypyUdalosti.precistenieHodnot,
@@ -112,7 +103,6 @@ namespace SimulaciaMraveniskaSimulacia
 
             return udalost;
         }
-
         public static Udalost ZaciatocnaNastavenieCinnosti()
         {
             Udalost udalost = new Udalost(0, (int)TypyUdalosti.nastavenieNasledujucichCinnostiMravcov,
@@ -120,14 +110,12 @@ namespace SimulaciaMraveniskaSimulacia
 
             return udalost;
         }
-
         public static Udalost ZaciatocnaVypisGrafickyMravenisko()
         {
             Udalost udalost = new Udalost(0, (int)TypyUdalosti.grafickyVypisMraveniska, TypyUdalosti.grafickyVypisMraveniska);
 
             return udalost;
         }
-
         public static Udalost ZaciatocnaOtazkaKoniec()
         {
             Udalost udalost = new Udalost(1, (int)TypyUdalosti.otazkaNaKoniec,
@@ -135,25 +123,46 @@ namespace SimulaciaMraveniskaSimulacia
 
             return udalost;
         }
-
         public static Udalost ZaciatocnaVykresliBojPrechadz()
         {
             Udalost udalost = new Udalost(1, (int)TypyUdalosti.grafickyVypisMraveniskaBojPrechadzajuci, TypyUdalosti.grafickyVypisMraveniskaBojPrechadzajuci);
 
             return udalost;
         }
-
         public static Udalost ZaciatocnaVykresliBojNaPolicku()
         {
             Udalost udalost = new Udalost(1, (int)TypyUdalosti.grafickyVypisMraveniskaBojNaPolicku, TypyUdalosti.grafickyVypisMraveniskaBojNaPolicku);
 
             return udalost;
         }
-
         public static Udalost ZaciatocnaVykresliParenie()
         {
             Udalost udalost = new Udalost(1, (int)TypyUdalosti.grafickyVypisMraveniskaParenie, TypyUdalosti.grafickyVypisMraveniskaParenie);
 
+            return udalost;
+        }
+        public static Udalost ZaciatocnaVykresliSmerOtocenia()
+        {
+            Udalost udalost = new Udalost(1, (int)TypyUdalosti.grafickyVypisSmerOtocenia, 
+                TypyUdalosti.grafickyVypisSmerOtocenia);
+            return udalost;
+        }
+        public static Udalost ZaciatocnaVykresliSmerAktivnehoPohybuStatie()
+        {
+            Udalost udalost = new Udalost(1, (int)TypyUdalosti.grafickyVypisSmerAktivnehoPohybuStatie, TypyUdalosti.grafickyVypisSmerAktivnehoPohybuStatie);
+            return udalost;
+        }
+        public static Udalost ZaciatocnaVykresliPoVykonaniCinnostiNepohybovych()
+        {
+            Udalost udalost = new Udalost(1, (int)TypyUdalosti.grafickyvVypisPoVykonaniCinnostiNepohybovych,
+                TypyUdalosti.grafickyvVypisPoVykonaniCinnostiNepohybovych);
+
+            return udalost;
+        }
+        public static Udalost ZaciatocnaVykresliPoZnizeniEnergie()
+        {
+            Udalost udalost = new Udalost(1, (int)TypyUdalosti.grafickyVypisPoZnizeniEnergieMravcov,
+                                            TypyUdalosti.grafickyVypisPoZnizeniEnergieMravcov);
             return udalost;
         }
 
@@ -205,8 +214,18 @@ namespace SimulaciaMraveniskaSimulacia
             udalost = ZaciatocnaVykresliParenie();
             halda.VlozPrvok(udalost, udalost.ZistiCasNastania(), udalost.ZistiPriorita());
 
-        }
+            udalost = ZaciatocnaVykresliSmerOtocenia();
+            halda.VlozPrvok(udalost, udalost.ZistiCasNastania(), udalost.ZistiPriorita());
 
+            udalost = ZaciatocnaVykresliSmerAktivnehoPohybuStatie();
+            halda.VlozPrvok(udalost, udalost.ZistiCasNastania(), udalost.ZistiPriorita());
+
+            udalost = ZaciatocnaVykresliPoVykonaniCinnostiNepohybovych();
+            halda.VlozPrvok(udalost, udalost.ZistiCasNastania(), udalost.ZistiPriorita());
+
+            udalost = ZaciatocnaVykresliPoZnizeniEnergie();
+            halda.VlozPrvok(udalost, udalost.ZistiCasNastania(), udalost.ZistiPriorita());
+        }
         public static void InicializujHodnoty(Mravenisko mravenisko)
         {
             NastavKonstantneHodnoty();

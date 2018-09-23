@@ -45,16 +45,6 @@ namespace SimulaciaMraveniskaObjektyNaMravenisku
         {
             doprednyPohyb = new DoprednyPohyb();
         }
-
-
-        public void OverenieZivota()
-        {
-            if (energia <= 0)
-            {
-                KoniecObjektu();
-            }
-        }
-
         public void NastavUskok(bool uskokPravdivost)
         {
             uskok = uskokPravdivost;
@@ -62,7 +52,6 @@ namespace SimulaciaMraveniskaObjektyNaMravenisku
         public void NastavCinnostMravca(CinnostiMravcov cinnostiMravcov)
         {
             this.cinnostiMravcov = cinnostiMravcov;
-
             cinnostMravcaDetail = new CinnostMravcaDetail(cinnostiMravcov);
         }
         public void NastavObrana(bool obrana)
@@ -77,8 +66,6 @@ namespace SimulaciaMraveniskaObjektyNaMravenisku
         {
             Suradnice suradnice = ZistiSuradnica();
             Suradnice noveSuradnice = default(Suradnice);
-
-
             noveSuradnice = NasledujucePolickoMraveniska.ZistiSuradniceNasledujucehoPolicka(suradnice, ZistiSmerPohybu(),
                                                                                              rozmerMraveniska);
 
@@ -95,13 +82,11 @@ namespace SimulaciaMraveniskaObjektyNaMravenisku
         public void ZnizEnergia(int energia)
         {
             this.energia -= energia;
-
             OverenieZivota();
         }
         public void ZvysEnergia()
         {
             energia = (energia + Konstanty.maximumEnergiaMravec / 10);
-
             if (energia > Konstanty.maximumEnergiaMravec) energia = Konstanty.maximumEnergiaMravec;
         }
         public void NavysenieVekuMravca()
@@ -115,6 +100,36 @@ namespace SimulaciaMraveniskaObjektyNaMravenisku
         public void NastavSmer(SmerPohybu smer)
         {
             doprednyPohyb.NastavSmerPohybu(smer);
+        }
+        public void NastavUskocil(bool pravdivost)
+        {
+            cinnostMravcaDetail.NastavUskocil(pravdivost);
+        }
+        public void NastavPodariloSa(bool pravdivost)
+        {
+            cinnostMravcaDetail.NastavPodariloSa(pravdivost);
+        }
+        public void NastavBojovalPriPrechode(bool pravdivost)
+        {
+            cinnostMravcaDetail.NastavBojovalPriPrechode(pravdivost);
+        }
+        public void NastavVyhralPriPrechode(bool pravdivost)
+        {
+            cinnostMravcaDetail.NastavVyhralBojPriPrechode(pravdivost);
+        }
+        public void NastavBojovalNaPolicku(bool pravdivost)
+        {
+            cinnostMravcaDetail.NastavBojovalNaPolicku(pravdivost);
+        }
+        public void NastavVyhralNaPolicku(bool pravdivost)
+        {
+            cinnostMravcaDetail.NastavVyhralBojNaPolicku(pravdivost);
+        }
+
+        public void OverenieZivota()
+        {
+            if (energia < 0)
+                KoniecObjektu();
         }
 
         public int ZistiEnergiaMravca()
@@ -130,7 +145,9 @@ namespace SimulaciaMraveniskaObjektyNaMravenisku
             return typyMravcov;
         }
         public int ZistiIdMravca()
-        { return idMravca; }
+        {
+            return idMravca;
+        }
         public CinnostiMravcov ZistiCinnostMravca()
         {
             return cinnostiMravcov;
@@ -163,32 +180,6 @@ namespace SimulaciaMraveniskaObjektyNaMravenisku
         {
             return doprednyPohyb.ZistiSmerPohybu();
         }
-
-        public void NastavUskocil(bool pravdivost)
-        {
-            cinnostMravcaDetail.NastavUskocil(pravdivost);
-        }
-        public void NastavPodariloSa(bool pravdivost)
-        {
-            cinnostMravcaDetail.NastavPodariloSa(pravdivost);
-        }
-        public void NastavBojovalPriPrechode(bool pravdivost)
-        {
-            cinnostMravcaDetail.NastavBojovalPriPrechode(pravdivost);
-        }
-        public void NastavVyhralPriPrechode(bool pravdivost)
-        {
-            cinnostMravcaDetail.NastavVyhralBojPriPrechode(pravdivost);
-        }
-        public void NastavBojovalNaPolicku(bool pravdivost)
-        {
-            cinnostMravcaDetail.NastavBojovalNaPolicku(pravdivost);
-        }
-        public void NastavVyhralNaPolicku(bool pravdivost)
-        {
-            cinnostMravcaDetail.NastavVyhralBojNaPolicku(pravdivost);
-        }
-
         public bool ZistiUskocil()
         {
             return cinnostMravcaDetail.ZistiUskocil();
@@ -222,7 +213,6 @@ namespace SimulaciaMraveniskaObjektyNaMravenisku
             NastavObrana(true);
             HlaskyCinnostiMravcovStavObjektov.MravecZostalStat(cas, ZistiIdMravca(), (int)ZistiTypyMravcov() + 1,
                 ZistiXSuradnicu(), ZistiYSuradnicu());
-
         }
         //mravec sa otoci vlavo
         public void OtocSaVlavo(Mravenisko mravenisko, int cas)
@@ -230,7 +220,6 @@ namespace SimulaciaMraveniskaObjektyNaMravenisku
             OtocitVlavo();
             HlaskyCinnostiMravcovStavObjektov.MravecSaOtocilDolava(cas, ZistiIdMravca(), (int)ZistiTypyMravcov() + 1,
                                                         ZistiXSuradnicu(), ZistiYSuradnicu());
-
         }
         //mravec ide dopredu, jeho uskok je nast. false, pretoze pri boji pri prechadzani policok
         //bude bojovat, ak vyhra, tak sa dostane na policko pred nim
@@ -247,7 +236,6 @@ namespace SimulaciaMraveniskaObjektyNaMravenisku
                 ZistiXSuradnicuPredchadzajuceSuradnice(), ZistiYSuradnicuPredchadzajuceSuradnice());
             HlaskyCinnostiMravcovStavObjektov.MravecPrisielNaPolicko(cas, ZistiIdMravca(), (int)ZistiTypyMravcov() + 1,
                                                 ZistiXSuradnicu(), ZistiYSuradnicu());
-
         }
         //mravec ide dopredu, jeho uskok je nast. true, pretoze pri boji pri prechadzani policok
         //utecie na policko z ktoreho chcel odist, znizi sa jeho energia
@@ -256,7 +244,6 @@ namespace SimulaciaMraveniskaObjektyNaMravenisku
             NastavUskok(true);
             ChodDopredu(mravenisko.ZistiRozmerMraveniska());
             mravenisko.PosunMravca(new Suradnice(ZistiXSuradnicuPredchadzajuceSuradnice(), ZistiYSuradnicuPredchadzajuceSuradnice()), this);
-
 
             SpravaMraveniskaMravcov.nahradneMraveniskoPohybujuce[ZistiXSuradnicu(), ZistiYSuradnicu()].Add(this);
             HlaskyCinnostiMravcovStavObjektov.MravecIdeDopreduObranne(cas, ZistiIdMravca(), (int)ZistiTypyMravcov() + 1,
@@ -267,22 +254,21 @@ namespace SimulaciaMraveniskaObjektyNaMravenisku
         //mravec sa naje, pokial je na danom policku potrava
         public void NajedzSa(Mravenisko mravenisko, int cas)
         {
-            Suradnice suradnice = new Suradnice(ZistiXSuradnicu(), ZistiYSuradnicu());
             TypyObjektov typyObjektov = mravenisko.ZistiCoJeNaDanychSuradniciach(suradnice);
 
-            if (typyObjektov == TypyObjektov.potrava)
+            if (typyObjektov == TypyObjektov.potrava && ZistiExistenciu())
             {
                 Potrava potrava = mravenisko.VratObjektNepohybujuceSaNaDanychSuradniciach(suradnice) as Potrava;
                 NajedzSa(potrava.ZiadamEnergia(ZistiEnergiaMravca()));
-
                 NastavPodariloSa(true);
 
                 if (potrava.ZistiExistenciu() == false) mravenisko.PridaniePrazdnaZemKonkretnaPozicia(potrava.ZistiXSuradnicu(), potrava.ZistiYSuradnicu());
+
                 HlaskyCinnostiMravcovStavObjektov.MravecJe(cas, ZistiIdMravca(), (int)ZistiTypyMravcov() + 1,
                                                 ZistiXSuradnicu(), ZistiYSuradnicu(),
                                                 ZistiEnergiaMravca());
+                mravenisko.NastavJedenie(ZistiXSuradnicu(), ZistiYSuradnicu(), true);
             }
-
         }
 
         public Mravec(int xSuradnica, int ySuradnica, bool viditelnost, bool existencia, TypyMravcov typyMravcov, int idMravca, int NastavovanieEnergia) : base

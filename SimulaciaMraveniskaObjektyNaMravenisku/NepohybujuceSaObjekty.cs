@@ -17,12 +17,10 @@ namespace SimulaciaMraveniskaObjektyNaMravenisku
         {
             this.jeMozneVstupit = jeMozneVstupit;
         }
-
         public bool ZistiJeMozneVstupit()
         {
             return jeMozneVstupit;
         }
-
         public NepohybujuceSaObjekty(int xSuradnica, int ySuradnica, TypyObjektov typyObjektov,
             string reprezentaciaObjektu, bool viditelnost, bool existencia, bool jeMozneVstupit) :
             base(xSuradnica, ySuradnica,

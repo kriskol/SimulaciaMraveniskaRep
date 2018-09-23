@@ -22,7 +22,6 @@ namespace SimulaciaMraveniskaSimulacia
 
         int mnozstvoPotravy;
         int mnozstvoPotravyCelkovo;
-
         int cas;
 
         public void NastavPocetMravcovTypu1(int pocet)
