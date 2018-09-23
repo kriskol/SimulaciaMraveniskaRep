@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{D26352F9-87DC-4D2D-BD26-26A8F106657A}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>SimulaciaMraveniskaGUI</RootNamespace>
     <AssemblyName>SimulaciaMraveniskaGUI</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -53,8 +53,19 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GrafickyVystup.cs" />
+    <Compile Include="HodnotyStavuSimulacie.cs" />
+    <Compile Include="HodnotyNaVypisovanie.cs" />
+    <Compile Include="HodnotyStavuZobrazovaniaSimulacie.cs" />
+    <Compile Include="NacitaneHodnoty.cs" />
+    <Compile Include="Nastaveny.cs" />
+    <Compile Include="OdkazNaFormu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpravaBehuGUI.cs" />
+    <Compile Include="SpravaStrategieMravca.cs" />
+    <Compile Include="StatickeHodnoty.cs" />
+    <Compile Include="VypisFazeMraveniska.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

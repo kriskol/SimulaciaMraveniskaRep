@@ -118,7 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="textVysvetlivky.Text" xml:space="preserve">
-    <value>Sú prítomné 4 typy mravcov, mravec 1.typu, 2.typu, 3.typu, 4.typu.
+    <value>Sú prítomné 4 typy mravcov, mravec 1.typu( modrá farba), 2.typu( hnedá faba), 3.typu 
+ (rúžová farba), 4.typu (limetkovo-zelená farba).
 
 Typy políčok(stratégia mravca):
 prázdna zem - políčko na ktoré je možné vstúpiť,
@@ -178,16 +179,50 @@ Stratégie mravcov ostatných typov nastavené niesu.
 Pokiaľ ich chcete používať, tak musíte nastaviť ich stratégie v časti Nastavenia Mravcov.
 
 V časti nastavenie mravcov nastavujeme stratégiu mravca pomocou tabuľky 4x7.
-4 riadky reprezentuju pol´íčka na ktorom uvažovaný mravec stoji, a to: prázdna zem, potrava,
+4 riadky reprezentuju políčka na ktorom uvažovaný mravec stoji, a to: prázdna zem, potrava,
 priatelPrazdna a priatelPotrava.
 7 stlpcov reprezentuje políčka, ktoré sú pred uvažovaným mravcom a to sú:
 prázdna zem, skala, potrava, priatelPrazdna, priatelPotrava, nepriatelPrazdna, nepriatelPotrava.
 
 V časti simulácia je možné nastavenie rýchlosti behu simulácie (čím väčšie číslo, tým je simulácia
 pomalšia) a miesto kam sa uloží textový výstup.
-</value>
+
+Základne vykreslovanie:
+
+Políčka v časti výstup sú zobrazované, takými farbami ako v časti Nastavenia Mravcov, pokiaľ
+na nich niesú mravce. Pokiaľ sú tak sa jedno políčko zobrazuje pomocou 2
+obdĺžnikov, kde 1.obdĺžnik (zprava) má farbu typu políčka tak ako v časti Nastavenia Mravcov,
+druhý ma farbu typu mravcov, ktorý na ňom sú.
+
+Špeciálne vykreslovanie v jednotlivých fázach:
+
+Koniec kroku simulacie: tak ako základné vykreslovanie.
+
+Boje pri prechadzani: obe sú zobrazené červenou farbou, a 
+vedú medzi nimi dve čiary, kde každá čiara zastupuje jeden typ bojujucich mravcov a odpovedá
+tým i svojou farbou.
+
+Boje na policku: vykreslia sa 4 menšie štvorčeky, kde každý štvorček reprezentuje jeden typ mravcov
+s ich odopovedajúcou farbou, pokiaľ sa daný typ mravcov účastní boja, inak je farba biela.
+
+Parenie: vykresli sa na danom policku kruh, ktoreho farba je farba mravcov, ktorý sa pária.
+
+Smer otocenia: vykreslí žlté šípky, reprezentujúce smer otočenia mravcov na danom políčku.
+
+Jedenie:ak sa na danom policku naje aspon jeden mravec, tak sa vykresli svetlo zelenou farbou s
+poctom mravcov, ktore sa na nom najedli.
+
+Znizenie energie mravcov: pokiaľ dôjde na políčku k úbytku mravcov z dôvodu zníženia energie, 
+tak sa zafarbí na čierno a bielym písmom sa na políčku vypíše počet mravcov, ktoré na ňom zahynuli.
+
+Smer aktivneho pohybu a statie: na daných políčka sa vykreslia biele šípky reprezentujúce na ktoré
+políčka sa vydajú mravce z daného políčka, niektoré môžu zostať stáť(ak napr. stoja kvôli jedeniu,
+tak je to považované za iné státie), v tom prípade sa vykreslí na danom políčku (i) modrý kruh.</value>
   </data>
   <metadata name="saveFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
+  </metadata>
+  <metadata name="backgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>179, 17</value>
   </metadata>
 </root>

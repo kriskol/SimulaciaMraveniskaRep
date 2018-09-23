@@ -40,8 +40,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="BehSimulacie.cs" />
+    <Compile Include="CinnostiMravcov.cs" />
+    <Compile Include="CinnostMravcovDetail.cs" />
+    <Compile Include="HlaskyCinnostiMravcovStavObjektov.cs" />
+    <Compile Include="HlaskyInformacnePocasSimulacie.cs" />
+    <Compile Include="HlaskyPriNacitavaniHodnotRozhodnuti.cs" />
+    <Compile Include="InicializaciaObjektovMraveniskoHalda.cs" />
+    <Compile Include="NacitavaciaTrieda.cs" />
+    <Compile Include="NastavenieCinnostiMravcov.cs" />
+    <Compile Include="SpravaMraveniskaMravcov.cs" />
+    <Compile Include="SpravaUdalosti.cs" />
+    <Compile Include="TriedenieUdalosti.cs" />
+    <Compile Include="PolickaPriBojiNaPolicku.cs" />
+    <Compile Include="DoprednyPohyb.cs" />
+    <Compile Include="FazaMraveniska.cs" />
+    <Compile Include="GenerovanieHodnot.cs" />
+    <Compile Include="Mravec.cs" />
+    <Compile Include="Mravenisko.cs" />
+    <Compile Include="NasledujucePolickoMraveniska.cs" />
+    <Compile Include="NastaveneHodnotyPocasKrokov.cs" />
+    <Compile Include="Konstanty.cs" />
+    <Compile Include="NepohybujuceSaObjekty.cs" />
+    <Compile Include="ObjektyObecne.cs" />
+    <Compile Include="PohybujuceSaObjekty.cs" />
+    <Compile Include="PolickaPriPrechadzajucomBoji.cs" />
+    <Compile Include="Potrava.cs" />
+    <Compile Include="PrazdnaZem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Skala.cs" />
+    <Compile Include="SmerPohybu.cs" />
+    <Compile Include="StrategiaMravca.cs" />
+    <Compile Include="Suradnice.cs" />
+    <Compile Include="TypyMravcov.cs" />
+    <Compile Include="TypyObjektov.cs" />
+    <Compile Include="TypyPolicok.cs" />
+    <Compile Include="TypySubojov.cs" />
+    <Compile Include="TypyUdalosti.cs" />
+    <Compile Include="Udalost.cs" />
+    <Compile Include="VypisovacieUdaje.cs" />
+    <Compile Include="ZadaneHodnoty.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DatoveStruktury\DatoveStruktury.csproj">
