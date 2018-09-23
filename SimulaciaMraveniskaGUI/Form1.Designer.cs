@@ -769,7 +769,7 @@
             this.tableLayoutP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 265F));
             this.tableLayoutP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 172F));
             this.tableLayoutP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 114F));
-            this.tableLayoutP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 99F));
+            this.tableLayoutP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutP.Controls.Add(this.label12, 3, 1);
             this.tableLayoutP.Controls.Add(this.label13, 1, 2);
             this.tableLayoutP.Controls.Add(this.label14, 1, 3);
@@ -810,7 +810,7 @@
             this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(443, 77);
+            this.label12.Location = new System.Drawing.Point(442, 77);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(261, 125);
@@ -827,7 +827,7 @@
             this.label13.Location = new System.Drawing.Point(50, 202);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(230, 75);
+            this.label13.Size = new System.Drawing.Size(229, 75);
             this.label13.TabIndex = 1;
             this.label13.Text = "Počet mravcov typu 1:";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -841,7 +841,7 @@
             this.label14.Location = new System.Drawing.Point(50, 277);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(230, 71);
+            this.label14.Size = new System.Drawing.Size(229, 71);
             this.label14.TabIndex = 2;
             this.label14.Text = "Počet mravcov typu 2:";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -855,7 +855,7 @@
             this.label15.Location = new System.Drawing.Point(50, 348);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(230, 73);
+            this.label15.Size = new System.Drawing.Size(229, 73);
             this.label15.TabIndex = 3;
             this.label15.Text = "Počet mravcov typu 3:";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -869,7 +869,7 @@
             this.label16.Location = new System.Drawing.Point(50, 421);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(230, 65);
+            this.label16.Size = new System.Drawing.Size(229, 65);
             this.label16.TabIndex = 4;
             this.label16.Text = "Počet mravcov typu 4:";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -880,7 +880,7 @@
             this.label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label17.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(708, 202);
+            this.label17.Location = new System.Drawing.Point(707, 202);
             this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(168, 75);
@@ -894,7 +894,7 @@
             this.label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label18.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(708, 277);
+            this.label18.Location = new System.Drawing.Point(707, 277);
             this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(168, 71);
@@ -908,7 +908,7 @@
             this.label19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label19.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(708, 348);
+            this.label19.Location = new System.Drawing.Point(707, 348);
             this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(168, 73);
@@ -920,7 +920,7 @@
             // 
             this.pocetMravcovTypu1Nastavenia.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pocetMravcovTypu1Nastavenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pocetMravcovTypu1Nastavenia.Location = new System.Drawing.Point(284, 204);
+            this.pocetMravcovTypu1Nastavenia.Location = new System.Drawing.Point(283, 204);
             this.pocetMravcovTypu1Nastavenia.Margin = new System.Windows.Forms.Padding(2);
             this.pocetMravcovTypu1Nastavenia.Name = "pocetMravcovTypu1Nastavenia";
             this.pocetMravcovTypu1Nastavenia.Size = new System.Drawing.Size(155, 23);
@@ -933,7 +933,7 @@
             // 
             this.pocetMravcovTypu2Nastavenia.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pocetMravcovTypu2Nastavenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pocetMravcovTypu2Nastavenia.Location = new System.Drawing.Point(284, 279);
+            this.pocetMravcovTypu2Nastavenia.Location = new System.Drawing.Point(283, 279);
             this.pocetMravcovTypu2Nastavenia.Margin = new System.Windows.Forms.Padding(2);
             this.pocetMravcovTypu2Nastavenia.Name = "pocetMravcovTypu2Nastavenia";
             this.pocetMravcovTypu2Nastavenia.Size = new System.Drawing.Size(155, 23);
@@ -946,7 +946,7 @@
             // 
             this.pocetMravcovTypu3Nastavenia.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pocetMravcovTypu3Nastavenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pocetMravcovTypu3Nastavenia.Location = new System.Drawing.Point(284, 350);
+            this.pocetMravcovTypu3Nastavenia.Location = new System.Drawing.Point(283, 350);
             this.pocetMravcovTypu3Nastavenia.Margin = new System.Windows.Forms.Padding(2);
             this.pocetMravcovTypu3Nastavenia.Name = "pocetMravcovTypu3Nastavenia";
             this.pocetMravcovTypu3Nastavenia.Size = new System.Drawing.Size(155, 23);
@@ -959,7 +959,7 @@
             // 
             this.pocetSkalNastavenia.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pocetSkalNastavenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pocetSkalNastavenia.Location = new System.Drawing.Point(880, 279);
+            this.pocetSkalNastavenia.Location = new System.Drawing.Point(879, 279);
             this.pocetSkalNastavenia.Margin = new System.Windows.Forms.Padding(2);
             this.pocetSkalNastavenia.Name = "pocetSkalNastavenia";
             this.pocetSkalNastavenia.Size = new System.Drawing.Size(110, 23);
@@ -972,7 +972,7 @@
             // 
             this.mnozstvoZaciatocnejPotravyNastavenia.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mnozstvoZaciatocnejPotravyNastavenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mnozstvoZaciatocnejPotravyNastavenia.Location = new System.Drawing.Point(880, 350);
+            this.mnozstvoZaciatocnejPotravyNastavenia.Location = new System.Drawing.Point(879, 350);
             this.mnozstvoZaciatocnejPotravyNastavenia.Margin = new System.Windows.Forms.Padding(2);
             this.mnozstvoZaciatocnejPotravyNastavenia.Name = "mnozstvoZaciatocnejPotravyNastavenia";
             this.mnozstvoZaciatocnejPotravyNastavenia.Size = new System.Drawing.Size(110, 23);
@@ -985,7 +985,7 @@
             // 
             this.pocetMravcovTypu4Nastavenia.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pocetMravcovTypu4Nastavenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pocetMravcovTypu4Nastavenia.Location = new System.Drawing.Point(284, 423);
+            this.pocetMravcovTypu4Nastavenia.Location = new System.Drawing.Point(283, 423);
             this.pocetMravcovTypu4Nastavenia.Margin = new System.Windows.Forms.Padding(2);
             this.pocetMravcovTypu4Nastavenia.Name = "pocetMravcovTypu4Nastavenia";
             this.pocetMravcovTypu4Nastavenia.Size = new System.Drawing.Size(155, 23);
@@ -1004,7 +1004,7 @@
             "8x8",
             "16x16",
             "32x32"});
-            this.velkostMraveniskaNastavenia.Location = new System.Drawing.Point(880, 204);
+            this.velkostMraveniskaNastavenia.Location = new System.Drawing.Point(879, 204);
             this.velkostMraveniskaNastavenia.Margin = new System.Windows.Forms.Padding(2);
             this.velkostMraveniskaNastavenia.Name = "velkostMraveniskaNastavenia";
             this.velkostMraveniskaNastavenia.Size = new System.Drawing.Size(110, 71);
@@ -1015,7 +1015,7 @@
             // 
             this.nastavNastavenia.Dock = System.Windows.Forms.DockStyle.Fill;
             this.nastavNastavenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nastavNastavenia.Location = new System.Drawing.Point(443, 488);
+            this.nastavNastavenia.Location = new System.Drawing.Point(442, 488);
             this.nastavNastavenia.Margin = new System.Windows.Forms.Padding(2);
             this.nastavNastavenia.Name = "nastavNastavenia";
             this.nastavNastavenia.Size = new System.Drawing.Size(261, 74);
@@ -1030,7 +1030,7 @@
             this.label20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label20.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(708, 421);
+            this.label20.Location = new System.Drawing.Point(707, 421);
             this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(168, 65);
@@ -1042,7 +1042,7 @@
             // 
             this.minimalneMnozstvoPotravyNastavenia.Dock = System.Windows.Forms.DockStyle.Fill;
             this.minimalneMnozstvoPotravyNastavenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.minimalneMnozstvoPotravyNastavenia.Location = new System.Drawing.Point(880, 423);
+            this.minimalneMnozstvoPotravyNastavenia.Location = new System.Drawing.Point(879, 423);
             this.minimalneMnozstvoPotravyNastavenia.Margin = new System.Windows.Forms.Padding(2);
             this.minimalneMnozstvoPotravyNastavenia.Name = "minimalneMnozstvoPotravyNastavenia";
             this.minimalneMnozstvoPotravyNastavenia.Size = new System.Drawing.Size(110, 23);
@@ -1080,7 +1080,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 139F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 6F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 21F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 22F));
             this.tableLayoutPanel3.Controls.Add(this.label23, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.label25, 6, 5);
             this.tableLayoutPanel3.Controls.Add(this.label24, 1, 0);

@@ -64,14 +64,15 @@ namespace SimulaciaMraveniskaGUI
                                                  NumericUpDown pocetSkal, NumericUpDown mnozstvoPotravyZaciatocnej,
                                                  NumericUpDown mnozstvoPotravyMinnimalnej, Label labelCas, Label labelFaza)
         {
+            StatickeHodnoty.ZistiBehSimulacieSimulacia().UkonecieSimulacie();
+
+            if (Konstanty.jeNastaveneMiestoUlozenia)
+                Konstanty.zapisovacUdajov.Close();
 
             NastaveneHodnotyPocasKrokov.NastavPokracovanie(false);
             NacitaneHodnoty.NastavNastavenia(false);
-
             HodnotyStavuSimulacie.ResetujMiestoUlozenia();
             HodnotyStavuZobrazovaniaSimulacie.NastavZobrazovanieSimulacie(false);
-
-            StatickeHodnoty.ZistiBehSimulacieSimulacia().UkonecieSimulacie();
             StatickeHodnoty.ZistiBehSimulacieSimulacia().InicializujSimulaciu("");
 
 
@@ -81,9 +82,6 @@ namespace SimulaciaMraveniskaGUI
             NacitaneHodnoty.InicializujHodnoty(pocetSkal, mnozstvoPotravyZaciatocnej, mnozstvoPotravyMinnimalnej);
 
             VypisFazeMraveniska.NastavZakladneHodnoty(labelCas, labelFaza);
-
-            if (Konstanty.jeNastaveneMiestoUlozenia)
-                Konstanty.zapisovacUdajov.Close();
             
         }
         //spravuje vypisovanie udajov v casti Simulacia
