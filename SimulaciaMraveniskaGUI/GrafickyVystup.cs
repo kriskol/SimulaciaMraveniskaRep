@@ -72,14 +72,13 @@ namespace SimulaciaMraveniskaGUI
         // rozhoduje sa o tom ako, ake vykreslovanie mravcov sa bude diat, podla typu fazy vykreslovania
         private static void RozhodovanieOVyfarbovaniMravcovASituacii(Mravenisko mravenisko, Graphics graphics, int i, int j, int velkostStvorceka)
         {
-
             VykresliMravcov(mravenisko, graphics, i, j, velkostStvorceka, 2);
 
             switch (mravenisko.ZistiFazaMraveniska())
             {
                 case FazaMraveniska.poKonciKroku:
-                    VypisPocetMravcovNaPolicku(i, j, velkostStvorceka, velkostStvorceka, velkostStvorceka,
-                    mravenisko.VratObjektPohybujuceSaNaDanychSuradniciachZobrazovanie(new Suradnice(i, j)).Count, graphics, Color.Black);
+                    VypisPocetMravcovNaPolicku(i, j, velkostStvorceka, velkostStvorceka, velkostStvorceka, 
+                    mravenisko.VratObjektPohybujuceSaNaDanychSuradniciachZobrazovanie(new Suradnice(i,j)).Count, graphics, Color.Black);
                     break;
                 case FazaMraveniska.poBojiPolicku:
                     VykresliMravcovBojNaPolickach(mravenisko, graphics, i, j, velkostStvorceka);
@@ -279,6 +278,7 @@ namespace SimulaciaMraveniskaGUI
                                      velkostStvorceka / 2, velkostStvorceka / 2,ZistiFarbuMravcov(TypyMravcov.MravecTypu4), graphics);
                 else VykresliObdlznik(i * velkostStvorceka + velkostStvorceka / 2, j * velkostStvorceka + velkostStvorceka / 2, velkostStvorceka / 2, 
                                       velkostStvorceka / 2, Color.White, graphics);
+
             }
 
 

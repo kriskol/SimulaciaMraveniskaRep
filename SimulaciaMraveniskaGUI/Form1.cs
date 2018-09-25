@@ -302,6 +302,7 @@ namespace SimulaciaMraveniskaGUI
             StatickeHodnoty.ZistiAutoResetEvent().Set();
 
         }
+
     }
 }
 
