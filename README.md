@@ -91,7 +91,7 @@ druhý ma farbu typu mravcov, ktorý na ňom sú.
 
 Špeciálne vykreslovanie v jednotlivých fázach:
 
-Koniec kroku simulacie: tak ako základné vykreslovanie.
+Koniec kroku simulacie: tak ako základné vykreslovanie + je na políčku napísaný počet mravcov (ak je tam aspoň jeden).
 
 Boje pri prechadzani: obe sú zobrazené červenou farbou, a 
 vedú medzi nimi dve čiary, kde každá čiara zastupuje jeden typ bojujucich mravcov a odpovedá
