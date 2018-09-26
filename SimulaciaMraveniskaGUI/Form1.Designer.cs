@@ -661,11 +661,6 @@
             this.nastavenieRychlostiNum.Name = "nastavenieRychlostiNum";
             this.nastavenieRychlostiNum.Size = new System.Drawing.Size(177, 23);
             this.nastavenieRychlostiNum.TabIndex = 29;
-            this.nastavenieRychlostiNum.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.nastavenieRychlostiNum.ValueChanged += new System.EventHandler(this.nastavenieRychlostiNum_ValueChanged);
             // 
             // vystup

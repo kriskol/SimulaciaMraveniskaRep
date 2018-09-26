@@ -145,11 +145,13 @@ namespace SimulaciaMraveniskaUdalostiSpravaUdalosti
         {
 
             PolickaPriPrechadzajucomBoji polickaPriPrechadzajucomBoji1 = new PolickaPriPrechadzajucomBoji(suradnice1, mravce1[0].ZistiTypyMravcov());
-            PolickaPriPrechadzajucomBoji polickaPriPrechadzajucomBoji2 = new PolickaPriPrechadzajucomBoji(suradnice2, mravce2[0].ZistiTypyMravcov(), polickaPriPrechadzajucomBoji1);
+            PolickaPriPrechadzajucomBoji polickaPriPrechadzajucomBoji2 = new PolickaPriPrechadzajucomBoji(suradnice2, mravce2[0].ZistiTypyMravcov(), 
+                                                                                                            polickaPriPrechadzajucomBoji1);
             polickaPriPrechadzajucomBoji1.NastavDruhePolicko(polickaPriPrechadzajucomBoji2);
             mravenisko.NastavPolickoBojPrechadzajuce(polickaPriPrechadzajucomBoji1, polickaPriPrechadzajucomBoji1.ZistiSuradniceMravcov().ZistiXSuradnicu(),
                                                         polickaPriPrechadzajucomBoji1.ZistiSuradniceMravcov().ZistiYSuradnicu());
-
+            mravenisko.NastavPolickoBojPrechadzajuce(polickaPriPrechadzajucomBoji2, polickaPriPrechadzajucomBoji2.ZistiSuradniceMravcov().ZistiXSuradnicu(),
+                                                        polickaPriPrechadzajucomBoji2.ZistiSuradniceMravcov().ZistiYSuradnicu());
 
             List<Mravec> mravceTypu1 = new List<Mravec>();
             List<Mravec> mravceTypu2 = new List<Mravec>();

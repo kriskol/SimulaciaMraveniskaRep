@@ -14,14 +14,76 @@ namespace SimulaciaMraveniskaGUI
     //spravuje graficke zobrazovanie mraveniska
     public static class GrafickyVystup
     {
+        private static bool[,] zakladneZobrazenie;
+        private static TypyMravcov[,] typyMravcePredPohybom;
+        private static TypyMravcov[,] typyMravcePoPohybe;
+
         //spusti vykreslovanie mraveniska
         public static void VykresliMraveniskoUvod(Mravenisko mravenisko, TabPage tabPage)
         {
             Graphics graphics;
             graphics = tabPage.CreateGraphics();
 
+            if (mravenisko.ZistiFazaMraveniska() == FazaMraveniska.poNastaveniSmerOtocenia)
+                ZistiStarePozicieMravcov(mravenisko);
+            if (mravenisko.ZistiFazaMraveniska() == FazaMraveniska.poBojiPrechadzani)
+            {
+                ZistiNovePozicieMravcov(mravenisko);
+                OverenieKorektnostiZakladneZobrazenie(mravenisko.ZistiRozmerMraveniska());
+            }
+
             VykresliMravenisko(mravenisko, graphics, tabPage);
         }
+        //inicializuje pomocne polia
+        public static void Inicializacia(int rozmer)
+        {
+            zakladneZobrazenie = new bool[rozmer, rozmer];
+            typyMravcePredPohybom = new TypyMravcov[rozmer, rozmer];
+            typyMravcePoPohybe = new TypyMravcov[rozmer, rozmer];
+
+            for(int i = 0; i < rozmer; i++)
+                for(int j = 0; j < rozmer; j++)
+                {
+                    zakladneZobrazenie[i, j] = false;
+                    typyMravcePredPohybom[i, j] = TypyMravcov.defaulMravec;
+                    typyMravcePoPohybe[i, j] = TypyMravcov.defaulMravec;
+                }
+        }
+        //zistenie starych pozicii mravcov
+        private static void ZistiStarePozicieMravcov(Mravenisko mravenisko)
+        {
+            for(int i = 0; i < mravenisko.ZistiRozmerMraveniska(); i++)
+                for(int j = 0; j < mravenisko.ZistiRozmerMraveniska(); j++)
+                    if(mravenisko.VratObjektPohybujuceSaNaDanychSuradniciachZobrazovanie(new Suradnice(i, j)).Count > 0)
+                    {
+                        Mravec mravec = mravenisko.VratObjektPohybujuceSaNaDanychSuradniciachZobrazovanie(new Suradnice(i, j))[0] as Mravec;
+                        typyMravcePredPohybom[i, j] = mravec.ZistiTypyMravcov();
+                    }
+                    else
+                        typyMravcePredPohybom[i, j] = TypyMravcov.defaulMravec;
+        }
+        //zistenie novych pozicii mravcov
+        private static void ZistiNovePozicieMravcov(Mravenisko mravenisko)
+        {
+            for (int i = 0; i < mravenisko.ZistiRozmerMraveniska(); i++)
+                for (int j = 0; j < mravenisko.ZistiRozmerMraveniska(); j++)
+                    if (mravenisko.VratObjektPohybujuceSaNaDanychSuradniciachZobrazovanie(new Suradnice(i, j)).Count > 0)
+                    {
+                        Mravec mravec = mravenisko.VratObjektPohybujuceSaNaDanychSuradniciachZobrazovanie(new Suradnice(i, j))[0] as Mravec;
+                        typyMravcePoPohybe[i, j] = mravec.ZistiTypyMravcov();
+                    }
+                    else
+                        typyMravcePoPohybe[i, j] = TypyMravcov.defaulMravec;
+        }
+        //overenie korektnosti zakladnehaZobrazenie
+        private static void OverenieKorektnostiZakladneZobrazenie(int rozmer)
+        {
+            for (int i = 0; i < rozmer; i++)
+                for (int j = 0; j < rozmer; j++)
+                    if (zakladneZobrazenie[i, j] && typyMravcePredPohybom[i, j] != typyMravcePoPohybe[i, j])
+                        zakladneZobrazenie[i, j] = false;
+        }
+
         //odstrani vykreslenie mraveniska
         public static void VykresliOknoBezSimulacie(TabPage tabPage)
         {
@@ -36,7 +98,7 @@ namespace SimulaciaMraveniskaGUI
             int vyska;
             int sirka;
             int velkostStvorceka;
-
+            bool hodnota;
 
             vyska = tabPage.Height;
             sirka = tabPage.Width;
@@ -44,57 +106,145 @@ namespace SimulaciaMraveniskaGUI
 
             for (int i = 0; i < mravenisko.ZistiRozmerMraveniska(); i++)
                 for (int j = 0; j < mravenisko.ZistiRozmerMraveniska(); j++)
-                    switch (mravenisko.VratObjektNepohybujuceSaNaDanychSuradniciach(new Suradnice(i, j)).ZistiTypObjektu())
+                {
+                    hodnota = false;
+
+                    switch (mravenisko.ZistiFazaMraveniska())
                     {
-                        case TypyObjektov.potrava:
-                            VykresliObdlznik(i * velkostStvorceka, j * velkostStvorceka, velkostStvorceka, velkostStvorceka, Color.LawnGreen, graphics);
-                            if (mravenisko.VratObjektPohybujuceSaNaDanychSuradniciachZobrazovanie(new Suradnice(i, j)).Count > 0)
-                            RozhodovanieOVyfarbovaniMravcovASituacii(mravenisko, graphics, i, j, velkostStvorceka);
+                        case FazaMraveniska.poNastaveniSmerOtocenia:
+                            {
+                                RozhodnutieOZakladnomVyfarbeniPredVyfarbenimAkcie(mravenisko, graphics, i, j, velkostStvorceka);
+
+
+                                if (mravenisko.VratObjektPohybujuceSaNaDanychSuradniciachZobrazovanie(new Suradnice(i, j)).Count > 0)
+                                    hodnota = VykresliSmerOtoceniaMravcovNaPolickach(mravenisko, graphics, i, j, velkostStvorceka);
+
+                                if (hodnota)
+                                    zakladneZobrazenie[i, j] = false;
+                            }
                             break;
-                        case TypyObjektov.prazdnaZem:
-                            VykresliObdlznik(i * velkostStvorceka, j * velkostStvorceka, velkostStvorceka, velkostStvorceka,
-                                     Color.Khaki, graphics);
-                            if (mravenisko.VratObjektPohybujuceSaNaDanychSuradniciachZobrazovanie(new Suradnice(i, j)).Count > 0)
-                                RozhodovanieOVyfarbovaniMravcovASituacii(mravenisko, graphics, i, j, velkostStvorceka);
+                        case FazaMraveniska.poNastaveniSmerAktivnehoPohybuStatie:
+                            {
+                                RozhodnutieOZakladnomVyfarbeniPredVyfarbenimAkcie(mravenisko, graphics, i, j, velkostStvorceka);
+
+
+                                if (mravenisko.VratObjektPohybujuceSaNaDanychSuradniciachZobrazovanie(new Suradnice(i, j)).Count > 0)
+                                {
+                                    hodnota = VykresliSmerPohybuMravcovNaPolickach(mravenisko, graphics, i, j, velkostStvorceka);
+
+                                    if (hodnota)
+                                        VykresliZostanieStatiaMravcov(mravenisko, graphics, i, j, velkostStvorceka);
+                                    else
+                                        hodnota = VykresliZostanieStatiaMravcov(mravenisko, graphics, i, j, velkostStvorceka);
+                                }
+
+                                if (hodnota)
+                                    zakladneZobrazenie[i, j] = false;
+                            }
                             break;
-                        case TypyObjektov.skala:
-                            VykresliObdlznik(i * velkostStvorceka, j * velkostStvorceka, velkostStvorceka, velkostStvorceka,
-                                     Color.Gray, graphics);
+                        case FazaMraveniska.poBojiPrechadzani:
+                            {
+
+                                hodnota = VykresliBojPriPrechadzaniPolicka(mravenisko, graphics, i, j, velkostStvorceka);
+                                RozhodnutieOZakladnomVyfarbeni(i, j, velkostStvorceka, mravenisko, graphics, hodnota);
+
+                            }
+                            break;
+                        case FazaMraveniska.poBojiPolicku:
+                            {
+
+                                hodnota = VykresliMravcovBojNaPolickach(mravenisko, graphics, i, j, velkostStvorceka);
+                                RozhodnutieOZakladnomVyfarbeni(i, j, velkostStvorceka, mravenisko, graphics, hodnota);
+                            }
+                            break;
+                        case FazaMraveniska.poPareni:
+                            {
+
+                                hodnota = VykresliMravcovParenie(mravenisko, graphics, i, j, velkostStvorceka);
+                                RozhodnutieOZakladnomVyfarbeni(i, j, velkostStvorceka, mravenisko, graphics, hodnota);
+                            }
+                            break;
+                        case FazaMraveniska.poVykonaniCinnostiNepohybovych:
+                            {
+                                hodnota = VykresliJedenieMravcov(mravenisko, graphics, i, j, velkostStvorceka);
+
+                                RozhodnutieOZakladnomVyfarbeni(i, j, velkostStvorceka, mravenisko, graphics, hodnota);
+                            }
+                            break;
+                        case FazaMraveniska.poZnizeniEnergie:
+                            {
+                                hodnota = VykresliUbytokMravcovKoniec(mravenisko, graphics, velkostStvorceka, i, j);
+
+                                RozhodnutieOZakladnomVyfarbeni(i, j, velkostStvorceka, mravenisko, graphics, hodnota);
+                            }
+                            break;
+                        case FazaMraveniska.poKonciKroku:
+                            {
+                                RozhodnutieOZakladnomVyfarbeniPredVyfarbenimAkcie(mravenisko, graphics, i, j, velkostStvorceka);
+
+                                if(mravenisko.VratObjektPohybujuceSaNaDanychSuradniciachZobrazovanie(new Suradnice(i, j)).Count > 0)
+                                {
+                                    VypisPocetMravcovNaPolicku(i, j, velkostStvorceka, velkostStvorceka, velkostStvorceka,
+                                                                mravenisko.VratObjektPohybujuceSaNaDanychSuradniciachZobrazovanie(new Suradnice(i, j)).Count,
+                                                                graphics, Color.Black);
+
+                                    zakladneZobrazenie[i, j] = false;
+                                }
+                            }
                             break;
                     }
+                }
 
             if (mravenisko.ZistiFazaMraveniska() == FazaMraveniska.poBojiPrechadzani)
-                VykresliBojPriPrechadzani(mravenisko, graphics, velkostStvorceka);
+                VykresliBojPriPrechadzaniSpojniceUvod(mravenisko, graphics, velkostStvorceka);
 
-            if (mravenisko.ZistiFazaMraveniska() == FazaMraveniska.poZnizeniEnergie)
-                VykresliUbytokMravcovKoniec(mravenisko, graphics, velkostStvorceka);
+           
         }
-        // rozhoduje sa o tom ako, ake vykreslovanie mravcov sa bude diat, podla typu fazy vykreslovania
-        private static void RozhodovanieOVyfarbovaniMravcovASituacii(Mravenisko mravenisko, Graphics graphics, int i, int j, int velkostStvorceka)
+        //rozhodnutie o zakladnom vyfarbeni pred vyfarbenim akcie
+        private static void RozhodnutieOZakladnomVyfarbeniPredVyfarbenimAkcie(Mravenisko mravenisko, Graphics graphics, int i, int j, int velkostStvorceka)
         {
-            VykresliMravcov(mravenisko, graphics, i, j, velkostStvorceka, 2);
-
-            switch (mravenisko.ZistiFazaMraveniska())
+            if (!zakladneZobrazenie[i, j])
             {
-                case FazaMraveniska.poKonciKroku:
-                    VypisPocetMravcovNaPolicku(i, j, velkostStvorceka, velkostStvorceka, velkostStvorceka, 
-                    mravenisko.VratObjektPohybujuceSaNaDanychSuradniciachZobrazovanie(new Suradnice(i,j)).Count, graphics, Color.Black);
+                ZakladneVyfarbovaniePolicok(i, j, velkostStvorceka, mravenisko, graphics);
+                zakladneZobrazenie[i, j] = true;
+            }
+        }
+        //rozhodnutie o zakladnom vyfarbeni
+        private static void RozhodnutieOZakladnomVyfarbeni(int i, int j, int velkostStvorceka, Mravenisko mravenisko, Graphics graphics, bool hodnota)
+        {
+            if (hodnota)
+                zakladneZobrazenie[i, j] = false;
+            else if(!zakladneZobrazenie[i, j])
+            {
+                ZakladneVyfarbovaniePolicok(i, j, velkostStvorceka, mravenisko, graphics);
+                zakladneZobrazenie[i, j] = true;
+            }
+        }
+        //zakladne vyfarbovanie policka
+        private static void ZakladneVyfarbovaniePolicok(int i, int j, int velkostStvorceka, Mravenisko mravenisko, Graphics graphics)
+        {
+            switch(mravenisko.VratObjektNepohybujuceSaNaDanychSuradniciach(new Suradnice(i, j)).ZistiTypObjektu())
+            {
+                case TypyObjektov.skala:
+                    {
+                        VykresliObdlznik(i * velkostStvorceka, j * velkostStvorceka, velkostStvorceka, velkostStvorceka, Color.Gray, graphics);
+                    }
                     break;
-                case FazaMraveniska.poBojiPolicku:
-                    VykresliMravcovBojNaPolickach(mravenisko, graphics, i, j, velkostStvorceka);
+                case TypyObjektov.potrava:
+                    {
+                        VykresliObdlznik(i * velkostStvorceka, j * velkostStvorceka, velkostStvorceka, velkostStvorceka, Color.LawnGreen, graphics);
+
+                        if (mravenisko.VratObjektPohybujuceSaNaDanychSuradniciachZobrazovanie(new Suradnice(i, j)).Count > 0)
+                            VykresliMravcov(mravenisko, graphics, i, j, velkostStvorceka, 2);
+                    }
                     break;
-                case FazaMraveniska.poNastaveniSmerOtocenia:
-                    VykresliSmerOtoceniaMravcovNaPolickach(mravenisko, graphics, i, j, velkostStvorceka);
-                    break;
-                case FazaMraveniska.poNastaveniSmerAktivnehoPohybuStatie:
-                    VykresliSmerPohybuMravcovNaPolickach(mravenisko, graphics, i, j, velkostStvorceka);
-                    VykresliZostanieStatiaMravcov(mravenisko, graphics, i, j, velkostStvorceka);
-                    break;
-                case FazaMraveniska.poVykonaniCinnostiNepohybovych:
-                    VykresliJedenieMravcov(mravenisko, graphics, i, j, velkostStvorceka);
-                    break;
-                case FazaMraveniska.poPareni:
-                    VykresliMravcovParenie(mravenisko, graphics, i, j, velkostStvorceka);
+                case TypyObjektov.prazdnaZem:
+                    {
+                        VykresliObdlznik(i * velkostStvorceka, j * velkostStvorceka, velkostStvorceka, velkostStvorceka, Color.Khaki, graphics);
+
+                        if (mravenisko.VratObjektPohybujuceSaNaDanychSuradniciachZobrazovanie(new Suradnice(i, j)).Count > 0)
+                            VykresliMravcov(mravenisko, graphics, i, j, velkostStvorceka, 2);
+                    }
                     break;
             }
         }
@@ -120,6 +270,7 @@ namespace SimulaciaMraveniskaGUI
 
             return false;
         }
+
         //nastavi ako sa maju vykreslit mravce v zakladnej podobe
         private static void VykresliMravcov(Mravenisko mravenisko, Graphics graphics, int i, int j, int velkostStvorceka, int velkostCast)
         {
@@ -132,35 +283,29 @@ namespace SimulaciaMraveniskaGUI
                              graphics);
 
         }
-        //sposobi najprv vykreslenie policok medzi ktorymi sa bojovalo pri pohybe na cerveno
-        //nasledne medzi nimi vykresli spojnice vo farbach mravcov
-        private static void VykresliBojPriPrechadzani(Mravenisko mravenisko, Graphics graphics, int velkostStvorceka)
+        //sposobi  vykreslenie spojnic vo farbach mravcov, ktore bojovali pri prechode medzi polickami
+        private static void VykresliBojPriPrechadzaniSpojniceUvod(Mravenisko mravenisko, Graphics graphics, int velkostStvorceka)
         {
-            for (int i = 0; i < mravenisko.ZistiRozmerMraveniska(); i++)
-                for (int j = 0; j < mravenisko.ZistiRozmerMraveniska(); j++)
-                    VykresliBojPriPrechadzaniPolicka(mravenisko, graphics, i, j, velkostStvorceka);
-
             for (int i = 0; i < mravenisko.ZistiRozmerMraveniska(); i++)
                 for (int j = 0; j < mravenisko.ZistiRozmerMraveniska(); j++)
                     VykresliBojPriPrechadzaniSpojnice(mravenisko, graphics, i, j, velkostStvorceka);
         }
         //vykresli ako cervene policka, tie, medzi ktorymi sa bojovalo
-        private static void VykresliBojPriPrechadzaniPolicka(Mravenisko mravenisko, Graphics graphics, int i, int j, int velkostStvorceka)
+        private static bool VykresliBojPriPrechadzaniPolicka(Mravenisko mravenisko, Graphics graphics, int i, int j, int velkostStvorceka)
         {
-            if ( mravenisko.ZistiPolickaBojPrechadzajuce(i,j) != default(List<PolickaPriPrechadzajucomBoji>))
-                foreach(PolickaPriPrechadzajucomBoji polickaPriPrechadzajucomBoji in mravenisko.ZistiPolickaBojPrechadzajuce(i, j))
-                {
-                    VykresliObdlznik(polickaPriPrechadzajucomBoji.ZistiSuradniceMravcov().ZistiXSuradnicu() * velkostStvorceka,
-                                     polickaPriPrechadzajucomBoji.ZistiSuradniceMravcov().ZistiYSuradnicu() * velkostStvorceka,
-                                     velkostStvorceka, velkostStvorceka, Color.Red, graphics);
-                    VykresliObdlznik(polickaPriPrechadzajucomBoji.ZistiDruhePolicko().ZistiSuradniceMravcov().ZistiXSuradnicu() * velkostStvorceka,
-                                     polickaPriPrechadzajucomBoji.ZistiDruhePolicko().ZistiSuradniceMravcov().ZistiYSuradnicu() * velkostStvorceka,
-                                     velkostStvorceka, velkostStvorceka, Color.Red, graphics);
-                }
+            if (mravenisko.ZistiPolickaBojPrechadzajuce(i, j) != default(List<PolickaPriPrechadzajucomBoji>) &&
+                mravenisko.ZistiPolickaBojPrechadzajuce(i,j).Count > 0)
+            {
+                VykresliObdlznik(i * velkostStvorceka, j * velkostStvorceka, velkostStvorceka, velkostStvorceka, Color.Red, graphics);
+
+                return true;
+            }
+
+            return false;
             
         }
-        //vykresli 2 spojnice spajajuce policka, tieto ciary reprezentuju boj mravcov pri prechadzani medzi tymito polickami, farby ciar reprezentuju typy mravcov, ktore bojuju
-        //takisto vykresli
+        //vykresli 2 spojnice spajajuce policka, tieto ciary reprezentuju boj mravcov pri prechadzani medzi tymito polickami, 
+        //farby ciar reprezentuju typy mravcov, ktore bojuju takisto vykresli
         private static void VykresliBojPriPrechadzaniSpojnice(Mravenisko mravenisko, Graphics graphics, int i, int j, int velkostStvorceka)
         {
             if (mravenisko.ZistiPolickaBojPrechadzajuce(i, j) != default(List<PolickaPriPrechadzajucomBoji>) && 
@@ -207,7 +352,8 @@ namespace SimulaciaMraveniskaGUI
                         }
 
                     }
-                    else
+                    else if(NasledujucePolickoMraveniska.SmerZ(suradnice1, mravenisko.ZistiRozmerMraveniska()).ZistiXSuradnicu() == suradnice2.ZistiXSuradnicu() &&
+                            NasledujucePolickoMraveniska.SmerZ(suradnice1, mravenisko.ZistiRozmerMraveniska()).ZistiYSuradnicu() == suradnice2.ZistiYSuradnicu())
                     {
                         if (Math.Abs(suradnice1.ZistiXSuradnicu() - suradnice2.ZistiXSuradnicu()) == 1)
                         {
@@ -246,7 +392,7 @@ namespace SimulaciaMraveniskaGUI
 
         }
         //vykresli policka, kde mravce bojuju na danom policku
-        private static void VykresliMravcovBojNaPolickach(Mravenisko mravenisko, Graphics graphics, int i, int j, int velkostStvorceka)
+        private static bool VykresliMravcovBojNaPolickach(Mravenisko mravenisko, Graphics graphics, int i, int j, int velkostStvorceka)
         {
             PolickaPriBojiNaPolicku polickaPriBojiNaPolicku = mravenisko.ZistiPolickoBojNaPolicko(i, j);
             List<TypyMravcov> typyMravcovPole;
@@ -279,12 +425,15 @@ namespace SimulaciaMraveniskaGUI
                 else VykresliObdlznik(i * velkostStvorceka + velkostStvorceka / 2, j * velkostStvorceka + velkostStvorceka / 2, velkostStvorceka / 2, 
                                       velkostStvorceka / 2, Color.White, graphics);
 
+                return true;
             }
+            
+            return false;
 
 
         }
         //vykresli smer otocenia mravcov na polickach
-        private static void VykresliSmerOtoceniaMravcovNaPolickach(Mravenisko mravenisko, Graphics graphics, int i, int j, int velkostStvorceka)
+        private static bool VykresliSmerOtoceniaMravcovNaPolickach(Mravenisko mravenisko, Graphics graphics, int i, int j, int velkostStvorceka)
         {
             bool smerPohybuS = false, smerPohybuZ = false, smerPohybuJ = false, smerPohybuV = false;
             
@@ -320,11 +469,15 @@ namespace SimulaciaMraveniskaGUI
             if (smerPohybuV) VykresliTrojuholnik(pen, solidBrush, graphics, zakladX + velkostStvorceka * 3 / 4, zakladY + velkostStvorceka / 4,
                                                  zakladX + velkostStvorceka -1, zakladY + velkostStvorceka / 2, zakladX + velkostStvorceka * 3 / 4, 
                                                  zakladY + velkostStvorceka * 3 / 4);
+
+            if (smerPohybuV || smerPohybuS || smerPohybuZ || smerPohybuJ) return true;
+
+            return false;
                       
 
         }       
         //vykresli smer pohybu mravcov na polickach
-        private static void VykresliSmerPohybuMravcovNaPolickach(Mravenisko mravenisko, Graphics graphics, int i, int j, int velkostStvorceka)
+        private static bool VykresliSmerPohybuMravcovNaPolickach(Mravenisko mravenisko, Graphics graphics, int i, int j, int velkostStvorceka)
         {
             bool aktivnySmerPohybuS = false; bool aktivneSmerPohybuZ = false; bool aktivnySmerPohybuJ = false; bool aktivnySmerPohybuV = false;
 
@@ -361,9 +514,13 @@ namespace SimulaciaMraveniskaGUI
             if (aktivnySmerPohybuV) VykresliTrojuholnik(pen, solidBrush, graphics, zakladX + velkostStvorceka * 3 / 4, zakladY + velkostStvorceka / 4,
                                                  zakladX + velkostStvorceka - 1, zakladY + velkostStvorceka / 2, zakladX + velkostStvorceka * 3 / 4, 
                                                  zakladY + velkostStvorceka * 3 / 4);
+
+            if (aktivnySmerPohybuS || aktivneSmerPohybuZ || aktivnySmerPohybuJ || aktivnySmerPohybuV) return true;
+
+            return false;
         }
         //vykresli kruh, tam kde mravce zostali stat
-        private static void VykresliZostanieStatiaMravcov(Mravenisko mravenisko, Graphics graphics, int i, int j, int velkostStvorceka)
+        private static bool VykresliZostanieStatiaMravcov(Mravenisko mravenisko, Graphics graphics, int i, int j, int velkostStvorceka)
         {
             bool zostaliStat = false;
             foreach(PohybujuceSaObjekty objekt in mravenisko.VratObjektPohybujuceSaNaDanychSuradniciachZobrazovanie(new Suradnice(i, j)))
@@ -373,11 +530,17 @@ namespace SimulaciaMraveniskaGUI
                 if (mravec.ZistiCinnostMravca() == CinnostiMravcov.zostan) zostaliStat = true;
             }
 
-            if (zostaliStat) VykresliElipsu(i * velkostStvorceka + velkostStvorceka / 4, j * velkostStvorceka + velkostStvorceka / 4, velkostStvorceka / 2, velkostStvorceka / 2,
-                                            Color.Aqua, graphics);
+            if (zostaliStat)
+            {
+                VykresliElipsu(i * velkostStvorceka + velkostStvorceka / 4, j * velkostStvorceka + velkostStvorceka / 4, velkostStvorceka / 2, velkostStvorceka / 2,
+                              Color.Aqua, graphics);
+                return true;
+            }
+
+            return false;
         }
         //vykresli policka, kde sa mravce uspesne najedli, taktiez vypise kolko mravcov sa najedlo
-        private static void VykresliJedenieMravcov(Mravenisko mravenisko, Graphics graphics, int i, int j, int velkostStvorceka)
+        private static bool VykresliJedenieMravcov(Mravenisko mravenisko, Graphics graphics, int i, int j, int velkostStvorceka)
         {
             int pocetMravcovNajedlo = 0;
 
@@ -392,32 +555,43 @@ namespace SimulaciaMraveniskaGUI
 
                 VykresliObdlznik(i * velkostStvorceka, j*velkostStvorceka, velkostStvorceka, velkostStvorceka, Color.LightGreen, graphics);
                 VypisPocetMravcovNaPolicku(i, j, velkostStvorceka, velkostStvorceka, velkostStvorceka, pocetMravcovNajedlo, graphics, Color.Black);
+
+                return true;
             }
-            
+
+            return false;
+ 
+                      
         }
-        //vykresli policka, kde doslo k ubytku mravcov z dosledku znizenia energie mravcov na konci kroku, taktiez vypise kolko takychto mravcov bolo
-        private static void VykresliUbytokMravcovKoniec(Mravenisko mravenisko, Graphics graphics, int velkostStvorceka)
+        //vykresli policko, kde doslo k ubytku mravcov z dosledku znizenia energie mravcov na konci kroku, taktiez vypise kolko takychto mravcov bolo
+        private static bool VykresliUbytokMravcovKoniec(Mravenisko mravenisko, Graphics graphics, int velkostStvorceka, int i, int j)
         {
-            for(int i = 0; i < mravenisko.ZistiRozmerMraveniska(); i++)
-                for(int j = 0; j < mravenisko.ZistiRozmerMraveniska(); j++)
-                    if (mravenisko.ZistiUbytokMravcovPoZnizeniEnergie(i, j))
-                    {
-                        int pocetOdislichMravcov = mravenisko.ZistiPocetMravcovOdisliZnizenimEnergie(i, j);
-                        VykresliObdlznik(i * velkostStvorceka, j *velkostStvorceka, velkostStvorceka, velkostStvorceka, Color.Black, graphics);
-                        VypisPocetMravcovNaPolicku(i , j, velkostStvorceka, velkostStvorceka, velkostStvorceka, pocetOdislichMravcov, graphics, Color.White);
-                    }
+            if (mravenisko.ZistiUbytokMravcovPoZnizeniEnergie(i, j))
+            {
+                int pocetOdislichMravcov = mravenisko.ZistiPocetMravcovOdisliZnizenimEnergie(i, j);
+                VykresliObdlznik(i * velkostStvorceka, j * velkostStvorceka, velkostStvorceka, velkostStvorceka, Color.Black, graphics);
+                VypisPocetMravcovNaPolicku(i, j, velkostStvorceka, velkostStvorceka, velkostStvorceka, pocetOdislichMravcov, graphics, Color.White);
+                return true;
+            }
+
+            return false;
         }
         //vykresli policka, kde prebieha parenie
-        private static void VykresliMravcovParenie(Mravenisko mravenisko, Graphics graphics, int i, int j, int velkostStvorceka)
+        private static bool VykresliMravcovParenie(Mravenisko mravenisko, Graphics graphics, int i, int j, int velkostStvorceka)
         {
             if (mravenisko.ZistiParenie(i, j))
             {
                 VykresliObdlznik(i * velkostStvorceka, j * velkostStvorceka, velkostStvorceka, velkostStvorceka, Color.White, graphics);
                 VykresliElipsu(i * velkostStvorceka, j * velkostStvorceka, velkostStvorceka, velkostStvorceka,
                     ZistiFarbuMravcov((mravenisko.VratObjektPohybujuceSaNaDanychSuradniciachZobrazovanie(new Suradnice(i, j))[0] as Mravec).ZistiTypyMravcov()), graphics);
+
+                return true;
             }
 
+            return false;
+
         }
+
         //vykresli samotne policko, obldznik
         private static void VykresliObdlznik(int x, int y, int sirka, int vyska, Color farba, Graphics graphics)
         {

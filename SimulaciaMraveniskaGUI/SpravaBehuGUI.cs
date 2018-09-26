@@ -38,6 +38,8 @@ namespace SimulaciaMraveniskaGUI
             ZadaneHodnoty.NastavRozmerMraveniska(NacitaneHodnoty.ZistiRozmerMraveniska());
 
             Konstanty.NastavNasobokDobyPrestavky(HodnotyStavuSimulacie.ZistiRychlostSimulacie());
+
+            GrafickyVystup.Inicializacia(ZadaneHodnoty.ZistiRozmerMraveniska());
         }
         //spusti simulaciu a jej beh pomocou backgroundwoker
         private static void VykreslovanieASpustenieBehuSimulacie()

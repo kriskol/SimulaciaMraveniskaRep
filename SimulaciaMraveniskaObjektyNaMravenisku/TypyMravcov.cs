@@ -14,6 +14,7 @@ namespace SimulaciaMraveniskaObjektyNaMravenisku
         MravecTypu1,
         MravecTypu2,
         MravecTypu3,
-        MravecTypu4
+        MravecTypu4,
+        defaulMravec
     }
 }
